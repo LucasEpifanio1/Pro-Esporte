@@ -1,0 +1,115 @@
+/* ======= RESET ======= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* ======= CONTAINER PRINCIPAL ======= */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* ======= LINK VOLTAR ======= */
+.voltar {
+    color: #FBBF24;
+    text-decoration: none;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
+.voltar:hover {
+    text-decoration: underline;
+}
+
+/* ======= BLOCO DO FORM ======= */
+.formulario {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 360px;
+}
+
+/* ======= CABEÇALHO ======= */
+h1 {
+    color: #FBBF24;
+    margin-bottom: 4px;
+    font-size: 1.8rem;
+}
+
+.subtitulo {
+    color: #9CA3AF;
+    font-size: 1rem;
+    margin-bottom: 25px;
+}
+
+/* ======= CAMPOS ======= */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+label {
+    font-size: 0.95rem;
+    color: #E5E7EB;
+}
+
+input {
+    background-color: #1F2937;
+    border: none;
+    border-radius: 8px;
+    height: 48px;
+    color: #D1D5DB;
+    padding: 0 12px;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+input::placeholder {
+    color: #9CA3AF;
+}
+
+input:focus {
+    outline: 2px solid #FBBF24;
+}
+
+/* ======= BOTÃO ======= */
+button {
+    background-color: #FBBF24;
+    border: none;
+    border-radius: 8px;
+    padding: 14px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #f5b507;
+}
