@@ -15,7 +15,7 @@ body {
     min-height: 100vh;
 }
 
-/* container principal*/
+/* container principal */
 .container {
     display: flex;
     flex-direction: column;
@@ -38,7 +38,7 @@ body {
     text-decoration: underline;
 }
 
-/* bloco do form */
+/* bloco form */
 .blocos {
     background-color: transparent;
     display: flex;
@@ -98,7 +98,7 @@ input:focus {
     outline: 2px solid #FBBF24;
 }
 
-/*botão*/
+/* botao */
 button {
     background-color: #FBBF24;
     border: none;
@@ -113,8 +113,7 @@ button {
 button:hover {
     background-color: #FBBF24;
 }
-
-/* tipoLogin*/
+/* ------tipoLogin e criador de eventos------*/
 .icon .img{
     background-color: #FBBF24;
     width: 35px ;
@@ -151,6 +150,7 @@ button:hover {
     gap: 16px;
     cursor: pointer;
     transition: 0.3s;
+    
 }
 .itensIndex{
     display: flex;
@@ -159,3 +159,6 @@ button:hover {
     gap: 15px;
 
 }
+ a{
+    text-decoration: none;
+ }

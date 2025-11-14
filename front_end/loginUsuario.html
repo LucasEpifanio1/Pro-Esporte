@@ -8,36 +8,18 @@
 </head>
 <body>
     <main class="container">
-        <a href="#" class="voltar">← Voltar</a>
+        <a href="#" class="voltar" onclick="history.back(); return false;">← Voltar</a>
 
-        <section class="formulario">
-            <h1>EventFit</h1>
+        <section class="blocos">
+            <h1>ProEsporte</h1>
             <p class="subtitulo">Criar sua conta</p>
 
             <form action="#">
-                <div class="campo">
-                    <label for="nome">Nome Completo</label>
-                    <input type="text" id="nome" name="usuario" placeholder="Ex: João Silva" required>
-                </div>
-
-                <div class="campo">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
-                </div>
-
-                <div class="campo">
-                    <label for="telefone">Telefone de Contato</label>
-                    <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
-                </div>
-
-                <div class="campo">
-                    <label for="senha">Senha</label>
-                    <input type="password" id="senha" name="senha" placeholder="Crie uma senha segura" required>
-                </div>
-
+                <div id="areaCampos"></div>
                 <button type="submit">Criar Conta</button>
             </form>
         </section>
     </main>
+     <script src="js/login.js"></script>
 </body>
 </html>

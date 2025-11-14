@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Opçoes de Login</title>
+    <title>Document</title>
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
             <h1>ProEsporte</h1>
             <p class="subtitulo">Escolha como você quer participar</p>
             <div class="itensIndex">
-                <div class="card" id="cidadao">
+                <div class="card" id="cidadao" onclick="opcaoCidadao()">
                     <div class="icon-container">
                         <img src="img/iconCidadao.png" alt="Ícone de cidadão" class="icon">
                     </div>
@@ -22,7 +22,7 @@
                     </div>
                 </div>
 
-                <div class="card" id="criador">
+                <div class="card" id="criador" onclick="opcaoCriador()">
                     <div class="icon-container">
                         <img src="img/iconEvento.png" alt="Ícone de criador de eventos" class="icon">
                     </div>
@@ -34,5 +34,6 @@
             </div>
         </section>
     </main>
+    <script src="js/tipoIogin.js"></script>
 </body>
 </html>
