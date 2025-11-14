@@ -15,7 +15,7 @@
             <div class="itensIndex">
                 <div class="card" id="empresa" onclick="opcaoEmpresa()">
                     <div class="icon-container">
-                        <img src="img/iconEmpresa.png" alt="Ícone de empresa" class="icon">
+                        <img src="/img/iconEmpresa.png" alt="Ícone de empresa" class="icon">
                     </div>
                     <div class="cardDescricao">
                         <h3 class="tituloCard">Empresa</h3>
@@ -25,7 +25,7 @@
 
                 <div class="card" id="funcionario" onclick="opcaoFuncionario()">
                     <div class="icon-container">
-                        <img src="img/iconFuncionario.png" alt="Ícone de funcionario" class="icon">
+                        <img src="/img/iconFuncionario.png" alt="Ícone de funcionario" class="icon">
                     </div>
                     <div class="cardDescricao">
                         <h3 class="tituloCard">Funcionário Público</h3>
@@ -35,6 +35,6 @@
             </div>
         </section>
     </main>
-    <script src="js/tipoIogin.js"></script>
+    <script src="js/tipoLogin.js"></script>
 </body>
 </html>
