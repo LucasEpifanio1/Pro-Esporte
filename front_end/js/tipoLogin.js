@@ -12,5 +12,5 @@ function opcaoEmpresa() {
 }
 function opcaoFuncionario() {
     localStorage.setItem("tipo", "funcionario");
-    window.location.href = 'index.html';
+    window.location.href = '/index.html';
 }
