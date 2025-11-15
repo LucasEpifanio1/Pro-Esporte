@@ -3,7 +3,7 @@ const { Model, DataTypes } = require('sequelize');
 class Organizer extends Model {
   static init(sequelize) {
     super.init(
-      { id:DataTypes.STRING,
+      { 
         name: DataTypes.STRING,
         email: DataTypes.STRING,
         cpf_cnpj: DataTypes.STRING,

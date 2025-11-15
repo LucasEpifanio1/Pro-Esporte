@@ -3,7 +3,7 @@ const { Model, DataTypes } = require('sequelize');
 class Event extends Model {
   static init(sequelize) {
     super.init(
-      { id:DataTypes.STRING,
+      {
         title: DataTypes.STRING,
         description: DataTypes.TEXT,
         date: DataTypes.DATE,
@@ -18,10 +18,8 @@ class Event extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.Organizer, {
-      foreignKey: 'organizer_id',
-      as: 'organizer',
-    });
+    // Exemplo: um evento pertence a um usuário
+    Event.belongsTo(models.User, { foreignKey: 'user_id', as: 'user' });
   }
 }
 

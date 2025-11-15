@@ -3,7 +3,7 @@ const { Model, DataTypes } = require('sequelize');
 class User extends Model {
   static init(sequelize) {
     super.init(
-      { id:DataTypes.STRING,
+      { 
         name: DataTypes.STRING,
         email: DataTypes.STRING,
         senha: DataTypes.STRING, // sempre string (vai ser criptografada)
