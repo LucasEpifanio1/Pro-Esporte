@@ -70,8 +70,9 @@ form {
 
 .campo {
     display: flex;
+    margin-bottom: 15px;
     flex-direction: column;
-    gap: 6px;
+    gap: 2px;
 }
 
 label {
@@ -139,8 +140,8 @@ button:hover {
     height: 52px;
 }
 .card {
-    width: 100%;
-    background-color: #000;
+    width: 402px;
+    background-color: #1F2937;
     border: 2px solid #FBBF24;
     border-radius: 16px;
     padding: 24px;

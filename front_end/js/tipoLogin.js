@@ -1,6 +1,6 @@
 function opcaoCidadao() {
     localStorage.setItem("tipo", "cidadao");
-    window.location.href = 'index.html';
+    window.location.href = 'login.html';
 }
 function opcaoCriador() {
     localStorage.setItem("tipo", "criador");
@@ -8,9 +8,9 @@ function opcaoCriador() {
 }
 function opcaoEmpresa() {
     localStorage.setItem("tipo", "empresa");
-    window.location.href = 'index.html';
+    window.location.href = 'login.html';
 }
 function opcaoFuncionario() {
     localStorage.setItem("tipo", "funcionario");
-    window.location.href = '/index.html';
+    window.location.href = 'login.html';
 }
