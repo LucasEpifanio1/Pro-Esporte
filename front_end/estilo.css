@@ -1,4 +1,4 @@
-/* ======= RESET ======= */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -15,7 +15,7 @@ body {
     min-height: 100vh;
 }
 
-/* ======= CONTAINER PRINCIPAL ======= */
+/* container principal */
 .container {
     display: flex;
     flex-direction: column;
@@ -23,7 +23,7 @@ body {
     gap: 20px;
 }
 
-/* ======= LINK VOLTAR ======= */
+/* link voltar */
 .voltar {
     color: #FBBF24;
     text-decoration: none;
@@ -38,17 +38,17 @@ body {
     text-decoration: underline;
 }
 
-/* ======= BLOCO DO FORM ======= */
-.formulario {
+/* bloco form */
+.blocos {
     background-color: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 360px;
+    width: 460px;
 }
 
-/* ======= CABEÇALHO ======= */
-h1 {
+/* cabeçalho */
+h1{
     color: #FBBF24;
     margin-bottom: 4px;
     font-size: 1.8rem;
@@ -60,7 +60,7 @@ h1 {
     margin-bottom: 25px;
 }
 
-/* ======= CAMPOS ======= */
+/* campos */
 form {
     display: flex;
     flex-direction: column;
@@ -70,8 +70,9 @@ form {
 
 .campo {
     display: flex;
+    margin-bottom: 15px;
     flex-direction: column;
-    gap: 6px;
+    gap: 2px;
 }
 
 label {
@@ -98,7 +99,7 @@ input:focus {
     outline: 2px solid #FBBF24;
 }
 
-/* ======= BOTÃO ======= */
+/* botao */
 button {
     background-color: #FBBF24;
     border: none;
@@ -111,5 +112,54 @@ button {
 }
 
 button:hover {
-    background-color: #f5b507;
+    background-color: #FBBF24;
 }
+/* ------tipoLogin e criador de eventos------*/
+.icon .img{
+    background-color: #FBBF24;
+    width: 35px ;
+    height:35px ;
+}
+
+.tituloCard {
+    color: #FBBF24 !important;
+}
+
+.icon-container {
+    background-color: #FBBF24;
+    width: 75px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.icon {
+    width: 52px;
+    height: 52px;
+}
+.card {
+    width: 403px;
+    background-color: #1F2937;
+    border: 2px solid #FBBF24;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    
+}
+.itensIndex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+}
+ a{
+    text-decoration: none;
+ }
