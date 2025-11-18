@@ -1,14 +1,16 @@
 const express = require('express');
 const routes = require('./routes');
-require('./database'); // conecta ao banco
+require('./database'); // carrega a conexão + models
 
 const app = express();
 
+// Para receber dados de formulários HTML
+app.use(express.urlencoded({ extended: true }));
+
+// Para receber dados JSON (ex: via fetch do front-end)
 app.use(express.json());
+
+// Suas rotas
 app.use(routes);
 
-app.get('/', (req, res) => {
-  res.send('ProEsporte Sabará rodando 🚀');
-});
-
-app.listen(3000, () => console.log('Servidor rodando na porta 3000'));
+app.listen(3333, () => console.log('🔥 Server rodando na porta 3333'));

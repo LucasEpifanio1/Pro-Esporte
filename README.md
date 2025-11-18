@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="" alt="" width="200"\>
+  <img src="./front_end/img/Logo.png" alt="" width="200"\>
 </p\>
 
 # Apresentação do Projeto Interdisciplinar — ProEsporte Sabará
