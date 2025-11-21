@@ -136,13 +136,21 @@ git push origin main
 ````
 
 
-## Informações sobre Conventional Commits
+### 📌 Informações sobre Conventional Commits
+
+Guia completo sobre o padrão de mensagens de commit utilizado no projeto.
+
 [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 
-## Informações sobre GitFlow
+### 🧭 Informações sobre GitFlow
+
+Entenda o fluxo de trabalho baseado em branches e como aplicá-lo corretamente.
+
 [GitFlow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
 
-## Git e Github Tutorial completo - Introdução prática para iniciantes
+### 🎓 Curso — Git e GitHub para Iniciantes
+
+Um tutorial prático e completo para quem está começando no Git e GitHub.
 
 [Curso](https://www.youtube.com/watch?v=_hZf1teRFNg)
 

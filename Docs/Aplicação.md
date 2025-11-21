@@ -1,0 +1,10 @@
+## Olá Dev!!! Neste tópico, vou mostrar como você deve realizar a configuração do sistema na sua máquina.. 
+
+###  🔹 1. Primeiro passo — configurar o banco de dados. Antes de qualquer coisa, você precisa seguir o tutorial de configuração do banco de dados. Sem essa etapa, o sistema não conseguirá se conectar ao MySQL.:
+➡️ Acesse o tutorial aqui:
+- [Banco de Dados](./ConfiguraçãoBancoDeDados.md)
+### 🔹 2. Segundo passo — executar os comandos no terminal : Após finalizar toda a configuração do banco, você deverá rodar alguns comandos no terminal do VS Code para iniciar o sistema.
+➡️ Guia completo dos comandos:
+- [Comando no terminal](./RodandoSistema.md) 
+
+
