@@ -13,4 +13,4 @@ app.use(express.json());
 // Suas rotas
 app.use(routes);
 
-app.listen(3333, () => console.log('🔥 Server rodando na porta 3333'));
+app.listen(3333, () => console.log('🔥 servidor está funcionando'));
