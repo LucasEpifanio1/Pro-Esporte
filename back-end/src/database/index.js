@@ -1,18 +1,18 @@
-// src/database/index.js
-const { Sequelize } = require('sequelize');
-const dbConfig = require('../config/database');
+const { Sequelize } = require("sequelize");
+const dbConfig = require("../config/database");
 
-const User = require('../models/User');
-const Organizer = require('../models/Organizer');
-const Event = require('../models/Event');
+// importa os models
+const PessoaFisica = require('../models/pessoaFisica');
+const empresa = require('../models/empresa');
+const servidorPublico = require('../models/servidorPublico');
+
 
 const connection = new Sequelize(dbConfig);
 
-User.init(connection);
-Organizer.init(connection);
-Event.init(connection);
+// inicializa os models
+PessoaFisica.init(connection);
+empresa.init(connection);
+servidorPublico.init(connection);
 
-Organizer.associate(connection.models);
-Event.associate(connection.models);
 
 module.exports = connection;
