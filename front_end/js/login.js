@@ -79,3 +79,4 @@ if (tipo === "funcionario") {
     cpf();
     senha();
 }
+

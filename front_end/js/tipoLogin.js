@@ -1,3 +1,4 @@
+
 function opcaoCidadao() {
     localStorage.setItem("tipo", "cidadao");
     window.location.href = 'login.html';
