@@ -32,7 +32,7 @@ Caso ainda não tenha o node_modules, rode:
 yarn install
 ```
 
-Caso ainda não tenha o node_modules, rode (para quem está usando npme não o yarn):
+Caso ainda não tenha o node_modules, rode (para quem está usando npm e não o yarn):
 
 ```bash
 npm install
