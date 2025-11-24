@@ -14,3 +14,7 @@ routes.post('/empresa',empresaController.store);
 ///servidorpublico
 routes.post('/servidorPublico',servidorPublicoController.store);
 module.exports = routes;
+
+
+//pq tem rotas para pessoa fisica e servidor publico? o servidor publico já é uma pessoa fisica, então isso seria redundante.
+ 

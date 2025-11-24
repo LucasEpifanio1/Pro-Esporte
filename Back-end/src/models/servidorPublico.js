@@ -21,3 +21,4 @@ class servidorpublico extends Model {
 }
 
 module.exports = servidorpublico;
+

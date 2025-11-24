@@ -21,3 +21,5 @@ class PessoaFisica extends Model {
 }
 
 module.exports = PessoaFisica;
+
+//tem que ser trocado para cidadao

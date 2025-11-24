@@ -1,8 +1,11 @@
 const express = require('express');
+const cors = require('cors'); //(22/11)
 const routes = require('./routes');
 require('./database'); // carrega a conexão + models
 
-const app = express();
+const app = express(); 
+
+app.use(cors()); //(22/11)
 
 // Para receber dados de formulários HTML
 app.use(express.urlencoded({ extended: true }));

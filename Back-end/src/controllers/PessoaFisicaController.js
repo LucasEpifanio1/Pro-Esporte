@@ -5,7 +5,9 @@ module.exports = {
   // Função para listar todas as pessoas
   async index(req, res) {
     // Busca todas as pessoas no banco usando o model
-    const pessoas = await PessoaFisica.findAll();
+    const pessoas = await PessoaFisica.findAll({
+      attributes: ['CPF'] //adicionei isso para especificar o atributo existente.(23/11)
+    });
     // Retorna a lista de pessoas em formato JSON para o usuário
     res.json(pessoas);
   },
@@ -13,6 +15,7 @@ module.exports = {
   // Função para criar uma nova pessoa
   async store(req, res) {
     // Cria uma nova pessoa usando os dados enviados no corpo da requisição (req.body)
+    const {CPF} = req.body; //(23/11)
     const pessoa = await PessoaFisica.create(req.body);
     // Retorna a pessoa criada em formato JSON
     res.json(pessoa);
