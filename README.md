@@ -46,7 +46,7 @@ O projeto foi planejado para entrega em um semestre, priorizando a robustez da l
 
 | **Componente**                 | **Tecnologia**           | **Função no Projeto**                                               | **Disciplina Relacionada** |
 | ------------------------------ | ------------------------ | ------------------------------------------------------------------- | -------------------------- |
-| **Backend / Motor de Treinos** | Python (Flask), NODE, JavaScript         | Sistema de regras (SE/ENTÃO) para geração de treinos personalizados | Engenharia de Software I   |
+| **Backend / Motor de Treinos** | NODE, JavaScript         | Sistema de regras (SE/ENTÃO) para geração de treinos personalizados | Engenharia de Software I   |
 | **Banco de Dados**             |(ORM) -Sequelize e MYSQL - Workbench  | Armazena atividades, dados de exercícios e progresso do usuário     | Banco de Dados I           |
 | **Frontend / Interface**       | HTML, CSS, JavaScript    | Aplicação Web responsiva para consulta e exibição de treinos        | Web II                     |
 
