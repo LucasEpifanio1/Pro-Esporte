@@ -211,35 +211,4 @@ button:hover {
     transform: rotate(43deg); /* ângulo */        
 }
 
-/* ------------------------------ RODAPÉ -------------------------- */
-.rodape {
-    width: 100%;
-    height: 85px;
-    background-color: #101828;
-    border-top: 3px solid #FBBF24;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    gap: 70px;
-    font-weight: bold;
-}
 
-.rodape .item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    cursor: pointer;
-}
-
-.rodape .item p {
-    color: #9CA3AF;
-    font-size: 0.9rem;
-}
-
-.rodape .item img {
-    width: 28px;
-    height: 28px;
-}

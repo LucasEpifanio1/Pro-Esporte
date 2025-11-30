@@ -1,4 +1,6 @@
-import { listarEventos } from "./database.js";
+//busca todos os eventos salvos, e, para cada evento, cria um card no HTML mostrando as informções do evento.
+//Também adiciona um botão "Ver detalhes" em cada card. No final, ele executa a função carregarEventos() para montar a lista assim que a página abrir.
+import { listarEventos } from "./dataBaseTeste.js";
 
 function carregarEventos() {
     const div = document.getElementById("eventos");
@@ -6,23 +8,32 @@ function carregarEventos() {
 
     div.innerHTML = "";
 
-    lista.forEach(evento => {
+    lista.forEach((evento, index) => {  
         const card = document.createElement("div");
-        card.className = "cardEvento";
+        card.className = "cardModal";
 
         card.innerHTML = `
-            <h3>${evento.nome}</h3>
-            <p><strong>Modalidade:</strong> ${evento.modalidade}</p>
-            <p><strong>Local:</strong> ${evento.local}</p>
-            <p><strong>Data:</strong> ${evento.data}</p>
-            <p><strong>Horário:</strong> ${evento.horario}</p>
-            <p><strong>Vagas:</strong> ${evento.vagas}</p>
-            <p><strong>Descrição:</strong> ${evento.descricao}</p>
-            <hr>
+            <div class="evento-card">
+                <h3>${evento.nome}</h3>
+
+                <div class="evento-info">
+                    <div class="info-item"><i></i> ${evento.modalidade}</div>
+                    <div class="info-item"><i></i> ${evento.local}</div>
+                    <div class="info-item"><i></i> ${evento.data}</div>
+                    <div class="info-item"><i></i> ${evento.horario}</div>
+                    <div class="info-item"><i></i> ${evento.vagas}</div>
+
+                    <button class="detalhes-btn" data-id="${index}">
+                        Ver detalhes
+                    </button>
+                </div>
+            </div>
         `;
 
         div.appendChild(card);
     });
 }
-
 carregarEventos();
+
+
+
