@@ -1,11 +1,12 @@
 const { Model, DataTypes } = require('sequelize');
 
-class PessoaFisica extends Model {
+class cidadao extends Model {
   static init(sequelize) {
     super.init(
       {
-        CPF: {
-          type: DataTypes.CHAR(11),
+        id: {
+          type: DataTypes.INTEGER,
+          autoIncrement: true,
           primaryKey: true,
         },
         nome: DataTypes.STRING(100),
@@ -14,12 +15,11 @@ class PessoaFisica extends Model {
       },
       {
         sequelize,
-        tableName: 'Pessoa_Fisica',
+        tableName: 'cidadao', // nome real da tabela no banco
+        timestamps: true,     // createdAt e updatedAt
       }
     );
   }
 }
 
-module.exports = PessoaFisica;
-
-//tem que ser trocado para cidadao
+module.exports = cidadao;

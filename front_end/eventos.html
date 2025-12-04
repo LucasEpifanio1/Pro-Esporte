@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos</title>
+    <link rel="stylesheet" href="/front_end/css/eventos.css">
+    <link rel="stylesheet" href="/front_end/css/rodape.css">
+</head>
+<body>
+    <main class="container">
+        <a href="#" class="voltar" onclick="history.back(); return false;">← Voltar</a>
+        <a href="criarEvento.html">
+            <button id="criarEventos">+ Criar Evento</button>
+        </a>
+        <h1>Eventos</h1>
+        <div id="blocos" class="blocos">
+            <div id="filtros" class="filtros">
+                <h2> Filtros</h2>
+                <div id="categorias">
+                    <select id="filtroModalidades" name="filtroModalidades">
+                        <option value="todos">Todos</option>
+                        <option value="corrida">Corrida</option>
+                        <option value="futebol">Futebol</option>
+                        <option value="yoga">Yoga</option>
+                        <option value="volei">Vôlei</option>
+                        <option value="basquete">Basquete</option>
+                        <option value="funcional">Funcional</option>
+                        <option value="natacao">Natação</option>
+                        <option value="ciclismo">Ciclismo</option>
+                        <option value="caminhada">Caminhada</option>
+                        <option value="outro">Outro</option>
+                    </select>
+
+                    <select id="filtroTurnos" name="filtroTurnos">
+                        <option value="todos">Todos</option>
+                        <option value="manha">Manhã</option>
+                        <option value="tarde">Tarde</option>
+                        <option value="noite">Noite</option>
+                    </select>
+
+                    <select id="filtroLocais" name="filtroLocais">
+                        <option value="todos">Todos</option>
+                        <option value="parque">Parque Central</option>
+                        <option value="arena">Arena Sports</option>
+                        <option value="jardim">Jardim Botânico</option>
+                        <option value="praia">Praia Municipal</option>
+                        <option value="centro">Centro</option>
+                        <option value="quadra">Quadra do Bairro</option>
+
+                    </select>
+                </div>
+            </div>
+            <div id="status">
+                <button class="status-btn">Todos</button>
+                <Button class="status-btn">Meus Eventos</Button>
+                <button class="status-btn">Passados</button>
+        </div>
+        <div id="eventos"></div>
+
+        <div id="modal-container" class="modal">
+            <div class="modal-content">
+            </div>
+        </div>
+
+    </div>
+    </main>
+    <footer>
+    <div class="rodape" id="rodape"></div>
+    </footer>
+ 
+
+
+    <script type="module" src="js/eventos.js"></script>
+    <script src="js/rodape.js"></script>
+    
+</body>
+</html>

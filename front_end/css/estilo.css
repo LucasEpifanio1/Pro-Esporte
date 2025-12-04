@@ -1,0 +1,214 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*-------------------- pagina login -------------------*/
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* container principal */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* link voltar */
+.voltar {
+    color: #FBBF24;
+    text-decoration: none;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
+.voltar:hover {
+    text-decoration: underline;
+}
+
+/* bloco form */
+.blocos {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 460px;
+}
+
+/* cabeçalho */
+h1{
+    color: #FBBF24;
+    margin-bottom: 4px;
+    font-size: 1.8rem;
+}
+
+.subtitulo {
+    color: #9CA3AF;
+    font-size: 1rem;
+    margin-bottom: 25px;
+}
+
+/* campos */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+}
+
+.campo {
+    display: flex;
+    margin-bottom: 15px;
+    flex-direction: column;
+    gap: 2px;
+}
+
+label {
+    font-size: 0.95rem;
+    color: #E5E7EB;
+}
+
+input {
+    background-color: #1F2937;
+    border: none;
+    border-radius: 8px;
+    height: 48px;
+    color: #D1D5DB;
+    padding: 0 12px;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+input::placeholder {
+    color: #9CA3AF;
+}
+
+input:focus {
+    outline: 2px solid #FBBF24;
+}
+
+/* botao */
+button {
+    background-color: #FBBF24;
+    border: none;
+    border-radius: 8px;
+    padding: 14px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #FBBF24;
+}
+/* -------------------------tipoLogin e criador de eventos-------------------*/
+.icon .img{
+    background-color: #FBBF24;
+    width: 35px ;
+    height:35px ;
+}
+
+.tituloCard {
+    color: #FBBF24 !important;
+}
+
+.icon-container {
+    background-color: #FBBF24;
+    width: 75px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.icon {
+    width: 52px;
+    height: 52px;
+}
+.card {
+    width: 403px;
+    background-color: #1F2937;
+    border: 2px solid #FBBF24;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    
+}
+.itensIndex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+}
+ a{
+    text-decoration: none;
+ }
+
+ /* ----------------------- HOME PAGE -------------------------- */
+.homeContainer {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(153deg, #FBBF24 50%, #000 50%);
+    position: relative;
+}
+
+/* Cards da home */
+.cardEventos, .cardTreinos {
+    width: 350px;
+    background-color: #d4a63280;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0px 6px 16px rgba(0,0,0,0.4);
+    position: absolute;
+}
+
+/* Posição dos cards */
+.cardEventos {
+    top: 90px;
+    left: 60px;
+    color: #000;
+}
+
+.cardTreinos {
+    bottom: 150px;
+    right: 90px;
+    color: #FBBF24
+}
+
+.cardEventos h2, .cardTreinos h2 {
+    margin-bottom: 10px;
+    font-size: 1.6rem;
+}
+
+.linha-diagonal {
+    position: absolute;
+    width: 6px;            
+    height: 140%;          
+    background-color: #101828;
+    top: -20%;             /* posicionamento vertical */
+    left: 50%;             /* posicionamento horizontal */
+    transform: rotate(43deg); /* ângulo */        
+}
+
+

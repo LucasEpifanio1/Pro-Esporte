@@ -11,7 +11,7 @@ function opcaoEmpresa() {
     localStorage.setItem("tipo", "empresa");
     window.location.href = 'login.html';
 }
-function opcaoServidorPublico() {
-    localStorage.setItem("tipo", "funcionarioPublico");
+function opcaoFuncionario() {
+    localStorage.setItem("tipo", "funcionario");
     window.location.href = 'login.html';
 }
