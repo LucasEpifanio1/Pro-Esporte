@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar novo evento</title>
+    <link rel="stylesheet" href="/front_end/css/criarEvento.css">
+</head>
+<body>
+    <main class="container">
+        <a href="#" class="voltar" onclick="history.back(); return false;">← Voltar</a>
+        <h1>Criar Novo Evento</h1>
+
+        <form action="#">
+            <div id="informacoesEvento" class="informacoes">
+                <div class="campo">
+                    <label for="nomeEvento">Título do Evento *</label>
+                    <input type="text" id="nomeEvento" name="nomeEvento"  placeholder="Ex: Corrida 5K Matinal"> 
+                </div>
+                <div class="campo">
+                    <label for="modalidades">Modalidade Esportiva*</label>
+                    <select id="modalidades" name="modalidades" placeholder="Ex: Selecione a modalidade">
+
+                        <option value="corrida">Corrida</option>
+                        <option value="futebol">Futebol</option>
+                        <option value="yoga">Yoga</option>
+                        <option value="volei">Vôlei</option>
+                        <option value="basquete">Basquete</option>
+                        <option value="funcional">Funcional</option>
+                        <option value="natacao">Natação</option>
+                        <option value="ciclismo">Ciclismo</option>
+                        <option value="caminhada">Caminhada</option>
+                        <option value="outro">Outro</option>
+
+                    </select>
+                    
+                </div>
+                <div class="campo">
+                    <label for="localEvento">Local do Evento *</label>
+                    <input type="text" id="localEvento" name="LocalEvento"  placeholder="Ex: Parque Central"> 
+                </div>
+                <div class="dataHora">
+                    <div class="campo">
+                        <label for="data">Data *</label>
+                        <input type="date" id="data" name="data"> 
+                    </div>
+                    <div class="campo">
+                        <label for="horario">Horário *</label>
+                        <input type="time" id="horario" name="horario"> 
+                    </div>
+                </div>
+                <div class="campo">
+                    <label for="vagas">Número Estimado de Vagas *</label>
+                    <input type="number" id="vagas" name="vagas"> 
+                </div>
+                <div class="campo">
+                    <label for="descricaoEvento">Descrição do evento *</label>
+                    <input type="text" id="descricaoEvento" name="descricaoEvento"> 
+                </div>
+            </div>
+            <div id="informacoesOrganizador" class="informacoes">
+                <h3>Informações do Organizador</h3>
+                <p>Nome:</p>
+                <p>Contato;</p>
+                <p>Email:</p>
+                <p>CPF:</p>
+            </div>
+            <button type="submit" class="criarEventoBtn">+ Criar Evento</button>
+        </form>
+    </main>
+    <script type="module" src="js/criarEvento.js"></script>
+</body>
+
+</html>

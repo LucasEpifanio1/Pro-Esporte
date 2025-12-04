@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: #FBBF24; 
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #000;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+footer{
+  padding-bottom: 100px; 
+}
+
+/*classe principal*/
+.container{
+    width: 85%;
+    max-width: 450px;
+    margin: 0 auto 25px auto;
+}
+
+/* título*/
+h1 {
+   font-size: 1.7rem;
+    margin-bottom: 20px; 
+}
+
+/* botão voltar*/
+.voltar {
+    color: #000;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+.voltar:hover {
+    text-decoration: underline;
+}
+
+
+/* botão criar eventos */
+#criarEventos {
+    float: right;
+    background-color: #000;
+    color: #FBBF24;
+    padding: 10px 18px;
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* filtros */
+.filtros {
+    background-color: #C48E02; 
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.filtros h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+/* selects */
+#categorias {
+    display: flex;
+    gap: 15px;
+}
+
+#categorias select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: #fff;
+    color: #000;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+/* barra de status*/
+#status {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    background-color: #C48E02; 
+    padding: 5px;
+    border-radius: 180px;
+}
+
+.status-btn {
+   width: 100%;
+    padding: 6px;
+    border-radius: 180px;
+    border: none;
+    background-color: #fff;
+    color: #000;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+/* lista de eventos*/
+#eventos {
+    width: 100%;
+    margin-top: 20px;
+}
+.evento-card {
+    background-color: #000;
+    color: #fff;
+    padding: 25px;
+    border-radius: 25px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+    
+.evento-card h3 {
+    font-size: 1.2rem;
+    color:#FBBF24;
+}
+
+.evento-info {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+}
+
+.evento-card button {
+    background-color: #FBBF24;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    padding: 10px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    font-size: 1rem;
+}
