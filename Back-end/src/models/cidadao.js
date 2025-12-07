@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes } = require("sequelize");
 
 class cidadao extends Model {
   static init(sequelize) {
@@ -15,8 +15,8 @@ class cidadao extends Model {
       },
       {
         sequelize,
-        tableName: 'cidadao', // nome real da tabela no banco
-        timestamps: true,     // createdAt e updatedAt
+        tableName: "cidadao", // nome real da tabela no banco
+        timestamps: true, // createdAt e updatedAt
       }
     );
   }
