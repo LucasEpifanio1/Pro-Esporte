@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Criar conta de Organizador</title>
+    <link rel="stylesheet" href="estilo.css" />
+    <link rel="icon" type="image/png" href="img/Logo_sem_escrita.png" />
+  </head>
+  <body>
+    <main class="container">
+      <a href="#" class="voltar" onclick="history.back(); return false;"
+        >← Voltar</a
+      >
+      <section class="blocos">
+        <h1>ProEsporte</h1>
+        <p class="subtitulo">
+          Você representa uma empresa ou é um funcionário público?
+        </p>
+        <div class="itensIndex">
+          <div class="card" id="empresa" onclick="opcaoEmpresa()">
+            <div class="icon-container">
+              <img
+                src="img/iconEmpresa.png"
+                alt="Ícone de empresa"
+                class="icon"
+              />
+            </div>
+            <div class="cardDescricao">
+              <h3 class="tituloCard">Empresa</h3>
+              <p class="subtitulo">
+                Cadastro com CNPJ para empresas orgenizadoras
+              </p>
+            </div>
+          </div>
+
+          <div class="card" id="funcionario" onclick="opcaoFuncionario()">
+            <div class="icon-container">
+              <img
+                src="img/iconFuncionario.png"
+                alt="Ícone de funcionario"
+                class="icon"
+              />
+            </div>
+            <div class="cardDescricao">
+              <h3 class="tituloCard">Funcionário Público</h3>
+              <p class="subtitulo">
+                Cadastro com CPF para funcionários da prefeitura
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="js/tipoLogin.js"></script>
+  </body>
+</html>

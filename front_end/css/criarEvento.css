@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #FBBF24;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #000;
+    padding: 20px;
+    min-height: 100vh;
+   
+}
+
+/*classe principal*/
+.container{
+    width: 85%;
+    max-width: 450px;
+    margin: 0 auto 25px auto;
+    gap: 20px;
+
+}
+
+/* título*/
+h1 {
+    font-size: 1.7rem;
+    /* Use 'margin-bottom' para empurrar o conteúdo abaixo */
+    margin-bottom: 20px; 
+    /* Use 'margin-top' para separar do botão "Criar Evento" */
+}
+
+/* botão voltar*/
+.voltar {
+    color: #000;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+.voltar:hover {
+    text-decoration: underline;
+}
+/* botão criar evento*/
+.criarEventoBtn{
+    float: right;
+    background-color: #000;
+    color: #FBBF24;
+    padding: 10px 18px;
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+
+}
+/* bform*/
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+}
+
+input, select {
+    background-color: white;
+    color: #9CA3AF;
+    border: none;
+    border-radius: 8px;
+    height: 35px;
+    padding: 0 12px;
+    font-size: 0.95rem;
+    outline: none;
+    color:#000;
+}
+
+input::placeholder {
+    color: #9CA3AF;
+}
+
+.informacoes{
+    background-color:  #C48E02;
+    border-radius: 10px;
+    padding: 15px;
+    gap: 20px;
+}
+.campo{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.dataHora{
+    display: flex;
+    justify-content: space-between;
+}
+#data, #horario{
+    width: 100%;
+    max-width: 45000px;
+     padding: 0 50px;
+    
+}
+
+.informacoes p{
+    font-weight: bold;
+}

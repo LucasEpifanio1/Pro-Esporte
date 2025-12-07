@@ -1,0 +1,19 @@
+ProEsporte Sabará
+
+O ProEsporte Sabará é uma plataforma web criada para estruturar as atividades disponibilizadas pela prefeitura, tornando-as
+mais acessíveis e transparentes para cada cidadão.
+
+Nosso objetivo geral é capacitar o cidadão a adotar uma rotina de treino segura, otimizando o uso dos espaços públicos.
+Para cumprir o prazo de um único semestre, nosso Produto Mínimo Viável (MVP) foca em duas funcionalidades essenciais na 
+forma de uma Aplicação Web responsiva
+
+git:https://github.com/LucasEpifanio1/Pro-Esporte.git
+
+Trello:https://trello.com/invite/b/68eba973b2f2c08c8420c9c2/ATTI6da2790eaa9ffffcc04752e2c10e6086E488AFFA/interdisciplinar
+
+Figma:https://www.figma.com/design/DoB1hLnCMXPhybtTKGELpL/Interdisciplinar?node-id=0-1&t=2Oc1YWGQJUzani0D-1
+
+Canva:
+    Apresentação: https://www.canva.com/design/DAG0rZ7XGU4/llPNfqygwtOMLxwsV914Xg/edit?ui=eyJBIjp7fX0
+    DER BD: https://www.canva.com/design/DAG1Ta1Mtkk/lgsT-Dlp8Yhn36MZOlACNg/edit?utm_content=DAG1Ta1Mtkk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+    FLuxo de Telas: https://www.canva.com/design/DAG4fgZD5DM/W7uphugU_CU8SIEEoqYKuA/edit
