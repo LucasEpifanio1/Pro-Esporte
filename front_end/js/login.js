@@ -1,7 +1,7 @@
 function nomeUsuario() {
   campo.innerHTML += `<div class="campo">
             <label for="nome">Nome Completo</label>
-            <input type="text" id="nome" name="usuario" placeholder="Ex: João Silva" required>
+            <input type="text" id="nome" name="nome" placeholder="Ex: João Silva" required>
         </div>`;
 }
 
@@ -36,14 +36,14 @@ function senha() {
 function nomeEmpresa() {
   campo.innerHTML += `<div class="campo">
             <label for="nomeEmpresa">Nome da Empresa</label>
-            <input type="text" id="nomeEmpresa" name="nomeEmpresa" placeholder="Ex: Prefeitura Municipal" required>
+            <input type="text" id="nomeEmpresa" name="nome" placeholder="Ex: Prefeitura Municipal" required>
         </div>`;
 }
 
 function cnpj() {
   campo.innerHTML += `<div class="campo">
             <label for="cnpj">CNPJ</label>
-            <input type="text" id="cnpj" name="cnpj" maxlength="18" placeholder="00.000.000/0000-00">
+            <input type="text" id="cnpj" name="CNPJ" maxlength="18" placeholder="00.000.000/0000-00">
         </div>`;
 }
 
@@ -65,7 +65,7 @@ if (tipo === "empresa") {
   senha();
 }
 
-if (tipo === "funcionario") {
+if (tipo === "servidorPublico") {
   nomeUsuario();
   email();
   telefone();
@@ -89,7 +89,7 @@ form.addEventListener("submit", async (e) => {
     rota = "cidadao";
   } else if (tipo === "empresa") {
     rota = "empresa";
-  } else if (tipo === "funcionarioPublico") {
+  } else if (tipo === "servidorPublico") {
     rota = "servidorPublico";
   } else {
     console.error("Tipo de usuário não reconhecido.");

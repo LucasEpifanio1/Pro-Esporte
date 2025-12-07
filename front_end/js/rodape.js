@@ -1,7 +1,7 @@
 function rodape() {
   return `
         <div class="item">
-            <img src="/front_end/img/home.png" class="icon" >
+            <img src="img/home.png" class="icon" >
             <p>Início</p>
         </div>
         <div class="item">

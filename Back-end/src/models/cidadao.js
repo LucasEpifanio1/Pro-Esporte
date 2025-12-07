@@ -4,7 +4,7 @@ class cidadao extends Model {
   static init(sequelize) {
     super.init(
       {
-        id: {
+        ID_Cidadao: {
           type: DataTypes.INTEGER,
           autoIncrement: true,
           primaryKey: true,
@@ -15,8 +15,8 @@ class cidadao extends Model {
       },
       {
         sequelize,
-        tableName: "cidadao", // nome real da tabela no banco
-        timestamps: true, // createdAt e updatedAt
+        tableName: "Cidadao", // nome real da tabela no banco
+        timestamps: false, // createdAt e updatedAt
       }
     );
   }
