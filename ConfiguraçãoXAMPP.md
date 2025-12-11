@@ -12,8 +12,7 @@ Se você estiver usando o XAMPP, o Apache já vem incluso — basta ativar.
 
 Abra o XAMPP e clique em Start no módulo Apache:
 
-(adicione aqui sua imagem caso tenha)
-![alt text](image-10.png)
+![alt text](Docs/imagem-10.png)
 
 Ao iniciar, o Apache ficará em verde indicando que está funcionando corretamente.
 
@@ -33,8 +32,8 @@ No XAMPP, o Apache usa esta pasta como raiz do servidor:
 
 C:\xampp\htdocs\
 
-![alt text](image-11.png)
+![alt text](Docs/imagem-11.png)
 
-![alt text](image-12.png)
+![alt text](Docs/imagem-12.png)
 
 👉 Coloque sua aplicação dentro dessa pasta.
