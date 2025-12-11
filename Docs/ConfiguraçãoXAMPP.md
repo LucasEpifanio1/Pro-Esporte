@@ -1,4 +1,4 @@
-🟥 1. Primeiro passo — Configurando o Servidor Apache
+# 🟥 1. Primeiro passo — Configurando o Servidor Apache
 
 Olá, seja bem-vindo 🤩!!
 ### Para realizar a instalação do **_XAMPP_** siga passo a passo do vídeos abaixo.
@@ -8,7 +8,7 @@ Antes de qualquer coisa, precisamos configurar o servidor Apache, pois ele será
 
 Se você estiver usando o XAMPP, o Apache já vem incluso — basta ativar.
 
-🌐 Ativando o Apache no XAMPP
+### 🌐 Ativando o Apache no XAMPP
 
 Abra o XAMPP e clique em Start no módulo Apache:
 
@@ -16,7 +16,7 @@ Abra o XAMPP e clique em Start no módulo Apache:
 
 Ao iniciar, o Apache ficará em verde indicando que está funcionando corretamente.
 
-🔎 Testando se o Apache está funcionando
+### 🔎 Testando se o Apache está funcionando
 
 Abra o navegador
 
@@ -26,7 +26,7 @@ http://localhost/
 
 Se aparecer a página padrão do XAMPP, Apache está funcionando! 🙌
 
-📁 Onde colocar os arquivos do sistema?
+### 📁 Onde colocar os arquivos do sistema?
 
 No XAMPP, o Apache usa esta pasta como raiz do servidor:
 
