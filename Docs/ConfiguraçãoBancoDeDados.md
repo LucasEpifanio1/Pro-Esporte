@@ -1,4 +1,7 @@
-# ​​Olá​​, seja bem vindo​🤩​!! neste tutorial vou explicar como configurar o banco de dados, mas pra isso você precisa instalar o **_XAMPP_** e o **_MySQL WORKBENCH_**.
+# 🟦 2. Segundo passo — Configurando o Banco de Dados (MySQL)
+
+Agora que o servidor Apache está funcionando, vamos configurar o banco de dados.
+Para isso, você precisa instalar o XAMPP (que já está com o Apache ativado) e o MySQL Workbench.
 
 ### Para realizar a instalação do **_XAMPP_** siga passo a passo do vídeos abaixo.
 [Tutorial **_XAMPP_**](https://www.youtube.com/watch?v=i_ypCik4VX0)
