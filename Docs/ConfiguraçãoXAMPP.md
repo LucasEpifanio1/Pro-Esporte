@@ -22,7 +22,9 @@ Abra o navegador
 
 Digite na barra de endereço:
 
+```bash
 http://localhost/
+```
 
 Se aparecer a página padrão do XAMPP, Apache está funcionando! 🙌
 
@@ -30,7 +32,9 @@ Se aparecer a página padrão do XAMPP, Apache está funcionando! 🙌
 
 No XAMPP, o Apache usa esta pasta como raiz do servidor:
 
+```bash
 C:\xampp\htdocs\
+```
 
 ![alt text](imagem-11.png)
 
