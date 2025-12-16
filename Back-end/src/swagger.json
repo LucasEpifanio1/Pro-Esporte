@@ -1,0 +1,76 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API do pro-esporte",
+    "description": "Essa API tem como objetivo mostrar a estrutura do projeto",
+    "termsOfService": "http://localhost:3333/terms",
+    "contact": {
+      "email": "apifanioluc@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3333",
+      "description": "Servidor local"
+    }
+  ],
+  "paths": {
+    "/servidorPublico": {
+      "post": {
+        "tags": ["Servidor Público"],
+        "summary": "Cadastrar servidor público",
+        "description": "Cria um novo servidor público no sistema",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServidorPublicoInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Servidor público criado com sucesso"
+          },
+          "400": {
+            "description": "Dados inválidos"
+          },
+          "409": {
+            "description": "CPF ou email já cadastrado"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ServidorPublicoInput": {
+        "type": "object",
+        "required": ["CPF", "nome", "email", "senha"],
+        "properties": {
+          "CPF": {
+            "type": "string",
+            "example": "12345678901"
+          },
+          "nome": {
+            "type": "string",
+            "example": "Lucas Epifânio"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "lucas@email.com"
+          },
+          "senha": {
+            "type": "string",
+            "format": "password",
+            "example": "123456"
+          }
+        }
+      }
+    }
+  }
+}

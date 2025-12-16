@@ -1,19 +1,24 @@
-const express = require('express');
-const cors = require('cors'); //(22/11)
-const routes = require('./routes');
-require('./database'); // carrega a conexão + models
+const express = require("express");
+const swaggerUi = require("swagger-ui-express");
+const cors = require("cors");
+const routes = require("./routes");
+const swaggerDocs = require("./swagger.json");
 
-const app = express(); 
+require("./database");
 
-app.use(cors()); //(22/11)
+const app = express();
 
-// Para receber dados de formulários HTML
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
-
-// Para receber dados JSON (ex: via fetch do front-end)
 app.use(express.json());
 
-// Suas rotas
+// Swagger
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+// Rotas da API
 app.use(routes);
 
-app.listen(3333, () => console.log('🔥 servidor está funcionando'));
+app.listen(3333, () => {
+  console.log("🔥 Servidor rodando em http://localhost:3333");
+  console.log("📚 Swagger em http://localhost:3333/api-docs");
+});
