@@ -6,7 +6,7 @@ class cidadao extends Model {
       {
         ID_Cidadao: {
           type: DataTypes.INTEGER,
-          autoIncrement: true,
+          autoIncrement: false,
           primaryKey: true,
         },
         nome: DataTypes.STRING(100),
