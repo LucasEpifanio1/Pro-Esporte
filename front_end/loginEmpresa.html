@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Empresa</title>
-    <link rel="stylesheet" href="/front_end/css/estilo.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./css/estilo.css" />
+    <link rel="icon" type="image/png" href="img/Logo_sem_escrita.png" />
+  </head>
+  <body>
     <main class="container">
-        <a href="tipoCriadorEventos.html" class="voltar">← Voltar</a>
+      <a href="tipoCriadorEventos.html" class="voltar">← Voltar</a>
 
-        <section class="blocos">
-            <h1>ProEsporte</h1>
-            <p class="subtitulo">Login da Empresa</p>
+      <section class="blocos">
+        <h1>ProEsporte</h1>
+        <p class="subtitulo">Login da Empresa</p>
 
-            <form action="http://localhost:3333/empresa" method="POST">
-    <div class="campo">
-        <label for="nome">nome</label>
-        <input type="text" id="nome" name="nome" required>
-    </div>
-    <div class="campo">
-        <label for="email">email</label>
-        <input type="email" id="email" name="email" required>
-    </div>
-    <div class="campo">
-        <label for="cpf">CNPJ</label>
-        <input type="text" id="cnpj" name="CNPJ">
-    </div>
-    <div class="campo">
-        <label for="senha">senha</label>
-        <input type="password" id="senha" name="senha" required>
-    </div>
-    <button type="submit">Criar Conta</button>
-    </form>
-        </section>
+        <form action="http://localhost:3333/empresa" method="POST">
+          <div class="campo">
+            <label for="nome">nome</label>
+            <input type="text" id="nome" name="nome" required />
+          </div>
+          <div class="campo">
+            <label for="email">email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="campo">
+            <label for="cpf">CNPJ</label>
+            <input type="text" id="cnpj" name="CNPJ" />
+          </div>
+          <div class="campo">
+            <label for="senha">senha</label>
+            <input type="password" id="senha" name="senha" required />
+          </div>
+          <button type="submit">Criar Conta</button>
+        </form>
+      </section>
     </main>
-</body>
+  </body>
 </html>

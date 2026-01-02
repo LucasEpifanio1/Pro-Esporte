@@ -1,18 +1,25 @@
-const { Sequelize } = require("sequelize");
+const { Sequelize, or } = require("sequelize");
 const dbConfig = require("../config/database");
 
 // importa os models
-const cidadao = require('../models/cidadao')
-const empresa = require('../models/empresa');
-const servidorPublico = require('../models/servidorPublico');
+const Empresa = require('../models/empresa');
+const ServidorPublico = require('../models/servidorPublico');
+const Cidadao = require('../models/cidadao');
+const Evento = require('../models/evento');
+const Organizador = require('../models/organizador');
 
 
 const connection = new Sequelize(dbConfig);
 
 // inicializa os models
 
-empresa.init(connection);
-servidorPublico.init(connection);
-cidadao.init(connection);
+Empresa.init(connection);
+ServidorPublico.init(connection);
+Cidadao.init(connection);
+Evento.init(connection);
+Organizador.init(connection);
+
+Evento.associate(connection.models);
+Organizador.associate(connection.models);
 
 module.exports = connection;

@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 
-class cidadao extends Model {
+class Cidadao extends Model {
   static init(sequelize) {
     super.init(
       {
@@ -22,4 +22,4 @@ class cidadao extends Model {
   }
 }
 
-module.exports = cidadao;
+module.exports = Cidadao;
