@@ -51,6 +51,13 @@ class evento extends Model {
       }
     );
   }
+  static associate(models) {
+    this.belongsTo(models.empresa, { foreignKey: "FK_Empresa", as: "empresa" });
+    this.belongsTo(models.servidor_publico, {
+      foreignKey: "FK_Servidor",
+      as: "servidor",
+    });
+  }
 }
 
 module.exports = evento;

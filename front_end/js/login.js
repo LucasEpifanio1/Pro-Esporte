@@ -81,6 +81,7 @@ form.addEventListener("submit", async (e) => {
 
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
+  localStorage.setItem("email do criador de evento", data.email);
 
   // A rota de destino é determinada pelo tipo de usuário
   let rota = "";

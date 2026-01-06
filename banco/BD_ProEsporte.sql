@@ -29,8 +29,13 @@ create table if not exists Evento(
     CEP char(8),
     Rua varchar(100),
     Bairro varchar(100),
-    Numero varchar(10)
+    Numero varchar(10),
+    FK_Empresa varchar(14),
+    FK_Servidor varchar(11)
 );
+
+-- ALTER TABLE Evento ADD COLUMN FK_Empresa varchar(14);
+-- ALTER TABLE Evento ADD COLUMN FK_Servidor varchar(11);
 
 create table if not exists Organiza(
 	ID_Organizador int,

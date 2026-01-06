@@ -18,6 +18,12 @@ class servidorpublico extends Model {
       }
     );
   }
+  static associate(models) {
+    this.hasMany(models.evento, {
+      foreignKey: "FK_Servidor",
+      as: "eventos",
+    });
+  }
 }
 
 module.exports = servidorpublico;

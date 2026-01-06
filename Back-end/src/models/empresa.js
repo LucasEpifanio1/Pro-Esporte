@@ -19,6 +19,13 @@ class empresa extends Model {
       }
     );
   }
+  static associate(models) {
+    // Uma empresa pode ter criado VÁRIOS eventos
+    this.hasMany(models.evento, {
+      foreignKey: "FK_Empresa", // A mesma chave estrangeira usada no Evento
+      as: "eventos", // Apelido para acessarmos: empresa.eventos
+    });
+  }
 }
 
 module.exports = empresa;
