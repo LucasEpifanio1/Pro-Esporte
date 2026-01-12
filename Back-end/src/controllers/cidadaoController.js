@@ -1,14 +1,9 @@
-// Importa o model Cidadao
+
 const cidadao = require('../models/cidadao');
-
+//cria uma novo usuario
 module.exports = {
-  async index(req, res) {
-    const pessoas = await cidadao.findAll();
-    res.json(pessoas);
-  },
-
-  async store(req, res) {
+  async post(req, res) {
     const pessoa = await cidadao.create(req.body);
-    res.json(pessoa);
-  },
+    return res.status(201).json(pessoa);
+  }
 };

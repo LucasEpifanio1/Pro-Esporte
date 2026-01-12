@@ -4,13 +4,32 @@ class Empresa extends Model {
   static init(sequelize) {
     super.init(
       {
-        CNPJ: {
-          type: DataTypes.CHAR(14),
+        id: {
+          type: DataTypes.INTEGER,
           primaryKey: true,
+          autoIncrement: true
         },
-        nome: DataTypes.STRING(100),
-        email: DataTypes.STRING(100),
-        senha: DataTypes.STRING(100)
+        cnpj: {
+          type: DataTypes.CHAR(14),
+          allowNull: false,
+          unique: true
+        },
+        nome: {
+          type: DataTypes.STRING(100),
+          allowNull: false
+        },
+        email: {
+          type: DataTypes.STRING(100),
+          allowNull: false,
+          unique: true
+        },
+        senha: {
+          type: DataTypes.STRING(100),
+          allowNull: false
+        },
+        telefone: {
+          type: DataTypes.STRING(20)
+        }
       },
       {
         sequelize,

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,16 +11,16 @@
         <a href="#" class="voltar" onclick="history.back(); return false;">← Voltar</a>
         <h1>Criar Novo Evento</h1>
 
-        <form action="#">
+        <form id="formCriarEvento">
             <div id="informacoesEvento" class="informacoes">
                 <div class="campo">
                     <label for="nomeEvento">Título do Evento *</label>
-                    <input type="text" id="nomeEvento" name="nomeEvento"  placeholder="Ex: Corrida 5K Matinal"> 
+                    <input type="text" id="nomeEvento" required>
                 </div>
-                <div class="campo">
-                    <label for="modalidades">Modalidade Esportiva*</label>
-                    <select id="modalidades" name="modalidades" placeholder="Ex: Selecione a modalidade">
 
+                <div class="campo">
+                    <label for="modalidades">Modalidade *</label>
+                    <select id="modalidades" required>
                         <option value="corrida">Corrida</option>
                         <option value="futebol">Futebol</option>
                         <option value="yoga">Yoga</option>
@@ -31,44 +31,48 @@
                         <option value="ciclismo">Ciclismo</option>
                         <option value="caminhada">Caminhada</option>
                         <option value="outro">Outro</option>
-
                     </select>
-                    
                 </div>
+
                 <div class="campo">
-                    <label for="localEvento">Local do Evento *</label>
-                    <input type="text" id="localEvento" name="LocalEvento"  placeholder="Ex: Parque Central"> 
+                    <label for="localEvento">Local *</label>
+                    <input type="text" id="localEvento" required>
                 </div>
+
                 <div class="dataHora">
                     <div class="campo">
                         <label for="data">Data *</label>
-                        <input type="date" id="data" name="data"> 
+                        <input type="date" id="data" required>
                     </div>
                     <div class="campo">
                         <label for="horario">Horário *</label>
-                        <input type="time" id="horario" name="horario"> 
+                        <input type="time" id="horario" required>
                     </div>
                 </div>
+
                 <div class="campo">
-                    <label for="vagas">Número Estimado de Vagas *</label>
-                    <input type="number" id="vagas" name="vagas"> 
+                    <label for="vagas">Vagas *</label>
+                    <input type="number" id="vagas" required>
                 </div>
+
                 <div class="campo">
-                    <label for="descricaoEvento">Descrição do evento *</label>
-                    <input type="text" id="descricaoEvento" name="descricaoEvento"> 
+                    <label for="descricaoEvento">Descrição *</label>
+                    <input type="text" id="descricaoEvento" required>
                 </div>
             </div>
+
             <div id="informacoesOrganizador" class="informacoes">
                 <h3>Informações do Organizador</h3>
-                <p>Nome:</p>
-                <p>Contato;</p>
-                <p>Email:</p>
-                <p>CPF:</p>
+                <p><strong>Nome:</strong> <span id="orgNome">-</span></p>
+                <p><strong>Email:</strong> <span id="orgEmail">-</span></p>
+                <p><strong>Contato:</strong> <span id="orgContato">-</span></p>
+                <p><strong>Documento:</strong> <span id="orgDocumento">-</span></p>
             </div>
+
             <button type="submit" class="criarEventoBtn">+ Criar Evento</button>
         </form>
     </main>
+
     <script type="module" src="js/criarEvento.js"></script>
 </body>
-
 </html>

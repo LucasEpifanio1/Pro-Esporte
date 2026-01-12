@@ -9,6 +9,7 @@ const Evento = require('../models/evento');
 const Organizador = require('../models/organizador');
 
 
+
 const connection = new Sequelize(dbConfig);
 
 // inicializa os models
@@ -16,10 +17,12 @@ const connection = new Sequelize(dbConfig);
 Empresa.init(connection);
 ServidorPublico.init(connection);
 Cidadao.init(connection);
-Evento.init(connection);
 Organizador.init(connection);
+Evento.init(connection);
 
-Evento.associate(connection.models);
+// associações
 Organizador.associate(connection.models);
+Evento.associate(connection.models);
+
 
 module.exports = connection;

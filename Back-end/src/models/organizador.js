@@ -4,15 +4,8 @@ class Organizador extends Model {
   static init(sequelize) {
     super.init(
       {
-        tipo: {
-          type: DataTypes.ENUM('EMPRESA', 'SERVIDOR_PUBLICO'),
-          allowNull: false
-        },
-        nome_publico: {
-          type: DataTypes.STRING(100),
-          allowNull: false
-        },
-        descricao: DataTypes.TEXT
+        tipo: DataTypes.ENUM('EMPRESA', 'SERVIDOR_PUBLICO'),
+        nome_publico: DataTypes.STRING
       },
       {
         sequelize,
@@ -22,20 +15,22 @@ class Organizador extends Model {
     );
   }
 
-static associate(models) {
-  Organizador.belongsTo(models.Empresa, {
-    foreignKey: 'empresa_cnpj'
-  });
+  static associate(models) {
+    this.belongsTo(models.Empresa, {
+      foreignKey: 'empresa_id',
+      as: 'empresa'
+    });
 
-  Organizador.belongsTo(models.ServidorPublico, {
-    foreignKey: 'servidor_id'
-  });
+    this.belongsTo(models.ServidorPublico, {
+      foreignKey: 'servidor_id',
+      as: 'servidor'
+    });
 
-  Organizador.hasMany(models.Evento, {
-    foreignKey: 'organizador_id'
-  });
-}
-
+    this.hasMany(models.Evento, {
+      foreignKey: 'organizador_id',
+      as: 'eventos'
+    });
+  }
 }
 
 module.exports = Organizador;

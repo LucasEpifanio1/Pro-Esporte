@@ -14,32 +14,19 @@ module.exports = {
         references: {
           model: 'organizador',
           key: 'id'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'RESTRICT'
+        }
       },
-      titulo: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      modalidade: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      local: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      data: {
-        type: Sequelize.DATEONLY,
-        allowNull: false
-      },
-      horario: {
-        type: Sequelize.TIME,
-        allowNull: false
-      },
+      titulo: Sequelize.STRING(100),
+      modalidade: Sequelize.STRING(50),
+      local: Sequelize.STRING(100),
+      data: Sequelize.DATEONLY,
+      horario: Sequelize.TIME,
       vagas: Sequelize.INTEGER,
       descricao: Sequelize.TEXT,
+      imagem: {
+        type: Sequelize.STRING(255),
+        allowNull: true
+      },
       createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE
     });

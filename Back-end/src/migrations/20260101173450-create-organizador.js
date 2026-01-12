@@ -8,54 +8,29 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true
       },
-
       tipo: {
         type: Sequelize.ENUM('EMPRESA', 'SERVIDOR_PUBLICO'),
         allowNull: false
       },
-
-      nome_publico: {
-        type: Sequelize.STRING(100),
-        allowNull: false
-      },
-
-      descricao: {
-        type: Sequelize.TEXT
-      },
-
-      empresa_cnpj: {
-        type: Sequelize.CHAR(14),          // ✔ MESMO tipo
+      empresa_id: {
+        type: Sequelize.INTEGER,
         allowNull: true,
         references: {
           model: 'empresa',
-          key: 'CNPJ'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL'
+          key: 'id'
+        }
       },
-
-      servidor_cpf: {
-        type: Sequelize.CHAR(11),          // ✔ MESMO tipo
+      servidor_id: {
+        type: Sequelize.INTEGER,
         allowNull: true,
         references: {
           model: 'servidor_publico',
-          key: 'CPF'
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL'
+          key: 'id'
+        }
       },
-
-      createdAt: {
-        type: Sequelize.DATE,
-        allowNull: false
-      },
-
-      updatedAt: {
-        type: Sequelize.DATE,
-        allowNull: false
-      }
-    }, {
-      engine: 'InnoDB' // IMPORTANTE
+      nome_publico: Sequelize.STRING(100),
+      createdAt: Sequelize.DATE,
+      updatedAt: Sequelize.DATE
     });
   },
 

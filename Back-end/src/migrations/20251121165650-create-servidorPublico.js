@@ -2,38 +2,33 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    return queryInterface.createTable('servidor_publico', {
-      CPF: {
+    await queryInterface.createTable('servidor_publico', {
+      id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+      },
+      cpf: {
         type: Sequelize.CHAR(11),
         allowNull: false,
-        primaryKey: true,
+        unique: true
       },
-      nome: {
-        type: Sequelize.STRING(100),
-        allowNull: false,
-      },
+      nome: Sequelize.STRING(100),
       email: {
         type: Sequelize.STRING(100),
-        allowNull: false,
-        unique: true,
+        unique: false
       },
-      senha: {
-        type: Sequelize.STRING(100),
-        allowNull: false,
+      telefone: {
+        type: Sequelize.STRING(15),
+        allowNull: true
       },
-     createdAt: {
-      type: Sequelize.DATE,
-      allowNull: false
-    },
-    updatedAt: {
-    type: Sequelize.DATE,
-    allowNull: false
-  }
-
+      senha: Sequelize.STRING(100),
+      createdAt: Sequelize.DATE,
+      updatedAt: Sequelize.DATE
     });
   },
 
-  async down(queryInterface, Sequelize) {
-    return queryInterface.dropTable('servidor_publico');
+  async down(queryInterface) {
+    await queryInterface.dropTable('servidor_publico');
   }
 };

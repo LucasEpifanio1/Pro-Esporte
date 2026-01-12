@@ -4,43 +4,27 @@ class Evento extends Model {
   static init(sequelize) {
     super.init(
       {
-        titulo: {
-          type: DataTypes.STRING,
-          allowNull: false
-        },
-        modalidade: {
-          type: DataTypes.STRING,
-          allowNull: false
-        },
-        local: {
-          type: DataTypes.STRING,
-          allowNull: false
-        },
-        data: {
-          type: DataTypes.DATEONLY,
-          allowNull: false
-        },
-        horario: {
-          type: DataTypes.TIME,
-          allowNull: false
-        },
+        titulo: DataTypes.STRING,
+        modalidade: DataTypes.STRING,
+        local: DataTypes.STRING,
+        data: DataTypes.DATEONLY,
+        horario: DataTypes.TIME,
         vagas: DataTypes.INTEGER,
-        descricao: DataTypes.TEXT
+        descricao: DataTypes.TEXT,
+        imagem: DataTypes.STRING
       },
       {
         sequelize,
-        tableName: 'evento',
-        timestamps: true
+        tableName: 'evento'
       }
     );
   }
 
- static associate(models) {
-  Evento.belongsTo(models.Organizador, {
-    foreignKey: 'organizador_id'
-  });
-}
-
+  static associate(models) {
+    this.belongsTo(models.Organizador, {
+      foreignKey: 'organizador_id'
+    });
+  }
 }
 
 module.exports = Evento;
