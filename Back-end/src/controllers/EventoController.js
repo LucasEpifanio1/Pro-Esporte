@@ -1,11 +1,9 @@
 const Evento = require('../models/evento');
-const Organizador = require('../models/organizador');
 
 class EventoController {
   async post(req, res) {
     try {
       const {
-        organizador_id,
         titulo,
         modalidade,
         local,
@@ -16,18 +14,13 @@ class EventoController {
         imagem
       } = req.body;
 
-      if (!organizador_id) {
-        return res.status(400).json({ error: 'organizador_id é obrigatório' });
-      }
-
-      const organizador = await Organizador.findByPk(organizador_id);
-
-      if (!organizador) {
-        return res.status(400).json({ error: 'Organizador inválido' });
+      if (!titulo || !modalidade || !local || !data || !horario || !vagas) {
+        return res.status(400).json({
+          error: 'Preencha todos os campos obrigatórios'
+        });
       }
 
       const evento = await Evento.create({
-        organizador_id,
         titulo,
         modalidade,
         local,
@@ -39,10 +32,14 @@ class EventoController {
       });
 
       return res.status(201).json(evento);
+
     } catch (error) {
-      return res.status(500).json({ error: error.message });
+      console.error(error);
+      return res.status(500).json({ error: 'Erro ao criar evento' });
     }
   }
 }
+
+
 
 module.exports = new EventoController();

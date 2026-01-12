@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "API do pro-esporte",
-    "description": "Essa API tem como objetivo mostrar a estrutura do projeto",
+    "title": "API do Pro-Esporte",
+    "description": "API responsável pelo cadastro de usuários e eventos do sistema Pro-Esporte",
     "termsOfService": "http://localhost:3333/terms",
     "contact": {
       "email": "apifanioluc@gmail.com"
@@ -16,6 +16,52 @@
     }
   ],
   "paths": {
+    "/cidadao": {
+      "post": {
+        "tags": ["Cidadão"],
+        "summary": "Cadastrar cidadão",
+        "description": "Cria um novo cidadão no sistema",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CidadaoInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Cidadão criado com sucesso" },
+          "400": { "description": "Dados inválidos" },
+          "409": { "description": "Email já cadastrado" }
+        }
+      }
+    },
+
+    "/empresa": {
+      "post": {
+        "tags": ["Empresa"],
+        "summary": "Cadastrar empresa",
+        "description": "Cria uma nova empresa organizadora",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmpresaInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Empresa criada com sucesso" },
+          "400": { "description": "Dados inválidos" },
+          "409": { "description": "CNPJ ou email já cadastrado" }
+        }
+      }
+    },
+
     "/servidorPublico": {
       "post": {
         "tags": ["Servidor Público"],
@@ -32,43 +78,84 @@
           }
         },
         "responses": {
-          "201": {
-            "description": "Servidor público criado com sucesso"
-          },
-          "400": {
-            "description": "Dados inválidos"
-          },
-          "409": {
-            "description": "CPF ou email já cadastrado"
+          "201": { "description": "Servidor público criado com sucesso" },
+          "400": { "description": "Dados inválidos" },
+          "409": { "description": "CPF ou email já cadastrado" }
+        }
+      }
+    },
+
+    "/evento": {
+      "post": {
+        "tags": ["Evento"],
+        "summary": "Criar evento",
+        "description": "Cria um novo evento no sistema",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventoInput"
+              }
+            }
           }
+        },
+        "responses": {
+          "201": { "description": "Evento criado com sucesso" },
+          "400": { "description": "Dados inválidos" }
         }
       }
     }
   },
+
   "components": {
     "schemas": {
+      "CidadaoInput": {
+        "type": "object",
+        "required": ["nome", "email", "senha"],
+        "properties": {
+          "nome": { "type": "string", "example": "João Silva" },
+          "email": { "type": "string", "format": "email", "example": "joao@email.com" },
+          "senha": { "type": "string", "format": "password", "example": "123456" }
+        }
+      },
+
+      "EmpresaInput": {
+        "type": "object",
+        "required": ["nome", "email", "CNPJ", "telefone", "senha"],
+        "properties": {
+          "nome": { "type": "string", "example": "Empresa X" },
+          "email": { "type": "string", "format": "email", "example": "empresa@email.com" },
+          "CNPJ": { "type": "string", "example": "12345678000199" },
+          "telefone": { "type": "string", "example": "(31) 99999-9999" },
+          "senha": { "type": "string", "format": "password", "example": "123456" }
+        }
+      },
+
       "ServidorPublicoInput": {
         "type": "object",
-        "required": ["CPF", "nome", "email", "senha"],
+        "required": ["CPF", "nome", "email", "telefone", "senha"],
         "properties": {
-          "CPF": {
-            "type": "string",
-            "example": "12345678901"
-          },
-          "nome": {
-            "type": "string",
-            "example": "Lucas Epifânio"
-          },
-          "email": {
-            "type": "string",
-            "format": "email",
-            "example": "lucas@email.com"
-          },
-          "senha": {
-            "type": "string",
-            "format": "password",
-            "example": "123456"
-          }
+          "CPF": { "type": "string", "example": "12345678901" },
+          "nome": { "type": "string", "example": "Lucas Epifânio" },
+          "email": { "type": "string", "format": "email", "example": "lucas@email.com" },
+          "telefone": { "type": "string", "example": "(31) 98888-7777" },
+          "senha": { "type": "string", "format": "password", "example": "123456" }
+        }
+      },
+
+      "EventoInput": {
+        "type": "object",
+        "required": ["titulo", "modalidade", "local", "data", "horario", "vagas"],
+        "properties": {
+          "titulo": { "type": "string", "example": "Corrida da Cidade" },
+          "modalidade": { "type": "string", "example": "corrida" },
+          "local": { "type": "string", "example": "Praça Central" },
+          "data": { "type": "string", "format": "date", "example": "2026-02-10" },
+          "horario": { "type": "string", "example": "08:00" },
+          "vagas": { "type": "integer", "example": 100 },
+          "descricao": { "type": "string", "example": "Evento aberto ao público" },
+          "imagem": { "type": "string", "example": "https://site.com/imagem.jpg" }
         }
       }
     }

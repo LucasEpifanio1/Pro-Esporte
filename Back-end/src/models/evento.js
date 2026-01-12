@@ -15,15 +15,10 @@ class Evento extends Model {
       },
       {
         sequelize,
-        tableName: 'evento'
+        tableName: 'evento',
+        timestamps: true
       }
     );
-  }
-
-  static associate(models) {
-    this.belongsTo(models.Organizador, {
-      foreignKey: 'organizador_id'
-    });
   }
 }
 

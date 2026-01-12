@@ -8,27 +8,56 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true
       },
-      organizador_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'organizador',
-          key: 'id'
-        }
+
+      titulo: {
+        type: Sequelize.STRING(100),
+        allowNull: false
       },
-      titulo: Sequelize.STRING(100),
-      modalidade: Sequelize.STRING(50),
-      local: Sequelize.STRING(100),
-      data: Sequelize.DATEONLY,
-      horario: Sequelize.TIME,
-      vagas: Sequelize.INTEGER,
-      descricao: Sequelize.TEXT,
+
+      modalidade: {
+        type: Sequelize.STRING(50),
+        allowNull: false
+      },
+
+      local: {
+        type: Sequelize.STRING(100),
+        allowNull: false
+      },
+
+      data: {
+        type: Sequelize.DATEONLY,
+        allowNull: false
+      },
+
+      horario: {
+        type: Sequelize.TIME,
+        allowNull: false
+      },
+
+      vagas: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+
+      descricao: {
+        type: Sequelize.TEXT,
+        allowNull: true
+      },
+
       imagem: {
         type: Sequelize.STRING(255),
         allowNull: true
       },
-      createdAt: Sequelize.DATE,
-      updatedAt: Sequelize.DATE
+
+      createdAt: {
+        type: Sequelize.DATE,
+        allowNull: false
+      },
+
+      updatedAt: {
+        type: Sequelize.DATE,
+        allowNull: false
+      }
     });
   },
 
