@@ -59,6 +59,11 @@
                     <label for="descricaoEvento">Descrição *</label>
                     <input type="text" id="descricaoEvento" required>
                 </div>
+
+                <div class="campo">
+                    <label for="imagemEvento">URL da Imagem</label>
+                    <input type="url" id="imagemEvento" placeholder="https://exemplo.com/imagem.jpg">
+                  </div>
             </div>
 
             <div id="informacoesOrganizador" class="informacoes">
@@ -67,12 +72,13 @@
                 <p><strong>Email:</strong> <span id="orgEmail">-</span></p>
                 <p><strong>Contato:</strong> <span id="orgContato">-</span></p>
                 <p><strong>Documento:</strong> <span id="orgDocumento">-</span></p>
+                
             </div>
 
             <button type="submit" class="criarEventoBtn">+ Criar Evento</button>
         </form>
     </main>
 
-    <script type="module" src="js/criarEvento.js"></script>
+    <script type="module" src="js/criarEventos.js"></script>
 </body>
 </html>

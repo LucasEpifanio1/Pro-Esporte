@@ -19,5 +19,6 @@ routes.post('/servidorPublico', servidorPublicoController.post);
 
 // evento
 routes.post('/evento', EventoController.post);
+routes.get('/eventos', EventoController.index);
 
 module.exports = routes;
