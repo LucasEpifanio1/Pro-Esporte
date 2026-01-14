@@ -79,13 +79,21 @@ CREATE TABLE if not exists Exercicio (
     nivel INT NOT NULL, 
     descricao TEXT,
     grupo_muscular VARCHAR(100),
-    tipo ENUM('estático', 'dinâmico'), 
+    tipo ENUM('habilidade', 'dinâmico', 'estático'), 
     id_progressao INT, 
     id_regressao INT,  
     CONSTRAINT fk_progressao FOREIGN KEY (id_progressao) REFERENCES Exercicio(id_exercicio),
     CONSTRAINT fk_regressao FOREIGN KEY (id_regressao) REFERENCES Exercicio(id_exercicio)
 );
+-- SET SQL_SAFE_UPDATES = 1;
+-- SET FOREIGN_KEY_CHECKS = 1;
 
+-- ALTER TABLE Exercicio 
+-- MODIFY COLUMN tipo ENUM('habilidade', 'dinâmico');
+
+/* ALTER TABLE Exercicio 
+MODIFY COLUMN tipo ENUM('habilidade', 'dinâmico', 'estático');
+*/
 -- 2. Equipamento (O catálogo de equipamentos)
 CREATE TABLE if not exists Equipamento (
     id_equipamento INT PRIMARY KEY AUTO_INCREMENT,
