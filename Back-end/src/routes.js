@@ -6,6 +6,7 @@ const empresaController = require("./controllers/empresaController");
 const servidorPublicoController = require("./controllers/servidorPublicoController");
 const eventoController = require("./controllers/eventoController");
 const treinoController = require("./controllers/treinoController");
+const treinoController = require("./controllers/treinoController");
 
 // Cidadao
 routes.post("/cidadao", cidadaoController.store || cidadaoController.post);
@@ -22,6 +23,8 @@ routes.post("/evento", eventoController.post);
 routes.get("/eventos", eventoController.index);
 
 // Treinos (Módulo Street Workout)
+routes.post("/treino/gerar", treinoController.gerar);
+//Treinos
 routes.post("/treino/gerar", treinoController.gerar);
 
 module.exports = routes;

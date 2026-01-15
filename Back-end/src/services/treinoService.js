@@ -8,7 +8,7 @@ class TreinoService {
         { id: 2, niveis: [5, 0, 5, 0, 10, 5, 15, 10], label: 'Iniciante Bronze' },
         { id: 3, niveis: [15, 5, 10, 0, 20, 15, 30, 20], label: 'Iniciante Prata' },
         { id: 4, niveis: [20, 12, 15, 3, 20, 20, 45, 20], label: 'Intermediário' },
-        { id: 5, niveis: [20, 20, 20, 8, 20, 20, 60, 20], label: 'Avançado' },
+        { id: 5, niveis: [20, 20, 20, 8, 20, 20, 60, 20], label: 'Avançado (Seu Perfil)' },
         { id: 6, niveis: [20, 20, 20, 15, 20, 20, 120, 20], label: 'Elite' }
     ];
 
