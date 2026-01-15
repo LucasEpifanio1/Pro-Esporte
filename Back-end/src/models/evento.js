@@ -4,7 +4,11 @@ class Evento extends Model {
   static init(sequelize) {
     super.init(
       {
-        id_evento: DataTypes.INTEGER,
+        ID_Evento: {
+          type: DataTypes.INTEGER,
+          primaryKey: true,
+          autoIncrement: false,
+        },
         titulo: DataTypes.STRING,
         modalidade: DataTypes.STRING,
         local: DataTypes.STRING,

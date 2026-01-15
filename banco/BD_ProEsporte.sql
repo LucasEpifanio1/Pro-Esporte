@@ -2,7 +2,7 @@ create database if not exists ProEsporte;
 use ProEsporte;
 
 CREATE TABLE IF NOT EXISTS evento (
-  id_evento INT PRIMARY KEY,
+  ID_Evento INT PRIMARY KEY,
   titulo VARCHAR(255),
   modalidade VARCHAR(255),
   local VARCHAR(255),
