@@ -1,63 +1,26 @@
 const { Model, DataTypes } = require("sequelize");
 
-class evento extends Model {
+class Evento extends Model {
   static init(sequelize) {
     super.init(
       {
-        ID_Evento: {
-          type: DataTypes.INTEGER,
-          primaryKey: true,
-          autoIncrement: false,
-        },
-        Nome: {
-          type: DataTypes.STRING(100),
-          allowNull: false,
-        },
-        Data: {
-          type: DataTypes.DATEONLY, // DATEONLY guarda apenas YYYY-MM-DD
-          allowNull: false,
-        },
-        Categoria: {
-          type: DataTypes.STRING(100),
-        },
-        CEP: {
-          type: DataTypes.CHAR(8),
-        },
-        Rua: {
-          type: DataTypes.STRING(100),
-        },
-        Bairro: {
-          type: DataTypes.STRING(100),
-        },
-        Numero: {
-          type: DataTypes.STRING(10),
-        },
-        // Aqui entram as chaves estrangeiras para identificar o criador
-        FK_Empresa: {
-          type: DataTypes.CHAR(14),
-          allowNull: true, // Pode ser nulo se um servidor criou
-          references: { model: "empresa", key: "CNPJ" },
-        },
-        FK_Servidor: {
-          type: DataTypes.CHAR(11),
-          allowNull: true, // Pode ser nulo se uma empresa criou
-          references: { model: "servidor_publico", key: "CPF" },
-        },
+        id_evento: DataTypes.INTEGER,
+        titulo: DataTypes.STRING,
+        modalidade: DataTypes.STRING,
+        local: DataTypes.STRING,
+        data: DataTypes.DATEONLY,
+        horario: DataTypes.TIME,
+        vagas: DataTypes.INTEGER,
+        descricao: DataTypes.TEXT,
+        imagem: DataTypes.STRING,
       },
       {
         sequelize,
         tableName: "evento",
-        timestamps: false,
+        timestamps: true, // A versão do Lucas usa timestamps, o que é bom
       }
     );
   }
-  static associate(models) {
-    this.belongsTo(models.empresa, { foreignKey: "FK_Empresa", as: "empresa" });
-    this.belongsTo(models.servidor_publico, {
-      foreignKey: "FK_Servidor",
-      as: "servidor",
-    });
-  }
 }
 
-module.exports = evento;
+module.exports = Evento;

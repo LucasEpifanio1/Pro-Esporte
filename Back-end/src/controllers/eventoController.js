@@ -1,97 +1,87 @@
+const { Op } = require("sequelize");
 const Evento = require("../models/evento");
-const Empresa = require("../models/empresa");
-const Servidor = require("../models/servidorPublico");
-const { generateRandomId8Dig } = require("../config/idGenerator");
 
-module.exports = {
-  async store(req, res) {
+class EventoController {
+  async post(req, res) {
     try {
       const {
-        ID_Evento,
-        Nome,
-        Data,
-        Categoria,
-        CEP,
-        Rua,
-        Bairro,
-        Numero,
-        tipoUsuario,
-        email,
+        id_evento,
+        titulo,
+        modalidade,
+        local,
+        data,
+        horario,
+        vagas,
+        descricao,
+        imagem
       } = req.body;
-      let identificadorEncontrado = null;
 
-      // Precisamos preparar os dados para o Sequelize
-      let dadosEvento = {
-        ID_Evento,
-        Nome,
-        Data,
-        Categoria,
-        CEP,
-        Rua,
-        Bairro,
-        Numero,
-        FK_Empresa: null,
-        FK_Servidor: null,
-      };
-
-      if (tipoUsuario === "empresa") {
-        const empresaEncontrada = await Empresa.findOne({
-          where: { email: email },
+      if (!titulo || !modalidade || !local || !data || !horario || !vagas) {
+        return res.status(400).json({
+          error: 'Preencha todos os campos obrigatórios'
         });
-        if (empresaEncontrada) {
-          identificadorEncontrado = empresaEncontrada.CNPJ;
-          dadosEvento.FK_Empresa = identificadorEncontrado;
-        }
-      } else if (tipoUsuario === "servidor") {
-        const servidorEncontrado = await Servidor.findOne({
-          where: { email: email },
-        });
-        if (servidorEncontrado) {
-          identificadorEncontrado = servidorEncontrado.CPF;
-          dadosEvento.FK_Servidor = identificadorEncontrado;
-        }
-      }
-      if (!identificadorEncontrado) {
-        return res
-          .status(404)
-          .json({ error: "Usuário não encontrado para este e-mail." });
       }
 
-      let novoId;
-      let idExistente;
-      do {
-        novoId = generateRandomId8Dig();
-        idExistente = await Evento.findByPk(novoId);
-      } while (idExistente);
-      dadosEvento.ID_Evento = novoId;
-      console.log("Dados enviados para o banco: ", dadosEvento);
-      const novoEvento = await Evento.create(dadosEvento);
-      return res.status(201).json(novoEvento);
+      const evento = await Evento.create({
+        id_evento,
+        titulo,
+        modalidade,
+        local,
+        data,
+        horario,
+        vagas,
+        descricao,
+        imagem
+      });
+
+      return res.status(201).json(evento);
+
     } catch (error) {
-      console.error("Erro ao criar evento:", error);
-      return res.status(500).json({ error: "Erro interno ao criar evento." });
+      console.error(error);
+      return res.status(500).json({ error: 'Erro ao criar evento' });
     }
-  },
+  }
 
+/// para sair a lista do usuario;
   async index(req, res) {
     try {
-      const eventos = await Evento.findAll({
-        include: [
-          {
-            model: Empresa,
-            as: "empresa",
-            attributes: ["nome", "email", "CNPJ"],
-          },
-          {
-            model: Servidor,
-            as: "servidor",
-            attributes: ["nome", "email", "CPF"],
-          },
-        ],
-      });
-      return res.json(eventos);
+      const { modalidade, turno, local } = req.query;
+
+      const where = {};
+
+      if (modalidade && modalidade !== 'todos') {
+        where.modalidade = modalidade;
+      }
+
+      if (local && local !== 'todos') {
+        where.local = local;
+      }
+
+      // turno baseado no horário
+      if (turno && turno !== 'todos') {
+        if (turno === 'manha') {
+          where.horario = { [Op.between]: ['06:00', '11:59'] };
+        }
+        if (turno === 'tarde') {
+          where.horario = { [Op.between]: ['12:00', '17:59'] };
+        }
+        if (turno === 'noite') {
+          where.horario = { [Op.between]: ['18:00', '23:59'] };
+        }
+      }
+
+      const eventos = await Evento.findAll({ where });
+
+      return res.status(200).json(eventos);
     } catch (error) {
-      return res.status(500).json({ error: "Erro ao listar eventos." });
+      return res.status(500).json({ error: 'Erro ao buscar eventos' });
     }
-  },
-};
+  }
+}
+
+
+
+
+
+
+module.exports = new EventoController();

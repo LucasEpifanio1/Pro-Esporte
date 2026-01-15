@@ -1,39 +1,53 @@
-//busca todos os eventos salvos, e, para cada evento, cria um card no HTML mostrando as informções do evento.
-//Também adiciona um botão "Ver detalhes" em cada card. No final, ele executa a função carregarEventos() para montar a lista assim que a página abrir.
-import { listarEventos } from "./dataBaseTeste.js";
+const eventosContainer = document.getElementById('eventos');
 
-function carregarEventos() {
-    const div = document.getElementById("eventos");
-    const lista = listarEventos();
+async function carregarEventos() {
+  const modalidade = document.getElementById('filtroModalidades').value;
+  const turno = document.getElementById('filtroTurnos').value;
+  const local = document.getElementById('filtroLocais').value;
 
-    div.innerHTML = "";
+  const params = new URLSearchParams({
+    modalidade,
+    turno,
+    local
+  });
 
-    lista.forEach((evento, index) => {  
-        const card = document.createElement("div");
-        card.className = "cardModal";
+  const response = await fetch(`http://localhost:3333/eventos?${params}`);
+  const eventos = await response.json();
 
-        card.innerHTML = `
-            <div class="evento-card">
-                <h3>${evento.nome}</h3>
+  eventosContainer.innerHTML = '';
 
-                <div class="evento-info">
-                    <div class="info-item"><i></i> ${evento.modalidade}</div>
-                    <div class="info-item"><i></i> ${evento.local}</div>
-                    <div class="info-item"><i></i> ${evento.data}</div>
-                    <div class="info-item"><i></i> ${evento.horario}</div>
-                    <div class="info-item"><i></i> ${evento.vagas}</div>
+  eventos.forEach(evento => {
+    eventosContainer.innerHTML += `
+      <div class="evento-card evento-estilizado">
 
-                    <button class="detalhes-btn" data-id="${index}">
-                        Ver detalhes
-                    </button>
-                </div>
-            </div>
-        `;
+        <img 
+          class="evento-imagem"
+          src="${evento.imagem || './img/evento-padrao.jpg'}"
+          alt="Imagem do evento"
+        >
 
-        div.appendChild(card);
-    });
+        <h3>${evento.titulo}</h3>
+
+        <div class="evento-info">
+          <div class="info-item">📍 ${evento.local}</div>
+          <div class="info-item">📅 ${formatarData(evento.data)}</div>
+          <div class="info-item">⏰ ${evento.horario}</div>
+          <div class="info-item">🏃 ${evento.modalidade}</div>
+          <div class="info-item">🎟️ ${evento.vagas} vagas</div>
+        </div>
+
+        <button>Ver detalhes</button>
+      </div>
+    `;
+  });
 }
+
+function formatarData(data) {
+  return new Date(data).toLocaleDateString('pt-BR');
+}
+
+document.getElementById('filtroModalidades').addEventListener('change', carregarEventos);
+document.getElementById('filtroTurnos').addEventListener('change', carregarEventos);
+document.getElementById('filtroLocais').addEventListener('change', carregarEventos);
+
 carregarEventos();
-
-
-

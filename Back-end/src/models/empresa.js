@@ -4,7 +4,7 @@ class empresa extends Model {
   static init(sequelize) {
     super.init(
       {
-        CNPJ: {
+        cnpj: {
           type: DataTypes.CHAR(14),
           primaryKey: true,
         },

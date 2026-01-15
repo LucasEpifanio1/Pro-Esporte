@@ -1,57 +1,18 @@
 create database if not exists ProEsporte;
 use ProEsporte;
 
-create table if not exists Pessoa_Fisica(
-	CPF char(11) primary key
-);
-
-create table if not exists Pessoa_Juridica(
-	CNPJ char(14) primary key
-);
-
-create table if not exists Organizador(
-	ID_Organizador int,
-    nome varchar(100),
-    Email varchar(100),
-    Senha varchar(100),
-    CPF char(11),
-    CNPJ char(14),
-    primary key(Id_Organizador, CPF, CNPJ),
-    foreign key (CPF) references Pessoa_Fisica(CPF),
-    foreign key (CNPJ) references Pessoa_Juridica(CNPJ)
-);
-
-create table if not exists Evento(
-	ID_Evento int primary key,
-	Nome varchar(100),
-    Data date,
-    Categoria varchar(100),
-    CEP char(8),
-    Rua varchar(100),
-    Bairro varchar(100),
-    Numero varchar(10),
-    FK_Empresa varchar(14),
-    FK_Servidor varchar(11)
-);
-
-ALTER TABLE Evento 
-ADD CONSTRAINT fk_evento_empresa 
-FOREIGN KEY (FK_Empresa) REFERENCES empresa(CNPJ) 
-ON DELETE SET NULL ON UPDATE CASCADE;
-
-ALTER TABLE Evento 
-ADD CONSTRAINT fk_evento_servidor 
-FOREIGN KEY (FK_Servidor) REFERENCES servidor_publico(CPF) 
-ON DELETE SET NULL ON UPDATE CASCADE;
-
-describe evento;
-
-create table if not exists Organiza(
-	ID_Organizador int,
-    ID_Evento int,
-    primary key(ID_Organizador, ID_Evento),
-    foreign key (ID_Organizador) references Organizador(ID_Organizador),
-    foreign key (ID_Evento) references Evento(ID_Evento)
+CREATE TABLE IF NOT EXISTS evento (
+  id_evento INT PRIMARY KEY,
+  titulo VARCHAR(255),
+  modalidade VARCHAR(255),
+  local VARCHAR(255),
+  data DATE,
+  horario TIME,
+  vagas INT,
+  descricao TEXT,
+  imagem VARCHAR(255),
+  createdAt DATETIME,
+  updatedAt DATETIME
 );
 
 create table if not exists Cidadao(
@@ -79,13 +40,21 @@ CREATE TABLE if not exists Exercicio (
     nivel INT NOT NULL, 
     descricao TEXT,
     grupo_muscular VARCHAR(100),
-    tipo ENUM('estático', 'dinâmico'), 
+    tipo ENUM('habilidade', 'dinâmico', 'estático'), 
     id_progressao INT, 
     id_regressao INT,  
     CONSTRAINT fk_progressao FOREIGN KEY (id_progressao) REFERENCES Exercicio(id_exercicio),
     CONSTRAINT fk_regressao FOREIGN KEY (id_regressao) REFERENCES Exercicio(id_exercicio)
 );
+-- SET SQL_SAFE_UPDATES = 1;
+-- SET FOREIGN_KEY_CHECKS = 1;
 
+-- ALTER TABLE Exercicio 
+-- MODIFY COLUMN tipo ENUM('habilidade', 'dinâmico');
+
+/* ALTER TABLE Exercicio 
+MODIFY COLUMN tipo ENUM('habilidade', 'dinâmico', 'estático');
+*/
 -- 2. Equipamento (O catálogo de equipamentos)
 CREATE TABLE if not exists Equipamento (
     id_equipamento INT PRIMARY KEY AUTO_INCREMENT,
