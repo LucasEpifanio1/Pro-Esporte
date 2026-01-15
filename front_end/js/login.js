@@ -62,7 +62,7 @@ function nomeEmpresa() {
 function cnpj() {
   campo.innerHTML += `<div class="campo">
             <label for="cnpj">CNPJ</label>
-            <input type="text" id="cnpj" name="CNPJ" maxlength="18" placeholder="00.000.000/0000-00">
+            <input type="text" id="cnpj" name="cnpj" maxlength="18" placeholder="00.000.000/0000-00">
         </div>`;
 }
 
