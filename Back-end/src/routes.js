@@ -6,7 +6,10 @@ const empresaController = require("./controllers/empresaController");
 const servidorPublicoController = require("./controllers/servidorPublicoController");
 const eventoController = require("./controllers/eventoController");
 const treinoController = require("./controllers/treinoController");
+const SessionController = require("./controllers/sessionController");
 
+// Login
+routes.post("/login", SessionController.store);
 
 // Cidadao
 routes.post("/cidadao", cidadaoController.store || cidadaoController.post);
