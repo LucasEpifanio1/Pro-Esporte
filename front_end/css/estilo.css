@@ -14,6 +14,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+
 }
 
 /* container principal */
@@ -23,6 +24,7 @@ body {
     align-items: flex-start;
     gap: 20px;
 }
+
 
 /* link voltar */
 .voltar {
@@ -47,6 +49,7 @@ body {
     align-items: center;
     width: 460px;
 }
+
 
 /* cabeçalho */
 h1{
@@ -203,12 +206,11 @@ button:hover {
 
 .linha-diagonal {
     position: absolute;
-    width: 6px;            
+    width: 12px;            
     height: 140%;          
     background-color: #101828;
     top: -20%;             /* posicionamento vertical */
     left: 50%;             /* posicionamento horizontal */
     transform: rotate(43deg); /* ângulo */        
 }
-
 

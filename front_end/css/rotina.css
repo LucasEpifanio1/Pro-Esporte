@@ -1,0 +1,132 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #000;
+    color: #9CA3AF;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* cabeçalho font-size: 1.8rem;*/
+h1{
+    color: #FBBF24;
+    margin-bottom: 4px;
+    font-size: 1.7rem;
+}
+
+/* link voltar */
+.voltar {
+    color: #FBBF24;
+    text-decoration: none;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
+.voltar:hover {
+    text-decoration: underline;
+}
+
+/*configuraçoes icones  */
+.info-item img{
+    filter: brightness(0) invert(0.8); 
+    width: 20px;
+    height: 20px;
+    transition: all 0.3s;
+}
+
+.rotina{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* container principal */
+.container{
+    flex-direction: column;
+    align-items: flex-start;
+    align-items:stretch;
+    display: flex;
+
+    width: 85%;
+    max-width: 450px;
+    margin: 0 auto 25px auto;
+    gap: 20px;
+
+}
+
+.container-cards{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.card-treino-dia{
+    background-color: #1F2937;
+    border: 2px solid #FBBF24;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.item-exercicio {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: #111827; /* Fundo levemente mais escuro que o card */
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.numero-circulo {
+    background-color: #FBBF24;
+    color: #000;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.treino-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.amarelo { color: #FBBF24; }
+
+/* Botão Iniciar Treino */
+.btn-principal {
+    width: 100%;
+    margin-top: 15px;
+    background-color: #FBBF24;
+    color: #000;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+footer{
+  padding-bottom: 100px; 
+}
+
+

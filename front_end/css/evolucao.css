@@ -1,0 +1,150 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* cabeçalho font-size: 1.8rem;*/
+h1{
+    color: #FBBF24;
+    font-size: 1.7rem;
+}
+footer{
+  padding-bottom: 100px; 
+}
+/* container principal */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-items:stretch;
+
+    width: 85%;
+    max-width: 450px;
+    margin: 0 auto 25px auto;
+    gap: 20px;
+
+}
+
+/* link voltar */
+.voltar {
+    color: #FBBF24;
+    text-decoration: none;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
+.voltar:hover {
+    text-decoration: underline;
+}
+
+.card-pequeno, .card-objetivo{
+    flex: 1;
+    background-color: #1F2937;
+    border: 1px solid #FBBF24;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.cards-evolucao{
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
+}
+
+.cards-evolucao img, .subtitulo img{
+    filter: invert(84%) sepia(52%) saturate(2032%) hue-rotate(339deg) brightness(104%) contrast(97%); /* Transforma na cor # FBBF24*/
+    width: 20px;
+    height: 20px;
+}
+
+.card-header, .subtitulo{
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+   
+    
+
+}
+.card-header img {
+    filter: invert(84%) sepia(52%) saturate(2032%) hue-rotate(339deg) brightness(104%) contrast(97%); /* Transforma na cor # FBBF24*/
+    width: 30px;
+    height: 30px;
+}
+.titulo-card{
+    display: flex;
+    gap: 8px;
+}
+.card-progresso{
+    background-color: #1F2937;
+    border: 1px solid #FBBF24;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.lista-exercicios{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+}
+
+/* barras de progresso */
+.barra-fundo {
+    width: 100%;
+    height: 12px;
+    background-color: #374151; /* Cinza escuro */
+    border-radius: 10px;
+    overflow: hidden; /* Garante que a barra amarela não saia do limite */
+    margin: 10px 0;
+}
+
+.barra-preenchida {
+    height: 100%;
+    background-color: #FBBF24; /* Seu amarelo */
+    border-radius: 10px;
+    transition: width 1s ease-in-out; /* Efeito visual legal ao carregar */
+}
+
+.progresso-topo, .progresso-base {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    
+}
+
+.progresso-base {
+    color: #9CA3AF;
+}
+
+.stats-row {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+.amarelo { color: #FBBF24; }
+
+button {
+    background-color: #FBBF24;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+

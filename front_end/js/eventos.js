@@ -29,11 +29,21 @@ async function carregarEventos() {
         <h3>${evento.titulo}</h3>
 
         <div class="evento-info">
-          <div class="info-item">📍 ${evento.local}</div>
-          <div class="info-item">📅 ${formatarData(evento.data)}</div>
-          <div class="info-item">⏰ ${evento.horario}</div>
-          <div class="info-item">🏃 ${evento.modalidade}</div>
-          <div class="info-item">🎟️ ${evento.vagas} vagas</div>
+          <div class="info-item">
+            <img src="./img/iconInfo.png" class="info-icon"> ${evento.modalidade}
+          </div>
+          <div class="info-item">
+            <img src="./img/iconLocal.png" class="info-icon"> ${evento.local}
+          </div>
+          <div class="info-item">
+            <img src="./img/iconCalendario.png" class="info-icon"> ${formatarData(evento.data)}
+          </div>
+          <div class="info-item">
+            <img src="./img/iconRelogio.png" class="info-icon"> ${evento.horario}
+          </div>
+          <div class="info-item">
+            <img src="./img/iconVagas.png" class="info-icon"> ${evento.vagas} vagas
+          </div>
         </div>
 
         <button>Ver detalhes</button>
