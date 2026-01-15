@@ -1,3 +1,22 @@
+function botao_Entrar(){
+  const botao_entrar = document.getElementById("botao_Entrar")
+  const botao_cad = document.getElementById("botao_Cadastro")
+  botao_entrar.style.backgroundColor = "#FBBF24";
+  botao_cad.style.backgroundColor = "#1F2937"
+  window.location.href = "login.html";
+  localStorage.setItem("tipoL", "Entrar");
+  
+}
+
+function botao_Cadastro(){
+  const botao_entrar = document.getElementById("botao_Entrar")
+  const botao_cad = document.getElementById("botao_Cadastro")
+  botao_entrar.style.backgroundColor = "#1F2937";
+  botao_cad.style.backgroundColor = "#FBBF24"
+  localStorage.setItem("tipoL", "Cadastro");
+  window.location.href = "login.html";
+}
+
 function nomeUsuario() {
   campo.innerHTML += `<div class="campo">
             <label for="nome">Nome Completo</label>
@@ -49,27 +68,52 @@ function cnpj() {
 
 const tipo = localStorage.getItem("tipo");
 const campo = document.getElementById("areaCampos");
+const tipoL = localStorage.getItem("tipoL");
 campo.innerHTML = "";
 
 if (tipo === "cidadao") {
-  nomeUsuario();
+  if(tipoL === "Cadastro"){
+    nomeUsuario();
+    const botao_entrar = document.getElementById("botao_Entrar")
+    const botao_cad = document.getElementById("botao_Cadastro")
+    const botao_login = document.getElementById("botao_login")
+    botao_entrar.style.backgroundColor = "#1F2937";
+    botao_cad.style.backgroundColor = "#FBBF24"
+    botao_login.innerText ="Criar conta"
+  }
   email();
   senha();
 }
 
 if (tipo === "empresa") {
-  nomeEmpresa();
+  if(tipoL === "Cadastro"){
+    telefone();
+    cnpj();
+    nomeEmpresa();
+    const botao_entrar = document.getElementById("botao_Entrar")
+    const botao_cad = document.getElementById("botao_Cadastro")
+    const botao_login = document.getElementById("botao_login")
+    botao_entrar.style.backgroundColor = "#1F2937";
+    botao_cad.style.backgroundColor = "#FBBF24"
+    botao_login.innerText ="Criar conta"
+  }
   email();
-  telefone();
-  cnpj();
   senha();
 }
 
 if (tipo === "servidorPublico") {
-  nomeUsuario();
+  if(tipoL === "Cadastro"){
+    telefone();
+    cpf();
+    nomeUsuario();
+    const botao_entrar = document.getElementById("botao_Entrar")
+    const botao_cad = document.getElementById("botao_Cadastro")
+    const botao_login = document.getElementById("botao_login")
+    botao_entrar.style.backgroundColor = "#1F2937";
+    botao_cad.style.backgroundColor = "#FBBF24"
+    botao_login.innerText ="Criar conta"
+  }
   email();
-  telefone();
-  cpf();
   senha();
 }
 

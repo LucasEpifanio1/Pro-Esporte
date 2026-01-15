@@ -1,6 +1,6 @@
 function opcaoCidadao() {
   localStorage.setItem("tipo", "cidadao");
-  window.location.href = "loginCidadao.html";
+  window.location.href = "login.html";
 }
 function opcaoCriador() {
   localStorage.setItem("tipo", "criador");
@@ -8,11 +8,11 @@ function opcaoCriador() {
 }
 function opcaoEmpresa() {
   localStorage.setItem("tipo", "empresa");
-  window.location.href = "loginEmpresa.html";
+  window.location.href = "login.html";
 }
 function opcaoServidorPublico() {
   localStorage.setItem("tipo", "servidorPublico");
-  window.location.href = "loginServidor.html";
+  window.location.href = "login.html";
 }
 
 function voltarIndex() {
