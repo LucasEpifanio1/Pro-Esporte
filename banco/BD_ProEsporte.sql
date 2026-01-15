@@ -46,15 +46,7 @@ CREATE TABLE if not exists Exercicio (
     CONSTRAINT fk_progressao FOREIGN KEY (id_progressao) REFERENCES Exercicio(id_exercicio),
     CONSTRAINT fk_regressao FOREIGN KEY (id_regressao) REFERENCES Exercicio(id_exercicio)
 );
--- SET SQL_SAFE_UPDATES = 1;
--- SET FOREIGN_KEY_CHECKS = 1;
 
--- ALTER TABLE Exercicio 
--- MODIFY COLUMN tipo ENUM('habilidade', 'dinâmico');
-
-/* ALTER TABLE Exercicio 
-MODIFY COLUMN tipo ENUM('habilidade', 'dinâmico', 'estático');
-*/
 -- 2. Equipamento (O catálogo de equipamentos)
 CREATE TABLE if not exists Equipamento (
     id_equipamento INT PRIMARY KEY AUTO_INCREMENT,
@@ -115,9 +107,4 @@ CREATE TABLE if not exists Registro_Treino (
     FOREIGN KEY (id_exercicio) REFERENCES Exercicio(id_exercicio)
 );
 
--- SET FOREIGN_KEY_CHECKS = 0;
--- DROP TABLE rotina_treino, registro_treino, guarda, exercicio, seleciona, equipamento, pode_usar; -- Apaga múltiplas tabelas em um único comando
--- SET FOREIGN_KEY_CHECKS = 1;
-
-show tables
-;
+show tables;
