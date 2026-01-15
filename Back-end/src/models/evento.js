@@ -21,7 +21,7 @@ class Evento extends Model {
       {
         sequelize,
         tableName: "evento",
-        timestamps: true, // A versão do Lucas usa timestamps, o que é bom
+        timestamps: true,
       }
     );
   }

@@ -1,11 +1,11 @@
 const { Op } = require("sequelize");
 const Evento = require("../models/evento");
+const { generateRandomId8Dig } = require("../config/idGenerator");
 
 class EventoController {
   async post(req, res) {
     try {
       const {
-        id_evento,
         titulo,
         modalidade,
         local,
@@ -22,8 +22,16 @@ class EventoController {
         });
       }
 
+      // Lógica de geração de ID único de 8 dígitos
+      let novoId;
+      let idExistente;
+      do {
+        novoId = generateRandomId8Dig();
+        idExistente = await Evento.findByPk(novoId);
+      } while (idExistente);
+
       const evento = await Evento.create({
-        id_evento,
+        ID_Evento: novoId,
         titulo,
         modalidade,
         local,
@@ -74,6 +82,7 @@ class EventoController {
 
       return res.status(200).json(eventos);
     } catch (error) {
+      console.error("Erro ao buscar eventos: ", error);
       return res.status(500).json({ error: 'Erro ao buscar eventos' });
     }
   }
