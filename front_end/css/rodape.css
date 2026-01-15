@@ -11,24 +11,50 @@
     justify-content: center;
     align-items: center;
     position: fixed;
-    gap: 70px;
+    gap: 50px; /*Reduzi de 70 para 50*/
     font-weight: bold;
+    z-index: 1000; /* Garante que o rodapé fique acima de tudo */
 }
 
 .rodape .item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
+    justify-content: center; /* Centraliza o conteúdo dentro do quadrado */
     cursor: pointer;
+
+    width: 70px;            /* Largura do quadrado */
+    height: 70px;           /* Altura do quadrado */
+    border-radius: 12px;    /* Arredondamento das bordas */
+    transition: all 0.3s;   /* Suaviza a troca de cor */
+
 }
 
 .rodape .item p {
     color: #9CA3AF;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    margin: 0;
 }
 
 .rodape .item img {
     width: 28px;
     height: 28px;
+
+    filter: brightness(0) invert(0.8); 
+    opacity: 0.6;
+    transition: all 0.3s;
+}
+
+.item.active {
+    background-color: #FBBF24; 
+
+}
+
+.rodape .item.active img {
+    filter: brightness(0); /* Preto */
+    opacity: 1;
+}
+
+.rodape .item.active p {
+    color: #101828; 
 }

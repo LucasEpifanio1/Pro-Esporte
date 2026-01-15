@@ -7,6 +7,7 @@ const servidorPublicoController = require("./controllers/servidorPublicoControll
 const eventoController = require("./controllers/eventoController");
 const treinoController = require("./controllers/treinoController");
 const SessionController = require("./controllers/sessionController");
+const participacaoController = require("./controllers/participacaoController");
 
 // Login
 routes.post("/login", SessionController.store);
@@ -24,6 +25,11 @@ routes.post("/servidorPublico", servidorPublicoController.store || servidorPubli
 // Eventos
 routes.post("/evento", eventoController.post);
 routes.get("/eventos", eventoController.index);
+routes.get("/eventos/:id", eventoController.show);
+
+// Participação em Eventos
+routes.post("/participar", participacaoController.store);
+routes.get("/participacoes/:id_cidadao", participacaoController.index);
 
 // Treinos (Módulo Street Workout)
 routes.post("/treino/gerar", treinoController.gerar);

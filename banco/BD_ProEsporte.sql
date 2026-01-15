@@ -15,6 +15,25 @@ CREATE TABLE IF NOT EXISTS evento (
   updatedAt DATETIME
 );
 
+-- 1. Adicionar as colunas de chave estrangeira
+ALTER TABLE evento 
+ADD COLUMN FK_Empresa CHAR(14) NULL,
+ADD COLUMN FK_Servidor CHAR(11) NULL;
+
+-- 2. Criar os relacionamentos (Constraints)
+ALTER TABLE evento
+ADD CONSTRAINT fk_evento_empresa 
+  FOREIGN KEY (FK_Empresa) REFERENCES empresa(cnpj) 
+  ON DELETE SET NULL ON UPDATE CASCADE;
+
+ALTER TABLE evento
+ADD CONSTRAINT fk_evento_servidor 
+  FOREIGN KEY (FK_Servidor) REFERENCES servidor_publico(CPF) 
+  ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- 3. Verificar se as colunas foram criadas corretamente
+DESCRIBE evento;
+
 create table if not exists Cidadao(
 	ID_Cidadao int primary key,
     nome varchar(100),

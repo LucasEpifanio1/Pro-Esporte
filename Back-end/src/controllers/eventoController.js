@@ -1,5 +1,7 @@
 const { Op } = require("sequelize");
 const Evento = require("../models/evento");
+const Empresa = require("../models/empresa");
+const ServidorPublico = require("../models/servidorPublico");
 const { generateRandomId8Dig } = require("../config/idGenerator");
 
 class EventoController {
@@ -13,7 +15,9 @@ class EventoController {
         horario,
         vagas,
         descricao,
-        imagem
+        imagem,
+        FK_Empresa,
+        FK_Servidor
       } = req.body;
 
       if (!titulo || !modalidade || !local || !data || !horario || !vagas) {
@@ -39,7 +43,9 @@ class EventoController {
         horario,
         vagas,
         descricao,
-        imagem
+        imagem,
+        FK_Empresa,
+        FK_Servidor
       });
 
       return res.status(201).json(evento);
@@ -50,7 +56,6 @@ class EventoController {
     }
   }
 
-/// para sair a lista do usuario;
   async index(req, res) {
     try {
       const { modalidade, turno, local } = req.query;
@@ -65,7 +70,6 @@ class EventoController {
         where.local = local;
       }
 
-      // turno baseado no horário
       if (turno && turno !== 'todos') {
         if (turno === 'manha') {
           where.horario = { [Op.between]: ['06:00', '11:59'] };
@@ -78,7 +82,21 @@ class EventoController {
         }
       }
 
-      const eventos = await Evento.findAll({ where });
+      const eventos = await Evento.findAll({ 
+        where,
+        include: [
+          { 
+            model: Empresa, 
+            as: 'empresa',
+            attributes: ['nome', 'email', 'cnpj'] 
+          },
+          { 
+            model: ServidorPublico, 
+            as: 'servidor',
+            attributes: ['nome', 'email'] // CPF escondido conforme solicitado
+          }
+        ]
+      });
 
       return res.status(200).json(eventos);
     } catch (error) {
@@ -86,11 +104,26 @@ class EventoController {
       return res.status(500).json({ error: 'Erro ao buscar eventos' });
     }
   }
+
+  async show(req, res) {
+    try {
+      const { id } = req.params;
+      const evento = await Evento.findByPk(id, {
+        include: [
+          { model: Empresa, as: 'empresa', attributes: ['nome', 'email', 'cnpj'] },
+          { model: ServidorPublico, as: 'servidor', attributes: ['nome', 'email'] }
+        ]
+      });
+
+      if (!evento) {
+        return res.status(404).json({ error: 'Evento não encontrado' });
+      }
+
+      return res.json(evento);
+    } catch (error) {
+      return res.status(500).json({ error: 'Erro ao buscar detalhes do evento' });
+    }
+  }
 }
-
-
-
-
-
 
 module.exports = new EventoController();

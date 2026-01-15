@@ -19,7 +19,7 @@ class servidorpublico extends Model {
     );
   }
   static associate(models) {
-    this.hasMany(models.evento, {
+    this.hasMany(models.Evento, {
       foreignKey: "FK_Servidor",
       as: "eventos",
     });

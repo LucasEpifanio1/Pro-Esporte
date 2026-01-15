@@ -20,6 +20,15 @@ class cidadao extends Model {
       }
     );
   }
+
+  static associate(models) {
+    this.belongsToMany(models.Evento, { 
+      through: models.Participa, 
+      foreignKey: 'ID_Cidadao', 
+      otherKey: 'ID_Evento',
+      as: 'eventos' 
+    });
+  }
 }
 
 module.exports = cidadao;

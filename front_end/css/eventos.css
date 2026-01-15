@@ -143,6 +143,14 @@ h1 {
     align-items: center;
     gap: 8px;
     font-size: 0.95rem;
+    margin-bottom: 5px;
+}
+
+.info-icon {
+    width: 18px;         /* Tamanho pequeno para parecer um ícone */
+    height: 18px;
+    object-fit: contain;
+    filter: invert(84%) sepia(52%) saturate(2032%) hue-rotate(339deg) brightness(104%) contrast(97%); /* Transforma na cor # FBBF24*/
 }
 
 .evento-card button {

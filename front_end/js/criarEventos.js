@@ -1,8 +1,14 @@
 document.getElementById('formCriarEvento').addEventListener('submit', async (e) => {
   e.preventDefault();
 
+  const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+  
+  if (!usuarioLogado || usuarioLogado.tipo === 'cidadao') {
+    alert("Você não tem permissão para criar eventos.");
+    return;
+  }
+
   const dados = {
-    
     titulo: document.getElementById('nomeEvento').value,
     modalidade: document.getElementById('modalidades').value,
     local: document.getElementById('localEvento').value,
@@ -12,6 +18,13 @@ document.getElementById('formCriarEvento').addEventListener('submit', async (e) 
     descricao: document.getElementById('descricaoEvento').value,
     imagem: document.getElementById('imagemEvento').value
   };
+
+  // Adiciona a chave estrangeira correta baseada no tipo de usuário
+  if (usuarioLogado.tipo === 'empresa') {
+    dados.FK_Empresa = usuarioLogado.identificador;
+  } else if (usuarioLogado.tipo === 'servidor_publico' || usuarioLogado.tipo === 'servidorPublico') {
+    dados.FK_Servidor = usuarioLogado.identificador;
+  }
 
   try {
     const response = await fetch('http://localhost:3333/evento', {
@@ -28,7 +41,7 @@ document.getElementById('formCriarEvento').addEventListener('submit', async (e) 
       return;
     }
 
-    // ✅ sucesso → volta para página de eventos
+    alert("Evento criado com sucesso!");
     window.location.href = 'eventos.html';
 
   } catch (error) {

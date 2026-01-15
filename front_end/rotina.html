@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/rotina.css">
+    <link rel="stylesheet" href="./css/rodape.css">
+
+</head>
+<body>
+
+    <main class="container">
+        <a href="#" class="voltar" onclick="history.back()">← Voltar</a>
+
+        <section class="rotina">
+            <p class="amarelo" >Minha Rotina</p>
+            <div class="info-item">
+                <img src="img/calendar.png" class="info-divisao"> 
+                <span>Divisão: <span id="divisao"></span></span> </div>
+                <div class="info-item">
+                <img src="img/train.png" class="info-frequencia"> 
+                <span id="frequencia"></span> </div>
+        </section>
+
+        <div class="container-cards" id="container-cards"></div> 
+
+    </main>
+    <footer>
+    <div class="rodape" id="rodape"></div>
+    </footer>
+
+    <script src="js/rotina.js"></script>
+    <script src="js/rodape.js"></script>
+</body>
+</html>
