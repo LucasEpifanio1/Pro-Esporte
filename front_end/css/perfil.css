@@ -1,4 +1,3 @@
-/* Configurações Globais */
 :root {
   --bg-color: #000000;
   --card-color: #161b22;
@@ -11,57 +10,65 @@
 body {
   background-color: var(--bg-color);
   color: var(--text-primary);
-  font-family: 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   margin: 0;
   display: flex;
   justify-content: center;
+  min-height: 100vh;
 }
 
 .perfil-container {
   width: 100%;
-  max-width: 400px; /* Mantém o estilo de app mobile */
+  max-width: 420px;
   padding: 40px 20px;
+  /* ADICIONE A LINHA ABAIXO */
+  padding-bottom: 120px; /* Isso cria um espaço extra no fundo para o rodapé não cobrir o botão */
+  
   display: flex;
   flex-direction: column;
-  align-items: center;
+  min-height: 100vh; /* Garante que o container ocupe a tela toda */
+  box-sizing: border-box; /* Garante que o padding não aumente a largura total */
 }
 
-/* Header e Avatar */
+/* Header */
 .perfil-header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 
 .avatar-circle {
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
   background-color: var(--accent-color);
   border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 50px;
   margin: 0 auto 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-icon {
+  font-size: 55px;
 }
 
 .sub-text {
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  margin-top: 5px;
 }
 
-/* Cartões de Informação */
+/* Seções e Cards */
 .secao-titulo {
   color: var(--accent-color);
-  font-size: 1rem;
-  width: 100%;
-  margin-bottom: 15px;
+  font-size: 0.85rem;
   text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
 }
 
 .perfil-card {
   background-color: var(--card-color);
-  width: 100%;
-  padding: 15px;
+  padding: 15px 20px;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -69,19 +76,25 @@ body {
 }
 
 .card-icon {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   margin-right: 15px;
+  min-width: 30px;
 }
 
 .card-content label {
   display: block;
   color: var(--text-secondary);
   font-size: 0.75rem;
+  margin-bottom: 2px;
 }
 
-/* Menu de Itens */
+.card-content span {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* Itens de Menu */
 .perfil-menu {
-  width: 100%;
   margin-top: 20px;
 }
 
@@ -89,28 +102,38 @@ body {
   background-color: var(--card-color);
   color: white;
   width: 100%;
-  padding: 15px;
+  padding: 18px 20px;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   text-align: left;
   margin-bottom: 10px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
   font-size: 1rem;
+  transition: opacity 0.2s;
 }
 
-.menu-icon { margin-right: 15px; }
+.menu-item:hover {
+  opacity: 0.8;
+}
 
-/* Botão Sair */
+/* Botão Sair - Idêntico ao do Print */
 .btn-logout {
   background-color: var(--logout-red);
   color: white;
   border: none;
   width: 100%;
-  padding: 15px;
+  padding: 16px;
   border-radius: 10px;
   font-weight: bold;
-  margin-top: 30px;
+  font-size: 1rem;
+  margin-top: 30px; /* Espaço fixo acima do botão */
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-logout:hover {
+  filter: brightness(0.9);
 }

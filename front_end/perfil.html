@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meu Perfil</title>
   <link rel="stylesheet" href="css/perfil.css">
   <link rel="stylesheet" href="css/rodape.css">
@@ -10,44 +11,36 @@
 <body>
 
   <main class="perfil-container">
-  <header class="perfil-header">
-    <div class="avatar-circle">
-      <i class="user-icon">👤</i>
-    </div>
-    <h2 id="nome-display">Carregando...</h2>
-    <p id="email-display" class="sub-text">email@exemplo.com</p>
-  </header>
+    <header class="perfil-header">
+      <div class="avatar-circle">
+        <span class="avatar-icon">👤</span>
+      </div>
+      <h2 id="nome">Carregando...</h2>
+      <p id="email" class="sub-text">email@exemplo.com</p>
+    </header>
 
-  <section class="perfil-secao">
-    <h3 class="secao-titulo">Informações Pessoais</h3>
-    <div class="perfil-info">
+    <section class="perfil-secao">
+      <h3 class="secao-titulo">Informações Pessoais</h3>
+      
       <div class="perfil-card">
-      <div class="card-icon">📞</div>
-      <div class="card-content">
-        <label>Telefone</label>
-        <span id="telefone"></span>
+        <div class="card-icon">🛡️</div>
+        <div class="card-content">
+          <label>Tipo de Conta</label>
+          <span id="tipo">-</span>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="perfil-card">
-      <div class="card-icon">🆔</div>
-      <div class="card-content">
-        <label>Tipo de Conta</label>
-        <span id="tipo"></span>
-      </div>
-    </div>
-    </div>
-    
-  </section>
+    <nav class="perfil-menu">
+      <button class="menu-item"><span>👤 Editar Perfil</span></button>
+      <button class="menu-item"><span>✉️ Email e Notificações</span></button>
+      <button class="menu-item"><span>🔒 Alterar Senha</span></button>
+    </nav>
 
-  <nav class="perfil-menu">
-    <button class="menu-item"><i class="menu-icon">👤</i> Editar Perfil</button>
-    <button class="menu-item"><i class="menu-icon">✉️</i> Email e Notificações</button>
-    <button class="menu-item"><i class="menu-icon">🔒</i> Alterar Senha</button>
-  </nav>
-
-  <button onclick="logout()" class="btn-logout">Sair da Conta</button>
-</main>
+    <button onclick="logout()" class="btn-logout">
+      <span>↪</span> Sair da Conta
+    </button>
+  </main>
 
   <div class="rodape" id="rodape"></div>
 
