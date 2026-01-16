@@ -37,8 +37,8 @@ function irPerfil() {
 }
 
 function irTreinos() {
-  const usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
-  if (usuario.respondeuQuestionario) {
+  const fichaTreino = localStorage.getItem('fichaTreino');
+  if (fichaTreino) {
     window.location.href = 'dashboard.html'; // Tela do dashboard
   } else {
     window.location.href = 'questionarioTreino.html'; // Tela das perguntas

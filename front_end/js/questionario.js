@@ -526,6 +526,16 @@ if (backBtn) {
     }
   });
 }
-
+// Verificar se o usuário já respondeu o questionário
+function verificarQuestionarioRespondido() {
+  const fichaTreino = localStorage.getItem('fichaTreino');
+  const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+  
+  if (fichaTreino && usuarioLogado) {
+    // Usuário já respondeu o questionário, redirecionar para o dashboard
+    window.location.href = 'dashboard.html';
+  }
+}
+verificarQuestionarioRespondido();
 // Inicial
 renderQuestion();
