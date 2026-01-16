@@ -3,21 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <title>Meu Perfil</title>
-  <link rel="stylesheet" href="css/estilo.css">
+  <link rel="stylesheet" href="css/perfil.css">
+  <link rel="stylesheet" href="css/rodape.css">
+
 </head>
 <body>
 
-  <main class="container">
-    <h1>Meu Perfil</h1>
-
-    <div class="perfil-info">
-      <p><strong>Nome:</strong> <span id="nome"></span></p>
-      <p><strong>Email:</strong> <span id="email"></span></p>
-      <p><strong>Telefone:</strong> <span id="telefone"></span></p>
-      <p><strong>Tipo:</strong> <span id="tipo"></span></p>
-      <button onclick="logout()" style="margin-top: 20px; background-color: #ef4444; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Sair da Conta</button>
+  <main class="perfil-container">
+  <header class="perfil-header">
+    <div class="avatar-circle">
+      <i class="user-icon">👤</i>
     </div>
-  </main>
+    <h2 id="nome-display">Carregando...</h2>
+    <p id="email-display" class="sub-text">email@exemplo.com</p>
+  </header>
+
+  <section class="perfil-secao">
+    <h3 class="secao-titulo">Informações Pessoais</h3>
+    <div class="perfil-info">
+      <div class="perfil-card">
+      <div class="card-icon">📞</div>
+      <div class="card-content">
+        <label>Telefone</label>
+        <span id="telefone"></span>
+      </div>
+    </div>
+
+    <div class="perfil-card">
+      <div class="card-icon">🆔</div>
+      <div class="card-content">
+        <label>Tipo de Conta</label>
+        <span id="tipo"></span>
+      </div>
+    </div>
+    </div>
+    
+  </section>
+
+  <nav class="perfil-menu">
+    <button class="menu-item"><i class="menu-icon">👤</i> Editar Perfil</button>
+    <button class="menu-item"><i class="menu-icon">✉️</i> Email e Notificações</button>
+    <button class="menu-item"><i class="menu-icon">🔒</i> Alterar Senha</button>
+  </nav>
+
+  <button onclick="logout()" class="btn-logout">Sair da Conta</button>
+</main>
 
   <div class="rodape" id="rodape"></div>
 
