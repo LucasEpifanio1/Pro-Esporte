@@ -1,5 +1,5 @@
 function cardEventos() {
-  window.location.href = "/front_end/eventos.html";
+  window.location.href = 'eventos.html';
 }
 function cardTreinos() {
   const fichaTreino = localStorage.getItem('fichaTreino');
