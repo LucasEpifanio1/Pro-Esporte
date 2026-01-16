@@ -12,6 +12,7 @@ class cidadao extends Model {
         nome: DataTypes.STRING(100),
         email: DataTypes.STRING(100),
         senha: DataTypes.STRING(100),
+        respondeuQuestionario: DataTypes.BOOLEAN
       },
       {
         sequelize,

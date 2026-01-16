@@ -8,7 +8,7 @@ function rodape() {
             <img src="img/calendar.png" class="icon">
             <p>Eventos</p>
         </div>
-        <div class="item">
+        <div class="item" onclick="irTreinos()">
             <img src="img/train.png" class="icon">
             <p>Treinos</p>
         </div>
@@ -34,4 +34,13 @@ function irEventos() {
 
 function irPerfil() {
   window.location.href = 'perfil.html';
+}
+
+function irTreinos() {
+  const usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
+  if (usuario.respondeuQuestionario) {
+    window.location.href = 'dashboard.html'; // Tela do dashboard
+  } else {
+    window.location.href = 'questionarioTreino.html'; // Tela das perguntas
+  }
 }

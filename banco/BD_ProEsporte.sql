@@ -126,4 +126,5 @@ CREATE TABLE if not exists Registro_Treino (
     FOREIGN KEY (id_exercicio) REFERENCES Exercicio(id_exercicio)
 );
 
+ALTER TABLE Cidadao ADD COLUMN respondeuQuestionario BOOLEAN DEFAULT FALSE;
 show tables;

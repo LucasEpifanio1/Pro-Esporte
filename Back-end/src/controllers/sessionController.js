@@ -17,7 +17,8 @@ module.exports = {
       payloadUsuario = {
         identificador: usuario.ID_Cidadao,
         nome: usuario.nome,
-        tipo: tipoUsuario
+        tipo: tipoUsuario,
+        respondeuQuestionario: usuario.respondeuQuestionario
       };
     }
 

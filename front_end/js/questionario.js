@@ -30,26 +30,50 @@ const questions = [
     ]
   },
   {
-    id: "flexoes",
-    title: "Qual o máximo de flexões você consegue fazer?",
+    id: "flexaoInclinada",
+    title: "Qual o máximo de flexões inclinadas você consegue fazer?",
     type: "options",
     options: ["Não consigo fazer", "1-5", "5-10", "10-20", "+20"]
   },
   {
-    id: "agachamentos",
-    title: "Quantos agachamentos consegue fazer?",
+    id: "flexaoPadrao",
+    title: "Qual o máximo de flexões padrão você consegue fazer?",
     type: "options",
     options: ["Não consigo fazer", "1-5", "5-10", "10-20", "+20"]
   },
   {
-    id: "barra-a",
-    title: "Quantas Barras australianas consegue fazer?",
+    id: "barraAustraliana",
+    title: "Quantas Barras australianas você consegue fazer?",
     type: "options",
     options: ["Não consigo fazer", "1-5", "5-10", "10-20", "+20"]
   },
   {
-    id: "barra-f",
-    title: "Quantas Barras fixas consegue fazer?",
+    id: "barraFixa",
+    title: "Quantas Barras fixas você consegue fazer?",
+    type: "options",
+    options: ["Não consigo fazer", "1-5", "5-10", "10-20", "+20"]
+  },
+  {
+    id: "agachamentoSofa",
+    title: "Qual o máximo de agachamentos no sofá você consegue fazer?",
+    type: "options",
+    options: ["Não consigo fazer", "1-5", "5-10", "10-20", "+20"]
+  },
+  {
+    id: "agachamentoPadrao",
+    title: "Quantos agachamentos você consegue fazer?",
+    type: "options",
+    options: ["Não consigo fazer", "1-5", "5-10", "10-20", "+20"]
+  },
+  {
+    id: "prancha",
+    title: "Quantos segundos de prancha você consegue fazer?",
+    type: "options",
+    options: ["Não consigo fazer", "10-20", "21-30", "31-60", "+60"]
+  },
+  {
+    id: "abdominalSupra",
+    title: "Quantos abdominais você consegue fazer?",
     type: "options",
     options: ["Não consigo fazer", "1-5", "5-10", "10-20", "+20"]
   },
@@ -57,7 +81,7 @@ const questions = [
     id: "recorrencia",
     title: "Quantos dias você consegue treinar considerando sua semana mais ocupada?",
     type: "options",
-    options: ["1", "2", "3", "4", "5", "6", "7"]
+    options: ["1", "2", "3", "4", "5", "6"]
   },
   {
     id: "tempo",
@@ -86,7 +110,7 @@ const questions = [
       "Barra paralela",
       "Equipamentos da praça da prefeitura",
       "Argolas Olímpicas",
-      "Não tenho equipamentos"
+      "Chão/parede/banco etc"
     ],
     minSelected: 1
   }
@@ -411,7 +435,7 @@ function renderMultiSelectQuestion(q) {
   });
 }
 
-nextBtn.addEventListener("click", () => {
+nextBtn.addEventListener("click", async () => {
   const isLast = currentIndex === questions.length - 1;
 
   if (!isLast) {
@@ -421,7 +445,77 @@ nextBtn.addEventListener("click", () => {
   }
 
   persist();
-  window.location.href = "dashboard.html";
+  
+  // Integração com o Back-end para gerar o treino
+  try {
+    nextBtn.disabled = true;
+    nextBtn.textContent = "Gerando Treino...";
+
+    const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+    
+    // Mapeamento das respostas para o formato esperado pelo algoritmo KNN do back-end
+    const formatarOpcao = (val) => {
+      if (!val || val === "Não consigo fazer") return 0;
+      if (val === "1-5") return 3;
+      if (val === "5-10") return 8;
+      if (val === "10-20") return 15;
+      if (val === "+20") return 25;
+      if (val === "10-20" && answers.prancha === val) return 15; // Caso especial prancha
+      if (val === "21-30") return 25;
+      if (val === "31-60") return 45;
+      if (val === "+60") return 70;
+      return parseInt(val) || 0;
+    };
+
+    const dadosParaEnvio = {
+      respostas: {
+        flexaoInclinada: formatarOpcao(answers.flexaoInclinada),
+        flexaoPadrao: formatarOpcao(answers.flexaoPadrao),
+        barraAustraliana: formatarOpcao(answers.barraAustraliana),
+        barraFixa: formatarOpcao(answers.barraFixa),
+        agachamentoSofa: formatarOpcao(answers.agachamentoSofa),
+        agachamentoPadrao: formatarOpcao(answers.agachamentoPadrao),
+        prancha: formatarOpcao(answers.prancha),
+        abdominalSupra: formatarOpcao(answers.abdominalSupra)
+      },
+      objetivo: answers.objetivo || "Sair do sedentarismo",
+      diasDisponiveis: parseInt(answers.recorrencia) || 3,
+      equipamentos: answers.equipamentos || []
+    };
+
+    const response = await fetch('http://localhost:3333/treino/gerar', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dadosParaEnvio)
+    });
+
+    if (response.ok) {
+      const fichaTreino = await response.json();
+      localStorage.setItem('fichaTreino', JSON.stringify(fichaTreino));
+      
+      // Tentar salvar no banco se o usuário estiver logado
+      if (usuarioLogado && usuarioLogado.identificador) {
+        try {
+          await fetch(`http://localhost:3333/treino/salvar/${usuarioLogado.identificador}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ fichaTreino })
+          });
+        } catch (e) { console.warn("Não foi possível salvar o treino no banco de dados."); }
+      }
+      
+      window.location.href = "rotina.html";
+    } else {
+      alert("Erro ao gerar treino. Tente novamente.");
+      nextBtn.disabled = false;
+      nextBtn.textContent = "Finalizar";
+    }
+  } catch (error) {
+    console.error("Erro na requisição:", error);
+    alert("Erro ao conectar com o servidor.");
+    nextBtn.disabled = false;
+    nextBtn.textContent = "Finalizar";
+  }
 });
 
 if (backBtn) {
