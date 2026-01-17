@@ -171,73 +171,36 @@ select * from exercicio where grupo_muscular = 'Abdômen';
 INSERT INTO exercicio_equipamento (id_exercicio, id_equipamento) VALUES
 
 -- EMPURRAR
-(101, 6), -- Flexão na parede
-(102, 6), -- Flexão inclinada
-(102, 3), -- Flexão inclinada (paraletes/banco)
-(103, 3), -- Tríceps banco
-(104, 6), -- Flexão Padrão
-(105, 6), -- Flexão Aberta
-(106, 2), -- Dip nas paralelas
-(106, 4), -- Dip nas argolas
-(107, 3), -- Extensão de tríceps
-(107, 6), -- Extensão de tríceps
-(108, 6), -- Flexão Declinada
-(109, 6), -- Flexão Diamante
-(110, 3), -- Flexão Pike
-(110, 6), -- Flexão Pike
-(111, 6), -- Flexão Arqueiro
-(112, 6), -- Pseudo Flexão na prancha
-(113, 6), -- handstand no chão/parede
-(113, 5), -- Handstand em estrutura
-(114, 6), -- Flexão russa
-(115, 6), -- tuck planche
-(115, 3), -- Tuck planche
-(115, 2), -- tuck planche
-(115, 4), -- tuck planche
-(116, 2), -- tuck planche avançada
-(116, 3), -- tuck planche avançada
-(116, 4), -- tuck planche avançada
-(116, 6), -- tuck planche avançada
-(117, 2), -- One leg planche
-(117, 3), -- One leg planche
-(117, 4), -- One leg planche
-(117, 6), -- One leg planche
-(118, 2), -- Flexão na handstand
-(118, 3), -- Flexão na handstand
-(118, 4), -- Flexão na handstand
-(118, 6), -- Flexão na handstand
-(119, 2), -- straddle planche
-(119, 3), -- straddle planche
-(119, 4), -- straddle planche
-(119, 6), -- straddle planche
-(120, 2), -- Full planche
-(120, 3), -- Full planche
-(120, 4), -- Full planche
-(120, 6), -- Full planche
-(121, 6), -- Maltesa no chão
-(121, 4), -- Maltesa nas argolas
+(101, 6), /* Flexão na parede */     (112, 6), /* Pseudo Flexão na prancha*/    (117, 6), /* One leg planche*/
+(102, 6), /* Flexão inclinada */     (113, 6), /* handstand no chão/parede*/    (118, 2), /* Flexão na handstand*/
+(102, 3), /* Flexão inclinada */     (113, 5), /* Handstand em estrutura*/      (118, 3), /* Flexão na handstand*/
+(103, 3), /* Tríceps banco*/         (114, 6), /* Flexão russa*/                (118, 4), /* Flexão na handstand*/
+(104, 6), /* Flexão Padrão*/         (115, 6), /* tuck planche*/                (118, 6), /* Flexão na handstand*/
+(105, 6), /* Flexão Aberta*/         (115, 3), /* Tuck planche*/                (119, 2), /* straddle planche*/
+(106, 2), /* Dip nas paralelas*/     (115, 2), /* tuck planche*/                (119, 3), /* straddle planche*/
+(106, 4), /* Dip nas argolas*/       (115, 4), /* tuck planche*/                (119, 4), /* straddle planche*/
+(107, 3), /* Extensão de tríceps*/   (116, 2), /* tuck planche avançada*/       (119, 6), /* straddle planche*/
+(107, 6), /* Extensão de tríceps*/   (116, 3), /* tuck planche avançada*/       (120, 2), /* Full planche*/
+(108, 6), /* Flexão Declinada*/      (116, 4), /* tuck planche avançada*/       (120, 3), /* Full planche*/
+(109, 6), /* Flexão Diamante*/       (116, 6), /* tuck planche avançada*/       (120, 4), /* Full planche*/
+(110, 3), /* Flexão Pike*/           (117, 2), /* One leg planche*/             (120, 6), /* Full planche*/
+(110, 6), /* Flexão Pike*/           (117, 3), /* One leg planche*/             (121, 6), /* Maltesa no chão*/
+(111, 6), /* Flexão Arqueiro*/       (117, 4), /* One leg planche*/             (121, 4), /* Maltesa nas argolas*/
+
+
 
 -- PUXAR
-(201, 1), -- Pendurada passiva
-(201, 4), -- Pendurada nas argolas
-(202, 5), -- Remada com toalha
-(204, 1), -- Ativação escapular
-(205, 1), -- Barra australiana
-(205, 5), -- Barra australiana em praça
-(206, 1), -- Barra fixa
-(206, 4), -- Barra nas argolas
-(207, 1), -- Skin the cat
-(207, 4), 
-(208, 1), -- Back lever progressões
-(208, 4),
-(209, 1), -- Front lever progressões
-(209, 4),
-(210, 1), -- Back lever
-(210, 4),
-(211, 1), -- Front lever
-(211, 4),
-(212, 4), -- Victorian (argolas)
-(212, 2), -- Victorian (paralelas)
+(201, 1), /* Pendurada passiva         */   (208, 1), -- Back lever
+(201, 4), /* Pendurada nas argolas     */   (208, 4), -- Back lever
+(202, 5), /* Remada com toalha         */   (209, 1), -- Front lever 
+(204, 1), /* Ativação escapular        */   (209, 4), -- Front lever 
+(205, 1), /* Barra australiana         */   (210, 1), -- Back lever
+(205, 5), /* Barra australiana em praça*/   (210, 4), -- Back lever
+(206, 1), /* Barra fixa                */   (211, 1), -- Front lever
+(206, 4), /* Barra nas argolas         */   (211, 4), -- Front lever
+(207, 1), /* Skin the cat              */   (212, 4), -- Victorian (argolas)
+(207, 4), /* Skin the cat              */   (212, 2), -- Victorian (paralelas)
+
 
 -- PERNAS
 (300, 6),
@@ -257,47 +220,43 @@ INSERT INTO exercicio_equipamento (id_exercicio, id_equipamento) VALUES
 (314, 6),
 
 -- ABDÔMEN
-(400, 6),
-(401, 6),
-(402, 6),
-(403, 6),
-(404, 6),
-(405, 6),
-(406, 6),
-(407, 6),
-(408, 6),
-(409, 6),
-(410, 1), -- Elevação de pernas na barra
-(410, 4),
-(411, 1),
-(411, 4),
-(412, 3), -- Tuck L-sit
-(412, 4),
-(412, 6),
-(413, 6),
-(414, 6),
-(414, 3), -- One leg L-sit
-(414, 4),
-(415, 3), -- L-sit
-(415, 4),
-(415, 6),
-(416, 6),
-(416, 5), -- Dragon flag
-(417, 5),
-(417, 6),
-(418, 6),
-(418, 5),
-(419, 5),
-(419, 6),
-(420, 6),
-(420, 5),
-(421, 5),
-(421, 6),
-(422, 6),
-(423, 6),
-(423, 5),
-(424, 4),
-(424, 3), -- V-sit
-(424, 6);
+(400, 6), (415, 3),
+(401, 6), (415, 4),
+(402, 6), (415, 6),
+(403, 6), (416, 6),
+(404, 6), (416, 5),
+(405, 6), (417, 5),
+(406, 6), (417, 6),
+(407, 6), (418, 6),
+(408, 6), (418, 5),
+(409, 6), (419, 5),
+(410, 1), (419, 6),
+(410, 4), (420, 6),
+(411, 1), (420, 5),
+(411, 4), (421, 5),
+(412, 3), (421, 6),
+(412, 4), (422, 6),
+(412, 6), (423, 6),
+(413, 6), (423, 5),
+(414, 6), (424, 4),
+(414, 3), (424, 3),
+(414, 4), (424, 6);
 
 select * from exercicio_equipamento;
+
+-- Inserindo Equipamentos do Cidadão (Chão e Barra Fixa para começar)
+INSERT INTO Cidadao_Equipamento (id_cidadao, id_equipamento) VALUES
+(1111111, 6), -- Chão
+(1111111, 1); -- Barra Fixa
+
+-- Criando uma Rotina de Treino (Foco em Força conforme solicitado)
+INSERT INTO Rotina_Treino (id_rotina_treino, descricao, nivel, id_cidadao, data_criacao)
+VALUES (1, 'Treino A - Calistenia Força', 3, 1111111, NOW());
+
+-- Selecionando os exercícios para essa rotina (Seleciona)
+-- Exercícios escolhidos para força: Flexão Padrão, Barra Fixa, Agachamento e Prancha
+INSERT INTO Seleciona (id_rotina_treino, id_exercicio, series, repeticoes_ou_tempo, ordem_execucao) VALUES
+(1, 104, 4, 10, 1), -- Flexão Padrão
+(1, 206, 4, 6, 2),  -- Barra Fixa (Alta intensidade)
+(1, 302, 4, 15, 3), -- Agachamento Padrão
+(1, 407, 3, 45, 4); -- Prancha Alta (45 segundos)
