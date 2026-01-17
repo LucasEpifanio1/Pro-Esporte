@@ -110,7 +110,7 @@ form.addEventListener("submit", async (e) => {
   if (tipoL === "Entrar") {
     // Lógica de Login
     try {
-      const response = await fetch(`http://localhost:3333/login`, {
+      const response = await fetch(`${API_URL}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: data.email, senha: data.senha }),
@@ -133,7 +133,7 @@ form.addEventListener("submit", async (e) => {
     // Lógica de Cadastro
     let rota = tipo === "servidorPublico" ? "servidorPublico" : tipo;
     try {
-      const response = await fetch(`http://localhost:3333/${rota}`, {
+      const response = await fetch(`${API_URL}/${rota}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const senha = document.getElementById('senha').value;
 
     try {
-      const response = await fetch('http://localhost:3333/cidadao', {
+      const response = await fetch(`${API_URL}/cidadao`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

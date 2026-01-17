@@ -27,7 +27,7 @@ document.getElementById('formCriarEvento').addEventListener('submit', async (e) 
   }
 
   try {
-    const response = await fetch('http://localhost:3333/evento', {
+    const response = await fetch(`${API_URL}/evento`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

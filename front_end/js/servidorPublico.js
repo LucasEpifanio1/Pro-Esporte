@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     try {
-      const response = await fetch('http://localhost:3333/servidorPublico', {
+      const response = await fetch(`${API_URL}/servidorPublico`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

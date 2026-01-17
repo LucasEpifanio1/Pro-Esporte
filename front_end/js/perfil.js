@@ -10,8 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('nome').textContent = usuario.nome;
     document.getElementById('tipo').textContent = usuario.tipo.charAt(0).toUpperCase() + usuario.tipo.slice(1);
     
-    // Como o login retorna apenas o básico, o email pode não estar no localStorage
-    // Mas podemos mostrar o identificador (CNPJ/CPF/ID)
     const emailSalvo = localStorage.getItem("email do criador de evento");
     if (emailSalvo) {
         document.getElementById('email').textContent = emailSalvo;

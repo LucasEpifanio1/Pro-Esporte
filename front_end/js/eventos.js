@@ -15,7 +15,7 @@ async function carregarEventos() {
   const params = new URLSearchParams({ modalidade, turno, local });
 
   try {
-    const response = await fetch(`http://localhost:3333/eventos?${params}`);
+    const response = await fetch(`${API_URL}/eventos?${params}`);
     const eventos = await response.json();
 
     eventosContainer.innerHTML = '';
@@ -49,7 +49,7 @@ async function carregarEventos() {
 
 async function verDetalhes(id) {
   try {
-    const response = await fetch(`http://localhost:3333/eventos/${id}`);
+    const response = await fetch(`${API_URL}/eventos/${id}`);
     const evento = await response.json();
     
     const criador = evento.empresa || evento.servidor;
@@ -81,7 +81,7 @@ async function participar(idEvento) {
   }
 
   try {
-    const response = await fetch('http://localhost:3333/participar', {
+    const response = await fetch(`${API_URL}/participar`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

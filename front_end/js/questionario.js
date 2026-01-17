@@ -483,7 +483,7 @@ nextBtn.addEventListener("click", async () => {
       equipamentos: answers.equipamentos || []
     };
 
-    const response = await fetch('http://localhost:3333/treino/gerar', {
+    const response = await fetch(`${API_URL}/treino/gerar`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(dadosParaEnvio)
@@ -496,7 +496,7 @@ nextBtn.addEventListener("click", async () => {
       // Tentar salvar no banco se o usuário estiver logado
       if (usuarioLogado && usuarioLogado.identificador) {
         try {
-          await fetch(`http://localhost:3333/treino/salvar/${usuarioLogado.identificador}`, {
+          await fetch(`${API_URL}/treino/salvar/${usuarioLogado.identificador}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ fichaTreino })
