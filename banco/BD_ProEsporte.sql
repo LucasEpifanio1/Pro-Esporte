@@ -1,6 +1,26 @@
 create database if not exists ProEsporte;
 use ProEsporte;
 
+CREATE TABLE IF NOT EXISTS empresa (
+  CNPJ CHAR(14) NOT NULL,
+  nome VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  senha VARCHAR(100) NOT NULL,
+  createdAt DATETIME NOT NULL,
+  updatedAt DATETIME NOT NULL,
+  PRIMARY KEY (CNPJ)
+);
+
+CREATE TABLE IF NOT EXISTS servidor_publico (
+  CPF CHAR(11) NOT NULL,
+  nome VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE, -- Unique conforme a migration
+  senha VARCHAR(100) NOT NULL,
+  createdAt DATETIME NOT NULL,
+  updatedAt DATETIME NOT NULL,
+  PRIMARY KEY (CPF)
+);
+
 CREATE TABLE IF NOT EXISTS evento (
   ID_Evento INT PRIMARY KEY,
   titulo VARCHAR(255),
@@ -31,9 +51,6 @@ ADD CONSTRAINT fk_evento_servidor
   FOREIGN KEY (FK_Servidor) REFERENCES servidor_publico(CPF) 
   ON DELETE SET NULL ON UPDATE CASCADE;
 
--- 3. Verificar se as colunas foram criadas corretamente
-DESCRIBE evento;
-
 create table if not exists Cidadao(
 	ID_Cidadao int primary key,
     nome varchar(100),
@@ -43,6 +60,11 @@ create table if not exists Cidadao(
     Altura float,
     Objetivo varchar(255)
 );
+
+ALTER TABLE Cidadao ADD COLUMN respondeuQuestionario BOOLEAN DEFAULT FALSE;
+
+-- 3. Verificar se as colunas foram criadas corretamente
+DESCRIBE evento;
 
 create table if not exists Participa(
 	ID_Cidadao int,
@@ -126,5 +148,4 @@ CREATE TABLE if not exists Registro_Treino (
     FOREIGN KEY (id_exercicio) REFERENCES Exercicio(id_exercicio)
 );
 
-ALTER TABLE Cidadao ADD COLUMN respondeuQuestionario BOOLEAN DEFAULT FALSE;
 show tables;
