@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS evento (
   createdAt DATETIME,
   updatedAt DATETIME
 );
-
+--- EVENTOS ---
 -- 1. Adicionar as colunas de chave estrangeira
 ALTER TABLE evento 
 ADD COLUMN FK_Empresa CHAR(14) NULL,
@@ -74,6 +74,7 @@ create table if not exists Participa(
     foreign key (ID_Evento) references Evento(ID_Evento)
 );
 
+--- MÓDULO DE TREINOS ---
 -- 1. Exercício (A escada de progressão)
 CREATE TABLE if not exists Exercicio (
     id_exercicio INT PRIMARY KEY,
