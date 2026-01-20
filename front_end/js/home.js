@@ -4,8 +4,8 @@ function cardEventos() {
 function cardTreinos() {
   const fichaTreino = localStorage.getItem('fichaTreino');
   if (fichaTreino) {
-    window.location.href = '/front_end/dashboard.html'; // Tela do dashboard
+    window.location.href = 'dashboard.html'; // Tela do dashboard
   } else {
-    window.location.href = '/front_end/questionarioTreino.html'; // Tela das perguntas
+    window.location.href = 'questionarioTreino.html'; // Tela das perguntas
   }
 }
