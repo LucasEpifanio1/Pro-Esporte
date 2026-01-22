@@ -14,6 +14,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+
 }
 
 /* container principal */
@@ -23,6 +24,7 @@ body {
     align-items: flex-start;
     gap: 20px;
 }
+
 
 /* link voltar */
 .voltar {
@@ -47,6 +49,7 @@ body {
     align-items: center;
     width: 460px;
 }
+
 
 /* cabeçalho */
 h1{
@@ -203,7 +206,7 @@ button:hover {
 
 .linha-diagonal {
     position: absolute;
-    width: 6px;            
+    width: 12px;            
     height: 140%;          
     background-color: #101828;
     top: -20%;             /* posicionamento vertical */
@@ -211,4 +214,24 @@ button:hover {
     transform: rotate(43deg); /* ângulo */        
 }
 
+.opcoes_login{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 15px;
+    border:2px solid black;
+    width: 180px;
+    padding: 4px;
+    background-color: #1F2937;
+}
 
+#botao_Entrar{
+    background-color: #FBBF24;
+    border-radius: 15px;
+    padding: 7px;
+}
+
+#botao_Cadastro{
+    background-color:#1F2937;
+    border-radius: 15px;
+    padding: 7px;
+}

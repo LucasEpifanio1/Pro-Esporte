@@ -1,14 +1,14 @@
 // Importa o model PessoaFisica, que representa a tabela 'PessoaFisicas' no banco de dados
-const servidor = require('../models/servidorPublico');
+const servidor = require("../models/servidorPublico");
 
 module.exports = {
   // Função para listar todas as pessoas
-  async index(req, res) {
-    // Busca todas as pessoas no banco usando o model
-    const pessoas = await servidor.findAll();
-    // Retorna a lista de pessoas em formato JSON para o usuário
-    res.json(pessoas);
-  },
+  // async index(req, res) {
+  //   // Busca todas as pessoas no banco usando o model
+  //   const pessoas = await servidor.findAll();
+  //   // Retorna a lista de pessoas em formato JSON para o usuário
+  //   res.json(pessoas);
+  // }, por hora, comentado pois não vimos necessidade disso
 
   // Função para criar uma nova pessoa
   async store(req, res) {

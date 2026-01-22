@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolução</title>
+    <link rel="stylesheet" href="./css/evolucao.css" />
+      <link rel="stylesheet" href="./css/rodape.css">
+</head>
+<body>
+<main class="container">
+
+    <a href="#" class="voltar" onclick="history.back()">← Voltar</a>
+    <p class="amarelo">Evolução</p>
+
+    <div class="card-objetivo">
+        <div class="card-header">
+            <img src="img/iconObjetivo.png" class="info-icon"> 
+            <span class="amarelo">Objetivo Atual</span>
+        </div>
+        <span id="objetivo"></span>
+    </div>
+
+    <div class="cards-evolucao">
+        <div class="card-pequeno">
+            <div class="titulo-card">
+            <img
+            src="./img/calendar.png"
+            alt="Ícone da opção Evolução"
+            class="icon"/>
+            <p>Dias treinados</p>
+            </div>
+            <span class="amarelo" id="diasTreinados" "></span>
+        </div>
+        <div class="card-pequeno">
+            <div class="titulo-card">
+            <img
+            src="./img/iconSequencia.png"
+            alt="Ícone da opção Evolução"
+            class="icon"/>
+            <p> Sequência</p>
+            </div>
+            <span class="amarelo" id="sequencia"></span>
+        </div>
+    </div>
+
+    <div class="subtitulo">
+    <img
+    src="./img/iconEvolucao.png"
+    alt="Ícone da opção Evolução"
+    class="icon"/>
+    <p class="amarelo"> Progresso dos Exercícios</p>
+    </div>
+    <div class="lista-exercicios" id="lista-exercicios"></div>
+
+    <button  onclick="atualizarProgresso ">Atualizar Progresso</button>
+</main>
+<footer>
+    <div class="rodape" id="rodape"></div>
+</footer>
+
+<script src="js/evolucao.js"></script>
+<script src="js/rodape.js"></script>
+</body>
+</html>

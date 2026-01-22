@@ -35,7 +35,7 @@ async function carregarEventos() {
           <div class="info-item">🎟️ ${evento.vagas} vagas</div>
         </div>
         <div class="botoes-card">
-          <button onclick="verDetalhes(${evento.ID_Evento})">Ver detalhes</button>
+          <button onclick="abrirModal(${evento.ID_Evento})">Ver detalhes</button>
           ${usuarioLogado && usuarioLogado.tipo === 'cidadao' ? 
             `<button class="btn-participar" onclick="participar(${evento.ID_Evento})">Participar</button>` : ''}
         </div>
@@ -46,6 +46,61 @@ async function carregarEventos() {
     console.error("Erro ao carregar eventos:", error);
   }
 }
+
+async function abrirModal(id) {
+  document.getElementById("modal").style.display = "block";
+  const card = document.getElementById("card");
+
+  try {
+    const response = await fetch(`${API_URL}/eventos/${id}`);
+    if (!response.ok) throw new Error("Erro na API");
+
+    const evento = await response.json();
+
+    const criador = evento.empresa || evento.servidor;
+
+    card.innerHTML = `
+      <div class="evento-detalhes">
+
+        ${evento.imagem ? `
+          <img 
+            src="${evento.imagem}" 
+            alt="Imagem do evento" 
+            class="evento-img"
+            onerror="this.style.display='none'"
+          >
+        ` : ''}
+
+        <p><strong>Título:</strong> ${evento.titulo}</p>
+        <p><strong>Modalidade:</strong> ${evento.modalidade}</p>
+        <p><strong>Local:</strong> ${evento.local}</p>
+        <p><strong>Data:</strong> ${formatarData(evento.data)} às ${evento.horario}</p>
+        <p><strong>Vagas:</strong> ${evento.vagas}</p>
+        <p><strong>Descrição:</strong> ${evento.descricao}</p>
+
+        <hr>
+
+        <h4>Organizador</h4>
+        ${
+          criador ? `
+            <p><strong>Nome:</strong> ${criador.nome}</p>
+            <p><strong>Email:</strong> ${criador.email}</p>
+            ${criador.cnpj ? `<p><strong>CNPJ:</strong> ${criador.cnpj}</p>` : ''}
+          `
+          : `<p>Organizador não informado</p>`
+        }
+      </div>
+    `;
+
+  } catch (error) {
+    console.error(error);
+    alert("Erro ao carregar detalhes.");
+  }
+}
+async function fecharModal() {
+  document.getElementById("modal").style.display = "none";
+}
+
 
 async function verDetalhes(id) {
   try {
@@ -110,6 +165,3 @@ document.getElementById('filtroTurnos').addEventListener('change', carregarEvent
 document.getElementById('filtroLocais').addEventListener('change', carregarEventos);
 
 carregarEventos();
-
-
-

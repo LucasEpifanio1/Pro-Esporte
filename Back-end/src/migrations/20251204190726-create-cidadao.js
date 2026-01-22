@@ -5,7 +5,7 @@ module.exports = {
     await queryInterface.createTable('cidadao', {
       id: {
         type: Sequelize.INTEGER,
-        autoIncrement: true,
+        autoIncrement: false,
         allowNull: false,
         primaryKey: true
       },

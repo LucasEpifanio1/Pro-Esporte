@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard de Treinos</title>
+    <link rel="stylesheet" href="./css/dashboard.css" />
+    <link rel="stylesheet" href="./css/rodape.css">
+
+  </head>
+  <body>
+    <main class="container">
+      <section class="blocos">
+        <h1>Dashboard de Treinos</h1>
+        <p class="subtitulo">Seu espaço para evolução física</p>
+
+        <div class="itensIndex">
+          <div class="card" id="rotina" onclick="opcaoMinhaRotina()">
+            <div class="icon-container">
+              <img
+                src="./img/train.png"
+                alt="Ícone da opção Minha Rotina"
+                class="icon"
+              />
+            </div>
+            <div class="cardDescricao">
+              <h3 class="tituloCard">Minha Rotina</h3>
+              <p class="subtitulo">
+                Acesse sua rotina de treinos personalizada
+              </p>
+            </div>
+          </div>
+
+          <div class="card" id="evolucao" onclick="opcaoEvolucao()">
+            <div class="icon-container">
+              <img
+                src="./img/iconEvolucao.png"
+                alt="Ícone da opção Evolução"
+                class="icon"
+              />
+            </div>
+            <div class="cardDescricao">
+              <h3 class="tituloCard">Evolução</h3>
+              <p class="subtitulo">Acompanhe seu progresso e objetivos</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+    <div class="rodape" id="rodape"></div>
+    </footer>
+
+    <script src="js/rodape.js"></script>
+    <script src="js/dashboard.js"></script>
+    
+  </body>
+</html>

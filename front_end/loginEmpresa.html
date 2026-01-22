@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Empresa</title>
-    <link rel="stylesheet" href="/front_end/css/estilo.css" />
+    <link rel="stylesheet" href="./css/estilo.css" />
     <link rel="icon" type="image/png" href="img/Logo_sem_escrita.png" />
   </head>
   <body>
@@ -15,26 +15,37 @@
         <h1>ProEsporte</h1>
         <p class="subtitulo">Login da Empresa</p>
 
-        <form action="http://localhost:3333/empresa" method="POST">
+        <form id="formEmpresa">
           <div class="campo">
-            <label for="nome">nome</label>
+            <label for="nome">Nome</label>
             <input type="text" id="nome" name="nome" required />
           </div>
+        
           <div class="campo">
-            <label for="email">email</label>
+            <label for="email">Email</label>
             <input type="email" id="email" name="email" required />
           </div>
+        
           <div class="campo">
-            <label for="cpf">CNPJ</label>
-            <input type="text" id="cnpj" name="CNPJ" />
+            <label for="cnpj">CNPJ</label>
+            <input type="text" id="cnpj" name="cnpj" required />
           </div>
+        
           <div class="campo">
-            <label for="senha">senha</label>
+            <label for="telefone">Telefone</label>
+            <input type="text" id="telefone" name="telefone" required />
+          </div>
+        
+          <div class="campo">
+            <label for="senha">Senha</label>
             <input type="password" id="senha" name="senha" required />
           </div>
+        
           <button type="submit">Criar Conta</button>
         </form>
       </section>
     </main>
+    <script src="js/config.js"></script>
+    <script src="js/empresa.js"></script>
   </body>
 </html>

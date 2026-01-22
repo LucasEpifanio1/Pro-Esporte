@@ -1,7 +1,25 @@
+function botao_Entrar(){
+  const botao_entrar = document.getElementById("botao_Entrar")
+  const botao_cad = document.getElementById("botao_Cadastro")
+  botao_entrar.style.backgroundColor = "#FBBF24";
+  botao_cad.style.backgroundColor = "#1F2937"
+  localStorage.setItem("tipoL", "Entrar");
+  window.location.reload();
+}
+
+function botao_Cadastro(){
+  const botao_entrar = document.getElementById("botao_Entrar")
+  const botao_cad = document.getElementById("botao_Cadastro")
+  botao_entrar.style.backgroundColor = "#1F2937";
+  botao_cad.style.backgroundColor = "#FBBF24"
+  localStorage.setItem("tipoL", "Cadastro");
+  window.location.reload();
+}
+
 function nomeUsuario() {
   campo.innerHTML += `<div class="campo">
             <label for="nome">Nome Completo</label>
-            <input type="text" id="nome" name="usuario" placeholder="Ex: João Silva" required>
+            <input type="text" id="nome" name="nome" placeholder="Ex: João Silva" required>
         </div>`;
 }
 
@@ -36,7 +54,7 @@ function senha() {
 function nomeEmpresa() {
   campo.innerHTML += `<div class="campo">
             <label for="nomeEmpresa">Nome da Empresa</label>
-            <input type="text" id="nomeEmpresa" name="nomeEmpresa" placeholder="Ex: Prefeitura Municipal" required>
+            <input type="text" id="nomeEmpresa" name="nome" placeholder="Ex: Prefeitura Municipal" required>
         </div>`;
 }
 
@@ -49,71 +67,89 @@ function cnpj() {
 
 const tipo = localStorage.getItem("tipo");
 const campo = document.getElementById("areaCampos");
+const tipoL = localStorage.getItem("tipoL") || "Entrar";
 campo.innerHTML = "";
 
-if (tipo === "cidadao") {
-  nomeUsuario();
+const botao_entrar = document.getElementById("botao_Entrar")
+const botao_cad = document.getElementById("botao_Cadastro")
+const botao_login = document.getElementById("botao_login")
+
+if (tipoL === "Entrar") {
+  botao_entrar.style.backgroundColor = "#FBBF24";
+  botao_cad.style.backgroundColor = "#1F2937";
+  botao_login.innerText = "Entrar";
+  email();
+  senha();
+} else {
+  botao_entrar.style.backgroundColor = "#1F2937";
+  botao_cad.style.backgroundColor = "#FBBF24";
+  botao_login.innerText = "Criar conta";
+  
+  if (tipo === "cidadao") {
+    nomeUsuario();
+  } else if (tipo === "empresa") {
+    telefone();
+    cnpj();
+    nomeEmpresa();
+  } else if (tipo === "servidorPublico") {
+    telefone();
+    cpf();
+    nomeUsuario();
+  }
   email();
   senha();
 }
 
-if (tipo === "empresa") {
-  nomeEmpresa();
-  email();
-  telefone();
-  cnpj();
-  senha();
-}
-
-if (tipo === "funcionario") {
-  nomeUsuario();
-  email();
-  telefone();
-  cpf();
-  senha();
-}
-
-//(22/11) daqui para baixo: Fiz isso para poder me retornar uma mensagem dependendo do que acontecer e as demais mudanças estão comentadas.
 const form = document.querySelector("form");
-
 form.addEventListener("submit", async (e) => {
-  e.preventDefault(); // Impede o recarregamento da página
+  e.preventDefault();
 
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
 
-  // A rota de destino é determinada pelo tipo de usuário
-  let rota = "";
+  if (tipoL === "Entrar") {
+    // Lógica de Login
+    try {
+      const response = await fetch(`${API_URL}/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: data.email, senha: data.senha }),
+      });
 
-  if (tipo === "cidadao") {
-    rota = "cidadao";
-  } else if (tipo === "empresa") {
-    rota = "empresa";
-  } else if (tipo === "funcionarioPublico") {
-    rota = "servidorPublico";
-  } else {
-    console.error("Tipo de usuário não reconhecido.");
-    return; // Sai da função se o tipo não for válido
-  }
-
-  try {
-    const response = await fetch(`http://localhost:3333/${rota}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-
-    if (response.ok) {
-      alert("Cadastro realizado com sucesso!");
-      window.location.href = "home.html"; // Redireciona para a home
-    } else {
-      const errorData = await response.json();
-      alert(`Falha no cadastro: ${errorData.message || response.statusText}`);
+      if (response.ok) {
+        const user = await response.json();
+        localStorage.setItem("usuarioLogado", JSON.stringify(user));
+        alert(`Bem-vindo, ${user.nome}!`);
+        window.location.href = "home.html";
+      } else {
+        const errorData = await response.json();
+        alert(errorData.error || "Email ou senha incorretos.");
+      }
+    } catch (error) {
+      console.error("Erro no login:", error);
+      alert("Erro ao conectar com o servidor.");
     }
-  } catch (error) {
-    console.error("Erro de conexão:", error);
-    alert("Erro ao tentar conectar com o servidor.");
+  } else {
+    // Lógica de Cadastro
+    let rota = tipo === "servidorPublico" ? "servidorPublico" : tipo;
+    try {
+      const response = await fetch(`${API_URL}/${rota}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        alert("Cadastro realizado com sucesso! Agora faça login.");
+        localStorage.setItem("tipoL", "Entrar");
+        window.location.reload();
+      } else {
+        const errorData = await response.json();
+        alert(`Falha no cadastro: ${errorData.error || response.statusText}`);
+      }
+    } catch (error) {
+      console.error("Erro no cadastro:", error);
+      alert("Erro ao conectar com o servidor.");
+    }
   }
 });
