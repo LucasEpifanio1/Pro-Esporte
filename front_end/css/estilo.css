@@ -235,3 +235,26 @@ button:hover {
     border-radius: 15px;
     padding: 7px;
 }
+
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  background: #2b2b2b;        /* cinza escuro */
+  color: #f1f1f1;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-size: 14px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 3000;
+}
+
+/* Ativo */
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}

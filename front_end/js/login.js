@@ -1,3 +1,14 @@
+function mostrarToast(mensagem, tipo = "info", tempo = 3000) {
+  const toast = document.getElementById("toast");
+
+  toast.textContent = mensagem;
+  toast.className = `toast show ${tipo}`;
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, tempo);
+}
+
 function botao_Entrar(){
   const botao_entrar = document.getElementById("botao_Entrar")
   const botao_cad = document.getElementById("botao_Cadastro")
@@ -119,15 +130,17 @@ form.addEventListener("submit", async (e) => {
       if (response.ok) {
         const user = await response.json();
         localStorage.setItem("usuarioLogado", JSON.stringify(user));
-        alert(`Bem-vindo, ${user.nome}!`);
-        window.location.href = "home.html";
+        mostrarToast(`Bem-vindo, ${user.nome}!`);
+        setTimeout(() => {
+          window.location.href = "home.html";
+        }, 2000);
       } else {
         const errorData = await response.json();
-        alert(errorData.error || "Email ou senha incorretos.");
+        mostrarToast(errorData.error || "Email ou senha incorretos.");
       }
     } catch (error) {
       console.error("Erro no login:", error);
-      alert("Erro ao conectar com o servidor.");
+      mostrarToast("Erro ao conectar com o servidor.");
     }
   } else {
     // Lógica de Cadastro
@@ -140,16 +153,20 @@ form.addEventListener("submit", async (e) => {
       });
 
       if (response.ok) {
-        alert("Cadastro realizado com sucesso! Agora faça login.");
-        localStorage.setItem("tipoL", "Entrar");
-        window.location.reload();
+        mostrarToast("Cadastro realizado com sucesso! Agora faça login.");
+        setTimeout(() => {
+          localStorage.setItem("tipoL", "Entrar");
+          window.location.reload();
+        }, 2500);
       } else {
         const errorData = await response.json();
-        alert(`Falha no cadastro: ${errorData.error || response.statusText}`);
+        mostrarToast(`Falha no cadastro: ${errorData.error || response.statusText}`);
       }
     } catch (error) {
       console.error("Erro no cadastro:", error);
-      alert("Erro ao conectar com o servidor.");
+      mostrarToast("Erro ao conectar com o servidor.");
     }
   }
 });
+
+

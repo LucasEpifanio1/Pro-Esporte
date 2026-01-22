@@ -101,34 +101,6 @@ async function fecharModal() {
   document.getElementById("modal").style.display = "none";
 }
 
-
-async function verDetalhes(id) {
-  try {
-    const response = await fetch(`${API_URL}/eventos/${id}`);
-    const evento = await response.json();
-    
-    const criador = evento.empresa || evento.servidor;
-    const infoCriador = criador ? `
-      <p><strong>Responsável:</strong> ${criador.nome}</p>
-      <p><strong>Contato:</strong> ${criador.email}</p>
-      ${criador.cnpj ? `<p><strong>CNPJ:</strong> ${criador.cnpj}</p>` : ''}
-    ` : '<p>Responsável não informado</p>';
-
-    alert(`
-      DETALHES DO EVENTO:
-      Título: ${evento.titulo}
-      Descrição: ${evento.descricao || 'Sem descrição'}
-      Local: ${evento.local}
-      Data: ${formatarData(evento.data)} às ${evento.horario}
-      
-      INFORMAÇÕES DO ORGANIZADOR:
-      ${infoCriador.replace(/<[^>]*>/g, '')}
-    `);
-  } catch (error) {
-    alert("Erro ao carregar detalhes.");
-  }
-}
-
 async function participar(idEvento) {
   if (!usuarioLogado || usuarioLogado.tipo !== 'cidadao') {
     alert("Apenas cidadãos podem se inscrever em eventos.");
@@ -147,17 +119,28 @@ async function participar(idEvento) {
 
     const data = await response.json();
     if (response.ok) {
-      alert(data.message);
+      mostrarToast(data.message);
     } else {
-      alert(data.error);
+      mostrarToast(data.error);
     }
   } catch (error) {
-    alert("Erro ao realizar inscrição.");
+    mostrarToast("Erro ao realizar inscrição.");
   }
 }
 
 function formatarData(data) {
   return new Date(data).toLocaleDateString('pt-BR');
+}
+
+function mostrarToast(mensagem, tipo = "info", tempo = 3000) {
+  const toast = document.getElementById("toast");
+
+  toast.textContent = mensagem;
+  toast.className = `toast show ${tipo}`;
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, tempo);
 }
 
 document.getElementById('filtroModalidades').addEventListener('change', carregarEventos);
