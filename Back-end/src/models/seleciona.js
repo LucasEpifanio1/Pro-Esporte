@@ -1,17 +1,22 @@
 const { Model, DataTypes } = require("sequelize");
 
-class seleciona extends Model {
+class Seleciona extends Model {
   static init(sequelize) {
     super.init(
       {
-        id_rotina_treino: {
+        id_seleciona: {
           type: DataTypes.INTEGER,
           primaryKey: true,
+          autoIncrement: false
+        },
+        id_rotina_treino: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
           references: { model: 'Rotina_Treino', key: 'id_rotina_treino' }
         },
         id_exercicio: {
           type: DataTypes.INTEGER,
-          primaryKey: true,
+          allowNull: false,
           references: { model: 'Exercicio', key: 'id_exercicio' }
         },
         series: DataTypes.STRING(50),
@@ -21,10 +26,10 @@ class seleciona extends Model {
       {
         sequelize,
         tableName: "Seleciona",
-        timestamps: false // Essa tabela geralmente não precisa de createAt/updateAt
+        timestamps: false
       }
     );
   }
 }
 
-module.exports = seleciona;
+module.exports = Seleciona;

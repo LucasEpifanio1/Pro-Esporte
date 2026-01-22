@@ -13,5 +13,9 @@ function generateRandomId5() {
   return randomNum;
 }
 
+function generateRandomId6() {
+  const randomNum = Math.floor(Math.random() * 1000000);
+  return randomNum;
+}
 
-module.exports = { generateRandomId8Dig, generateRandomId, generateRandomId5 };
+module.exports = { generateRandomId8Dig, generateRandomId, generateRandomId5, generateRandomId6 };

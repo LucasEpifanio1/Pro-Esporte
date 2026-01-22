@@ -129,6 +129,22 @@ class TreinoService {
             const diaC = { nome: 'Dia C - Puxar', exercicios: selecionarExs('Puxar', forca.puxar).map(e => ({ ...e.toJSON(), ...params })) };
             ficha.dias.push(diaA, diaB, diaC);
             
+            // Se for a divisão de 5 dias
+            if (divisao.includes('Superiores')) {
+                ficha.dias.push({ nome: 'Descanso', exercicios: [], nota: 'Recuperação ativa ou descanso total.' });
+                
+                const sup = { nome: 'Dia D - Superiores', exercicios: [
+                    ...selecionarExs('Empurrar', forca.empurrar).map(e => ({ ...e.toJSON(), ...params })),
+                    ...selecionarExs('Puxar', forca.puxar).map(e => ({ ...e.toJSON(), ...params }))
+                ]};
+                const inf = { nome: 'Dia E - Inferiores e Core', exercicios: [
+                    ...selecionarExs('Pernas', forca.pernas).map(e => ({ ...e.toJSON(), ...params })),
+                    ...selecionarExs('Abdômen', forca.abdomen).map(e => ({ ...e.toJSON(), ...params }))
+                ]};
+                
+                ficha.dias.push(sup, inf);
+            }
+            // Se for divisão de 6 dias
             if (divisao.includes('2x')) {
                 ficha.dias.push({ nome: 'Descanso', exercicios: [], nota: 'Recuperação ativa ou descanso total.' });
                 ficha.dias.push(diaA, diaB, diaC);

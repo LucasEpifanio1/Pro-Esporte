@@ -255,8 +255,8 @@ VALUES (1, 'Treino A - Calistenia Força', 3, 1111111, NOW());
 
 -- Selecionando os exercícios para essa rotina (Seleciona)
 -- Exercícios escolhidos para força: Flexão Padrão, Barra Fixa, Agachamento e Prancha
-INSERT INTO Seleciona (id_rotina_treino, id_exercicio, series, repeticoes_ou_tempo, ordem_execucao) VALUES
-(1, 104, 4, 10, 1), -- Flexão Padrão
-(1, 206, 4, 6, 2),  -- Barra Fixa (Alta intensidade)
-(1, 302, 4, 15, 3), -- Agachamento Padrão
-(1, 407, 3, 45, 4); -- Prancha Alta (45 segundos)
+INSERT INTO Seleciona (id_seleciona, id_rotina_treino, id_exercicio, series, repeticoes_ou_tempo, ordem_execucao) VALUES
+(12345, 1, 104, 4, 10, 1), -- Flexão Padrão
+(21454, 1, 206, 4, 6, 2),  -- Barra Fixa (Alta intensidade)
+(56234, 1, 302, 4, 15, 3), -- Agachamento Padrão
+(25363, 1, 407, 3, 45, 4); -- Prancha Alta (45 segundos)

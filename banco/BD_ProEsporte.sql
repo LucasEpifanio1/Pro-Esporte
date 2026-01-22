@@ -124,17 +124,29 @@ CREATE TABLE if not exists Rotina_Treino (
     FOREIGN KEY (id_cidadao) REFERENCES Cidadao(id_cidadao)
 );
 
+ALTER TABLE Rotina_Treino
+ADD COLUMN perfil_identificado VARCHAR(100),
+ADD COLUMN objetivo VARCHAR(50),
+ADD COLUMN divisao VARCHAR(100),
+ADD COLUMN instrucoes_gerais TEXT,
+ADD COLUMN dados_treino JSON,
+ADD COLUMN createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
 -- 6. Seleciona (Parâmetros de cada exercício na rotina)
+
 CREATE TABLE if not exists Seleciona (
+    id_seleciona INT PRIMARY KEY,
     id_rotina_treino INT,
     id_exercicio INT,
-    series INT,
-    repeticoes_ou_tempo INT, 
+    series VARCHAR(50),
+    repeticoes_ou_tempo VARCHAR(50), 
     ordem_execucao INT, 
-    PRIMARY KEY (id_rotina_treino, id_exercicio),
     FOREIGN KEY (id_rotina_treino) REFERENCES Rotina_Treino(id_rotina_treino),
     FOREIGN KEY (id_exercicio) REFERENCES Exercicio(id_exercicio)
 );
+
+describe seleciona;
 
 -- 7. Registro_Treino (Histórico de performance)
 CREATE TABLE if not exists Registro_Treino (

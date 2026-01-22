@@ -13,6 +13,7 @@ class RotinaTreino extends Model {
           type: DataTypes.INTEGER,
           allowNull: false,
         },
+        nivel: DataTypes.INTEGER,
         perfil_identificado: DataTypes.STRING(100),
         objetivo: DataTypes.STRING(50),
         divisao: DataTypes.STRING(100),
@@ -29,7 +30,8 @@ class RotinaTreino extends Model {
   }
 
   static associate(models) {
-    // Se houver necessidade de associação futura
+    // Se precisar associar no futuro:
+    // this.belongsTo(models.Cidadao, { foreignKey: 'ID_Cidadao', as: 'cidadao' });
   }
 }
 

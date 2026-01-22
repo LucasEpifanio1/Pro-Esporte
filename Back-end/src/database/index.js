@@ -8,7 +8,8 @@ const servidorPublico = require('../models/servidorPublico');
 const evento = require('../models/evento');
 const Exercicio = require('../models/exercicio');
 const Participa = require('../models/participa');
-const Treino = require('../models/treino');
+const RotinaTreino = require('../models/treino');
+const Seleciona = require('../models/seleciona');
 
 const connection = new Sequelize(dbConfig);
 
@@ -19,7 +20,8 @@ cidadao.init(connection);
 evento.init(connection);
 Exercicio.init(connection);
 Participa.init(connection);
-Treino.init(connection);
+RotinaTreino.init(connection);
+Seleciona.init(connection);
 
 // Chama as associações
 cidadao.associate(connection.models);
