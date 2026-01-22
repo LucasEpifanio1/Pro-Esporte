@@ -7,7 +7,7 @@ class Exercicio extends Model {
         id_exercicio: {
           type: DataTypes.INTEGER,
           primaryKey: true,
-          autoIncrement: true,
+          autoIncrement: false,
         },
         nome: DataTypes.STRING(100),
         nivel: DataTypes.INTEGER,

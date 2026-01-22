@@ -8,4 +8,10 @@ function generateRandomId8Dig() {
   return randomNum;
 }
 
-module.exports = { generateRandomId8Dig, generateRandomId };
+function generateRandomId5() {
+  const randomNum = Math.floor(Math.random() * 100000);
+  return randomNum;
+}
+
+
+module.exports = { generateRandomId8Dig, generateRandomId, generateRandomId5 };

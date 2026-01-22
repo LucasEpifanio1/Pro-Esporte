@@ -119,7 +119,7 @@ CREATE TABLE if not exists Rotina_Treino (
     id_rotina_treino INT PRIMARY KEY AUTO_INCREMENT,
     descricao VARCHAR(255),
     nivel INT, 
-    id_cidadao INT,
+    ID_Cidadaos INT,
     data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_cidadao) REFERENCES Cidadao(id_cidadao)
 );

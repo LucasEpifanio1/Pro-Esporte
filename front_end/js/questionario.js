@@ -106,10 +106,10 @@ const questions = [
     type: "multiselect",
     options: [
       "Barra fixa/barra de porta",
-      "Paralete baixo/médio",
       "Barra paralela",
-      "Equipamentos da praça da prefeitura",
+      "Paralete baixo/médio",
       "Argolas Olímpicas",
+      "Equipamentos da praça da prefeituras",
       "Chão/parede/banco etc"
     ],
     minSelected: 1

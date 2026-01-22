@@ -1,15 +1,15 @@
 const { Model, DataTypes } = require("sequelize");
 
-class Treino extends Model {
+class RotinaTreino extends Model {
   static init(sequelize) {
     super.init(
       {
-        id_treino: {
+        id_rotina_treino: {
           type: DataTypes.INTEGER,
           primaryKey: true,
-          autoIncrement: true,
+          autoIncrement: false,
         },
-        id_cidadao: {
+        ID_Cidadao: {
           type: DataTypes.INTEGER,
           allowNull: false,
         },
@@ -22,7 +22,7 @@ class Treino extends Model {
       },
       {
         sequelize,
-        tableName: "treino",
+        tableName: "Rotina_Treino",
         timestamps: true,
       }
     );
@@ -33,4 +33,4 @@ class Treino extends Model {
   }
 }
 
-module.exports = Treino;
+module.exports = RotinaTreino;
