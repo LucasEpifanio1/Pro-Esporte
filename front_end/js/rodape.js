@@ -1,3 +1,4 @@
+function rodape() {
 const path = window.location.pathname;
   const paginaAtual = path.substring(path.lastIndexOf('/') + 1);
 
