@@ -1,5 +1,6 @@
 function rodape() {
-const path = window.location.pathname;
+  // Pega o nome do arquivo atual para saber qual ícone acender
+  const path = window.location.pathname;
   const paginaAtual = path.substring(path.lastIndexOf('/') + 1);
 
   return `

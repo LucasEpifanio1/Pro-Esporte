@@ -33,6 +33,7 @@ const questions = [
     id: "flexaoInclinada",
     title: "Qual o máximo de flexões inclinadas você consegue fazer?",
     type: "options",
+    image: "img/exercicios/flexao_inclinada.gif", // Exemplo de como adicionar imagem/gif
     options: ["Não consigo fazer", "1-5", "5-10", "10-20", "+20"]
   },
   {
@@ -142,6 +143,20 @@ function renderQuestion() {
   const q = questions[currentIndex];
 
   questionTitle.textContent = q.title;
+
+  // Renderizar imagem/gif se existir
+  const existingImage = document.getElementById("questionImage");
+  if (existingImage) existingImage.remove();
+
+  if (q.image) {
+    const img = document.createElement("img");
+    img.id = "questionImage";
+    img.src = q.image;
+    img.className = "w-full h-48 object-contain rounded-xl mb-4 bg-gray-800/50 p-2 border border-gray-700";
+    img.alt = q.title;
+    // Inserir antes das opções/input
+    questionBody.parentNode.insertBefore(img, questionBody);
+  }
 
   progressText.textContent = `Pergunta ${currentIndex + 1} de ${questions.length}`;
   const pct = ((currentIndex + 1) / questions.length) * 100;
@@ -519,10 +534,17 @@ nextBtn.addEventListener("click", async () => {
 });
 
 if (backBtn) {
-  backBtn.addEventListener("click", () => {
+  // Remover listeners antigos para evitar duplicação
+  const newBackBtn = backBtn.cloneNode(true);
+  backBtn.parentNode.replaceChild(newBackBtn, backBtn);
+  
+  newBackBtn.addEventListener("click", () => {
     if (currentIndex > 0) {
       currentIndex--;
       renderQuestion();
+    } else {
+      // Se estiver na primeira pergunta, volta para a home ou dashboard
+      window.location.href = 'home.html';
     }
   });
 }
