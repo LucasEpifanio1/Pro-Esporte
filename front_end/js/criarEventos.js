@@ -4,7 +4,7 @@ document.getElementById('formCriarEvento').addEventListener('submit', async (e) 
   const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
   
   if (!usuarioLogado || usuarioLogado.tipo === 'cidadao') {
-    alert("Você não tem permissão para criar eventos.");
+    mostrarToast("Você não tem permissão para criar eventos.");
     return;
   }
 
@@ -37,15 +37,28 @@ document.getElementById('formCriarEvento').addEventListener('submit', async (e) 
 
     if (!response.ok) {
       const erro = await response.json();
-      alert(erro.error || 'Erro ao criar evento');
+      mostrarToast(erro.error || 'Erro ao criar evento');
       return;
     }
 
-    alert("Evento criado com sucesso!");
-    window.location.href = 'eventos.html';
+    mostrarToast("Evento criado com sucesso!");
+    setTimeout(() => {
+          window.location.href = "eventos.html";
+    }, 2000);
 
   } catch (error) {
     console.error(error);
-    alert('Erro ao conectar com o servidor');
+    mostrarToast('Erro ao conectar com o servidor');
   }
 });
+
+function mostrarToast(mensagem, tipo = "info", tempo = 3000) {
+  const toast = document.getElementById("toast");
+
+  toast.textContent = mensagem;
+  toast.className = `toast show ${tipo}`;
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, tempo);
+}

@@ -62,6 +62,19 @@
   </div>
 
   <div id="eventos"></div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-conteudo">
+      <span class="fechar" onclick="fecharModal()">&times;</span>
+
+      <h2>Detalhes do Evento</h2>
+
+      <!-- CONTEÚDO DINÂMICO -->
+      <div id="card"></div>
+    </div>
+  </div>
+
 </main>
 
 <footer>
@@ -70,6 +83,6 @@
 <script src="js/config.js"></script>
 <script src="js/eventos.js"></script>
 <script src="js/rodape.js"></script>
-
+<div id="toast" class="toast"></div>
 </body>
 </html>
