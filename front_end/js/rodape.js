@@ -12,7 +12,7 @@ function rodape() {
             <img src="img/calendar.png" class="icon">
             <p>Eventos</p>
         </div>
-        <div class="item ${paginaAtual === 'dashboard.html'|| paginaAtual === 'rotina.html' || paginaAtual === 'evolucao.html' ? 'active' : ''}" onclick="irTreinos()">
+        <div class="item ${['dashboard.html', 'rotina.html', 'evolucao.html'].includes(paginaAtual) ? 'active' : ''}" onclick="irTreinos()">
             <img src="img/train.png" class="icon">
             <p>Treinos</p>
         </div>
