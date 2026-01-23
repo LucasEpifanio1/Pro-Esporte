@@ -73,7 +73,7 @@ class TreinoService {
             divisao = 'ABC + Superiores/Inferiores';
             descricaoRotina = 'Inicia com ABC, seguido de um dia de descanso e finaliza com foco em Superiores e Inferiores.';
         } else {
-            divisao = 'ABC ABC (2x)';
+            divisao = 'ABC (2x)';
             descricaoRotina = 'Rotina de alta frequência. ABC - Descanso - ABC. Recomendado para nível avançado.';
         }
 
