@@ -29,9 +29,9 @@ VALUES (
     'Gustavo', 
     'gustavo@email.com', 
     'minhasenha', 
-    72.5, 
-    1.78, 
-    'Força', 
+    79, 
+    1.80, 
+    'Habilidade', 
     TRUE
 );
 

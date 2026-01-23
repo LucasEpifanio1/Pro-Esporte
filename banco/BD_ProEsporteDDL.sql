@@ -1,7 +1,7 @@
 use ProEsporte;
 
 INSERT INTO Equipamento (id_equipamento, nome, categoria) VALUES
-(1, 'Barra Fixa/Porta', 'Puxar/Empurrar'),
+(1, 'Barra Fixa/Porta', 'Puxar/Empurrar	'),
 (2, 'Barras Paralelas', 'Empurrar'),
 (3, 'Paralelas Baixas/Médias (Paraletes)', 'Empurrar/Core'),
 (4, 'Argolas Olímpicas', 'Misto'),
@@ -31,7 +31,7 @@ INSERT INTO Exercicio (id_exercicio, nome, nivel, tipo, descricao, grupo_muscula
 (107, 'Extensão de Tríceps', 4, 'Dinâmico', 'Flexão focada nos cotovelos, levando a testa em direção às mãos.', 'Empurrar', 103, NULL),
 (108, 'Flexão Declinada', 4, 'Dinâmico', 'Pés apoiados em superfície alta, mãos no chão. Aumenta carga nos ombros.', 'Empurrar', 105, 110),
 (109, 'Flexão Diamante', 4, 'Dinâmico', 'Mãos juntas formando um diamante, foco intenso no tríceps.', 'Empurrar', 104, 110),
-(110, 'Flexão Pike', 4, 'Habilidade', 'Quadril elevado formando um V invertido, descendo o topo da cabeça.', 'Empurrar', 108, 113),
+(110, 'Flexão Pike', 4, 'Dinâmico', 'Quadril elevado formando um V invertido, descendo o topo da cabeça.', 'Empurrar', 108, 113),
 
 -- Nível 5
 (111, 'Flexão Arqueiro', 5, 'Dinâmico', 'Uma mão esticada para o lado enquanto o outro braço faz a flexão.', 'Empurrar', 108, 114),
@@ -47,7 +47,7 @@ INSERT INTO Exercicio (id_exercicio, nome, nivel, tipo, descricao, grupo_muscula
 
 -- Nível 8
 (117, 'One Leg Planche', 8, 'Habilidade', 'Planche com uma perna esticada e a outra recolhida.', 'Empurrar', 116, 119),
-(118, 'Flexão na Handstand (HSPU)', 8, 'Dinâmico', 'Flexão vertical completa estando na posição de parada de mão.', 'Empurrar', 113, NULL),
+(118, 'Flexão na Handstand (HSPU)', 8, 'Habilidade', 'Flexão vertical completa estando na posição de parada de mão.', 'Empurrar', 113, NULL),
 
 -- Nível 9
 (119, 'Straddle Planche', 9, 'Habilidade', 'Corpo paralelo ao chão com pernas esticadas e abertas.', 'Empurrar', 117, 120),
@@ -100,7 +100,7 @@ INSERT INTO Exercicio (id_exercicio, nome, nivel, tipo, grupo_muscular, descrica
 
 -- NÍVEL 7
 (310, 'Pistol na Ponta dos Pés', 7, 'Dinâmico', 'Pernas', 'Pistol squat executado apoiando-se apenas na ponta do pé.', 308, 313),
-(311, 'Half Dragon Squat', 7, 'Dinâmico', 'Pernas', 'Agachamento unilateral profundo com maior exigência de mobilidade.', 308, 314),
+(311, 'Half Dragon Squat', 7, 'Habilidade', 'Pernas', 'Agachamento unilateral profundo com maior exigência de mobilidade.', 308, 314),
 
 -- NÍVEL 8
 (312, 'Sissy Squat', 8, 'Dinâmico', 'Pernas', 'Agachamento com tronco inclinado para trás enfatizando quadríceps.', 309, 315),
@@ -109,7 +109,7 @@ INSERT INTO Exercicio (id_exercicio, nome, nivel, tipo, grupo_muscular, descrica
 (313, 'Flexão Nórdica', 9, 'Dinâmico', 'Pernas', 'Execução completa da flexão nórdica com controle excêntrico e concêntrico.', 309, 316),
 
 -- NÍVEL 10
-(314, 'Dragon Squat', 10, 'Dinâmico', 'Pernas', 'Agachamento unilateral avançado com grande exigência de força e mobilidade.', 311, NULL);
+(314, 'Dragon Squat', 10, 'Habilidade', 'Pernas', 'Agachamento unilateral avançado com grande exigência de força e mobilidade.', 311, NULL);
 
 select * from exercicio where grupo_muscular = 'Pernas';
 
@@ -135,31 +135,31 @@ INSERT INTO Exercicio (id_exercicio, nome, nivel, tipo, grupo_muscular, descrica
 
 -- NÍVEL 4
 (411, 'Elevação de Pernas Esticadas na Barra', 4, 'Dinâmico', 'Abdômen', 'Suspenso, eleve as pernas estendidas até a horizontal.', 410, 418),
-(412, 'Tuck L-Sit', 4, 'Estático', 'Abdômen', 'Apoiado nas mãos, mantenha joelhos recolhidos e corpo suspenso.', 403, 419),
+(412, 'Tuck L-Sit', 4, 'Habilidade', 'Abdômen', 'Apoiado nas mãos, mantenha joelhos recolhidos e corpo suspenso.', 403, 419),
 (413, 'Prancha Lateral', 4, 'Estático', 'Abdômen', 'Prancha apoiada em um antebraço, corpo alinhado lateralmente.', 407, 420),
 
 -- NÍVEL 5
-(414, 'One Leg L-Sit', 5, 'Estático', 'Abdômen', 'L-sit com uma perna estendida e outra recolhida.', 412, 421),
+(414, 'One Leg L-Sit', 5, 'Habilidade', 'Abdômen', 'L-sit com uma perna estendida e outra recolhida.', 412, 421),
 
 -- NÍVEL 6
-(415, 'L-Sit', 6, 'Estático', 'Abdômen', 'Suspensão com pernas estendidas a 90 graus do tronco.', 414, 422),
-(416, 'Tuck Dragon Flag', 6, 'Dinâmico', 'Abdômen', 'Dragon flag com joelhos recolhidos, controlando a descida.', 412, 423),
+(415, 'L-Sit', 6, 'Habilidade', 'Abdômen', 'Suspensão com pernas estendidas a 90 graus do tronco.', 414, 422),
+(416, 'Tuck Dragon Flag', 6, 'Habilidade', 'Abdômen', 'Dragon flag com joelhos recolhidos, controlando a descida.', 412, 423),
 
 -- NÍVEL 7
-(417, 'One Leg Dragon Flag', 7, 'Dinâmico', 'Abdômen', 'Dragon flag com uma perna estendida e outra flexionada.', 416, 424),
-(418, 'Straddle Dragon Flag', 7, 'Dinâmico', 'Abdômen', 'Dragon flag com pernas abertas para reduzir alavanca.', 416, 424),
+(417, 'One Leg Dragon Flag', 7, 'Habilidade', 'Abdômen', 'Dragon flag com uma perna estendida e outra flexionada.', 416, 424),
+(418, 'Straddle Dragon Flag', 7, 'Habilidade', 'Abdômen', 'Dragon flag com pernas abertas para reduzir alavanca.', 416, 424),
 
 -- NÍVEL 8
-(419, 'Dragon Flag', 8, 'Dinâmico', 'Abdômen', 'Elevação e descida do corpo mantendo alinhamento rígido.', 417, 425),
-(420, 'Bandeira Negativa', 8, 'Dinâmico', 'Abdômen', 'Descida controlada da posição de bandeira.', 419, 426),
+(419, 'Dragon Flag', 8, 'Habilidade', 'Abdômen', 'Elevação e descida do corpo mantendo alinhamento rígido.', 417, 425),
+(420, 'Bandeira Negativa', 8, 'Habilidade', 'Abdômen', 'Descida controlada da posição de bandeira.', 419, 426),
 
 -- NÍVEL 9
-(421, 'Bandeira com Pernas Abertas', 9, 'Estático', 'Abdômen', 'Bandeira mantendo pernas afastadas para maior controle.', 420, 427),
-(422, 'Tuck V-Sit', 9, 'Estático', 'Abdômen', 'Posição V com joelhos recolhidos e equilíbrio sobre as mãos.', 415, 428),
+(421, 'Bandeira com Pernas Abertas', 9, 'Habilidade', 'Abdômen', 'Bandeira mantendo pernas afastadas para maior controle.', 420, 427),
+(422, 'Tuck V-Sit', 9, 'Habilidade', 'Abdômen', 'Posição V com joelhos recolhidos e equilíbrio sobre as mãos.', 415, 428),
 
 -- NÍVEL 10
-(423, 'Bandeira', 10, 'Estático', 'Abdômen', 'Corpo totalmente horizontal sustentado pelos braços.', 421, NULL),
-(424, 'V-Sit', 10, 'Estático', 'Abdômen', 'Posição em V com pernas estendidas e corpo suspenso.', 422, NULL);
+(423, 'Bandeira', 10, 'Habilidade', 'Abdômen', 'Corpo totalmente horizontal sustentado pelos braços.', 421, NULL),
+(424, 'V-Sit', 10, 'Habilidade', 'Abdômen', 'Posição em V com pernas estendidas e corpo suspenso.', 422, NULL);
 
 select * from exercicio where grupo_muscular = 'Abdômen';
 
