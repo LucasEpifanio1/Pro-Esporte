@@ -33,25 +33,28 @@ const questions = [
     id: "flexaoInclinada",
     title: "Qual o máximo de flexões inclinadas você consegue fazer?",
     type: "options",
-    image: "img/exercicios/flexao_inclinada.gif", // Exemplo de como adicionar imagem/gif
+    image: "./img/exercicios/flexao_inclinada.gif", // Exemplo de como adicionar imagem/gif
     options: ["Não consigo fazer", "1-5", "5-10", "10-20", "+20"]
   },
   {
     id: "flexaoPadrao",
     title: "Qual o máximo de flexões padrão você consegue fazer?",
     type: "options",
+    image: "./img/exercicios/flexaoPadrao.gif",
     options: ["Não consigo fazer", "1-5", "5-10", "10-20", "+20"]
   },
   {
     id: "barraAustraliana",
     title: "Quantas Barras australianas você consegue fazer?",
     type: "options",
+    image: "./img/exercicios/barraAustraliana.gif",
     options: ["Não consigo fazer", "1-5", "5-10", "10-20", "+20"]
   },
   {
     id: "barraFixa",
     title: "Quantas Barras fixas você consegue fazer?",
     type: "options",
+    image: "./img/exercicios/barraFixa.gif",
     options: ["Não consigo fazer", "1-5", "5-10", "10-20", "+20"]
   },
   {
@@ -70,12 +73,14 @@ const questions = [
     id: "prancha",
     title: "Quantos segundos de prancha você consegue fazer?",
     type: "options",
+    image: "./img/exercicios/prancha.gif",
     options: ["Não consigo fazer", "10-20", "21-30", "31-60", "+60"]
   },
   {
     id: "abdominalSupra",
     title: "Quantos abdominais você consegue fazer?",
     type: "options",
+    image: "./img/exercicios/abdominalSupra.gif",
     options: ["Não consigo fazer", "1-5", "5-10", "10-20", "+20"]
   },
   {
@@ -151,9 +156,20 @@ function renderQuestion() {
   if (q.image) {
     const img = document.createElement("img");
     img.id = "questionImage";
+    
+    // Tenta carregar a imagem. Se falhar, remove o elemento para não ficar o ícone de erro
+    img.onerror = function() {
+      console.error("Erro ao carregar imagem:", q.image);
+      this.remove();
+    };
+
+    // Garante que o caminho comece do diretório raiz do frontend se necessário
+    // Se o arquivo questionarioTreino.html está na raiz de front_end, 'img/...' deve funcionar.
     img.src = q.image;
+    
     img.className = "w-full h-48 object-contain rounded-xl mb-4 bg-gray-800/50 p-2 border border-gray-700";
     img.alt = q.title;
+    
     // Inserir antes das opções/input
     questionBody.parentNode.insertBefore(img, questionBody);
   }
