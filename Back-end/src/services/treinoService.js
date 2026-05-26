@@ -102,6 +102,7 @@ class TreinoService {
         if (objetivo === 'Força') params = { series: '5', reps: '3-5', descanso: '120-180s' };
         if (objetivo === 'Resistência') params = { series: '3', reps: '15-20', descanso: '30-45s' };
         if (objetivo === 'Habilidades') params = { series: '4', reps: '5-10s (Isometria)', descanso: '60s' };
+        if (objetivo == 'Sair do sedentarismo') params = {series: '3', reps: '2-10', descanso: '60s'}
 
         // 4. Montar Ficha de Treino
         const ficha = {
