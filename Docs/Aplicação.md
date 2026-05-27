@@ -9,3 +9,9 @@
 ### 🔹 3. Terceiro passo — executar os comandos no terminal : Após finalizar toda a configuração do banco, você deverá rodar alguns comandos no terminal do VS Code para iniciar o sistema.
 ➡️ Guia completo dos comandos:
 - [Comando no terminal](./RodandoSistema.md) 
+
+## Versão Mobile
+
+### 🔹 1. Primeira Etapa: Executar o app genérico
+➡️ Acesse o tutorial aqui:
+- [Aplicação Mobile](./AplicaçãoMobile.md)
