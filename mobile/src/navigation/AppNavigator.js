@@ -13,6 +13,7 @@ export default function AppNavigator() {
         <NavigationContainer>
             <Stack.Navigator
                 initialRouteName='TelaBoasVindas'
+                
             >
                 <Stack.Screen
                     name="TelaBoasVindas"
@@ -22,18 +23,22 @@ export default function AppNavigator() {
                 <Stack.Screen
                     name="TelaCidadao"
                     component={TelaCidadao}
+                    options={{ headerShown: false }}
                 />
                 <Stack.Screen
                     name="TelaTipoCriadorEvento"
                     component={TelaTipoCriadorEvento}
+                    options={{ headerShown: false }}
                 />
                 <Stack.Screen
                     name="TelaEmpresa"
                     component={TelaEmpresa}
+                    options={{ headerShown: false }}
                 />
                 <Stack.Screen
                     name="TelaServidorPublico"
                     component={TelaServidorPublico}
+                    options={{ headerShown: false }}
                 />
             
             </Stack.Navigator>

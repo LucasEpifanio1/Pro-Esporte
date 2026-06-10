@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import CardSelecao from '../../components/CardSelecao';
 import globalStyles from '../../styles/global';
@@ -10,8 +10,17 @@ export default function TelaTipoCriadorEvento({navigation}) {
             style={[
                 globalStyles.container,
                 stylesCriador.localContainer
-            ]}
+            ]} 
         >
+            <TouchableOpacity
+                style={stylesCriador.botaoVoltar}
+                onPress={() => navigation.goBack()}
+            >
+                <Text style={stylesCriador.textoVoltar}>
+                    ← Voltar
+                </Text>
+            </TouchableOpacity>
+
             <Text style={stylesCriador.titulo}>
                 ProEsporte
             </Text>

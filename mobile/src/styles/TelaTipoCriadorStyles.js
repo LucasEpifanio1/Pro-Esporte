@@ -25,6 +25,15 @@ const stylesCriador = StyleSheet.create({
 
   emoji: {
     fontSize: 60
+  },
+
+  botaoVoltar: {
+    marginBottom: 20
+  },
+
+  textoVoltar: {
+    color: colors.primary,
+    fontSize: 16
   }
 
 });
