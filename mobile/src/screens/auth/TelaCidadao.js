@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -36,9 +36,12 @@ export default function TelaCidadao({navigation}) {
                     ← Voltar
                 </Text>
             </TouchableOpacity>
-            <Text style={stylesLoginEntrar.icone}>
-                👤
-            </Text>
+            <View style={stylesLoginEntrar.containerIcone}>
+                <Image
+                    source={require('../../assets/icons/iconCidadao.png')}
+                    style={stylesLoginEntrar.icone}
+                />
+            </View>
 
             <Text style={stylesLoginEntrar.titulo}>
                 Cidadão

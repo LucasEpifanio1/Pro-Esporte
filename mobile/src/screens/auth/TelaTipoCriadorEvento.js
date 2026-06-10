@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import CardSelecao from '../../components/CardSelecao';
 import globalStyles from '../../styles/global';
@@ -29,14 +29,24 @@ export default function TelaTipoCriadorEvento({navigation}) {
             </Text>
             <CardSelecao
                 titulo="Servidor Público"
-                icone={<Text style={stylesCriador.emoji}>👨‍💼</Text>}
+                icone={
+                <Image
+                    source={require('../../assets/icons/iconFuncionario.png')}
+                    style={stylesCriador.icone}
+                />
+                }
                 onPress={() =>
                     navigation.navigate('TelaServidorPublico')
                 }
             />
             <CardSelecao
                 titulo="Empresa"
-                icone={<Text style={stylesCriador.emoji}>🏤</Text>}
+                icone={
+                <Image
+                    source={require('../../assets/icons/iconEmpresa.png')}
+                    style={stylesCriador.icone}
+                />
+                }
                 onPress={() =>
                     navigation.navigate('TelaEmpresa')
                 }

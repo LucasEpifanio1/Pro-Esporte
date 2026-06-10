@@ -23,8 +23,10 @@ const styles = StyleSheet.create({
     marginBottom: 50
   },
 
-  emoji: {
-    fontSize: 60
+  icone: {
+    width: 70,
+    height: 70,
+    resizeMode: 'contain'
   }
 
 });

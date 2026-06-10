@@ -19,10 +19,21 @@ const stylesLoginEntrar = StyleSheet.create({
         fontSize: 16
     },
 
+    containerIcone: {
+        width: 95,
+        height: 95,
+        backgroundColor: colors.primary,
+        borderRadius: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center',
+        marginBottom: 20
+    },
+
     icone: {
-        fontSize: 70,
-        textAlign: 'center',
-        marginTop: 20
+        width: 70,
+        height: 70,
+        resizeMode: 'contain'
     },
 
     titulo: {
