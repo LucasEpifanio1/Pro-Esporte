@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require('cors'); //(22/11)
+const cors = require('cors');
 const routes = require('./routes');
 require('./database'); // carrega a conexão + models
 

@@ -6,6 +6,7 @@ import stylesLoginEntrar from '../../styles/TelaLoginEntrar';
 import BotaoCriarConta from '../../components/BotaoCriarConta';
 import CampoTexto from '../../components/CampoTexto';
 import BotaoAlternadorAuth from '../../components/BotaoAlternadorAuth';
+import { cadastrarCidadao } from '../../services/api';
 
 export default function TelaCidadao({navigation}) {
     const [modo, setModo] = useState('entrar');
@@ -13,7 +14,7 @@ export default function TelaCidadao({navigation}) {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
-    function handleSubmit(){
+    async function handleSubmit(){
         if (modo === 'entrar'){
             console.log('Login');
             console.log(email);
@@ -21,9 +22,16 @@ export default function TelaCidadao({navigation}) {
         }
         if (modo === 'cadastrar'){
             console.log('Cadastro');
-            console.log(nome);
-            console.log(email);
-            console.log(senha);
+            try{
+                const resposta =  await cadastrarCidadao({
+                    nome,
+                    email,
+                    senha
+                });
+                console.log(resposta);
+            } catch (erro){
+                console.log(erro);
+            }
         }
     }
     return (

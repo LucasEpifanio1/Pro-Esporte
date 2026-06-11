@@ -6,6 +6,7 @@ import stylesLoginEntrar from '../../styles/TelaLoginEntrar';
 import BotaoCriarConta from '../../components/BotaoCriarConta';
 import CampoTexto from '../../components/CampoTexto';
 import BotaoAlternadorAuth from '../../components/BotaoAlternadorAuth';
+import { cadastrarEmpresa } from '../../services/api';
 
 export default function TelaEmpresa({navigation}) {
     const [modo, setModo] = useState('entrar');
@@ -15,7 +16,7 @@ export default function TelaEmpresa({navigation}) {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
-    function handleSubmit(){
+    async function handleSubmit(){
         if (modo === 'entrar'){
             console.log('Login');
             console.log(email);
@@ -23,11 +24,17 @@ export default function TelaEmpresa({navigation}) {
         }
         if (modo === 'cadastrar'){
             console.log('Cadastro');
-            console.log(telefone);
-            console.log(cnpj);
-            console.log(nome);
-            console.log(email);
-            console.log(senha);
+            try{
+                const respostaEmpresa = await cadastrarEmpresa({
+                    cnpj,
+                    nome,
+                    email,
+                    senha
+                });
+                console.log(respostaEmpresa);
+            }catch(erro){
+                console.log(erro);
+            }
         }
     }
     return (

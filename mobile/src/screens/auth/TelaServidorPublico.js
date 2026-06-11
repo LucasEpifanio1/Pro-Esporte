@@ -6,16 +6,17 @@ import stylesLoginEntrar from '../../styles/TelaLoginEntrar';
 import BotaoCriarConta from '../../components/BotaoCriarConta';
 import CampoTexto from '../../components/CampoTexto';
 import BotaoAlternadorAuth from '../../components/BotaoAlternadorAuth';
+import { cadastrarServidor } from '../../services/api';
 
 export default function TelaServidorPublico({navigation}) {
     const [modo, setModo] = useState('entrar');
     const [telefone, setTelefone] = useState('');
-    const [cpf, setCPF] = useState('');
+    const [CPF, setCPF] = useState('');
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
-    function handleSubmit(){
+    async function handleSubmit(){
         if (modo === 'entrar'){
             console.log('Login');
             console.log(email);
@@ -23,11 +24,17 @@ export default function TelaServidorPublico({navigation}) {
         }
         if (modo === 'cadastrar'){
             console.log('Cadastro');
-            console.log(telefone);
-            console.log(cpf);
-            console.log(nome);
-            console.log(email);
-            console.log(senha);
+            try{
+                const respostaServidor = await cadastrarServidor({
+                    CPF,
+                    nome,
+                    email,
+                    senha
+                });
+                console.log(respostaServidor);
+            } catch(erro){
+                console.log(erro);
+            }
         }
     }
     return (
@@ -74,7 +81,7 @@ export default function TelaServidorPublico({navigation}) {
                                 <CampoTexto
                                 label="CPF"
                                 placeholder="000.000.000-00"
-                                value={cpf}
+                                value={CPF}
                                 onChangeText={setCPF}
                                 keyboardType="number-pad" />
                                 </>
