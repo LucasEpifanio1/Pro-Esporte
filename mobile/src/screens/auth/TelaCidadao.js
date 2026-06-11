@@ -76,6 +76,7 @@ export default function TelaCidadao({navigation}) {
                     placeholder="Digite sua senha"
                     value={senha}
                     onChangeText={setSenha}
+                    keyboardType="number-pad"
                     secureTextEntry
                 />
 

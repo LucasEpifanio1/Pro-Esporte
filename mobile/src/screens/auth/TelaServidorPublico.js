@@ -94,6 +94,7 @@ export default function TelaServidorPublico({navigation}) {
                     placeholder="Digite sua senha"
                     value={senha}
                     onChangeText={setSenha}
+                    keyboardType="number-pad"
                     secureTextEntry
                 />
 

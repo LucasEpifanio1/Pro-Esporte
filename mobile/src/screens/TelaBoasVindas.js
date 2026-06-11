@@ -1,6 +1,7 @@
 import {
   Text,
-  Image
+  Image,
+  View
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import CardSelecao from '../components/CardSelecao';
@@ -30,10 +31,12 @@ export default function TelaBoasVindas({ navigation }) {
         titulo="Cidadão"
         descricao="Participe de eventos e treine na sua cidade"
         icone={
-          <Image
-            source={require('../assets/icons/iconCidadao.png')}
-            style={styles.icone}
-          />
+          <View style={styles.containerIcone}>
+            <Image
+              source={require('../assets/icons/iconCidadao.png')}
+              style={styles.icone}
+            />
+          </View>
         }
 
         onPress={() =>
@@ -45,10 +48,12 @@ export default function TelaBoasVindas({ navigation }) {
         titulo="Criador de Eventos"
         descricao="Organize e gerencie eventos esportivos"
         icone={
-          <Image
-            source={require('../assets/icons/iconEmpresa.png')}
-            style={styles.icone}
-          />
+          <View style={styles.containerIcone}>
+            <Image
+              source={require('../assets/icons/iconEmpresa.png')}
+              style={styles.icone}
+            />
+          </View>
         }
 
         onPress={() =>

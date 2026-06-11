@@ -30,10 +30,12 @@ export default function TelaTipoCriadorEvento({navigation}) {
             <CardSelecao
                 titulo="Servidor Público"
                 icone={
-                <Image
-                    source={require('../../assets/icons/iconFuncionario.png')}
-                    style={stylesCriador.icone}
-                />
+                    <View style={stylesCriador.containerIcone}>
+                        <Image
+                            source={require('../../assets/icons/iconFuncionario.png')}
+                            style={stylesCriador.icone}
+                        />
+                    </View>
                 }
                 onPress={() =>
                     navigation.navigate('TelaServidorPublico')
@@ -42,10 +44,12 @@ export default function TelaTipoCriadorEvento({navigation}) {
             <CardSelecao
                 titulo="Empresa"
                 icone={
-                <Image
-                    source={require('../../assets/icons/iconEmpresa.png')}
-                    style={stylesCriador.icone}
-                />
+                    <View style={stylesCriador.containerIcone}>
+                        <Image
+                            source={require('../../assets/icons/iconEmpresa.png')}
+                            style={stylesCriador.icone}
+                        />
+                    </View>
                 }
                 onPress={() =>
                     navigation.navigate('TelaEmpresa')

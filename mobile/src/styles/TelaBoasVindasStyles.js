@@ -8,6 +8,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
 
+  containerIcone: {
+    width: 95,
+    height: 95,
+    backgroundColor: colors.primary,
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    marginBottom: 20
+  },
+
   titulo: {
     color: colors.primary,
     fontSize: 42,
