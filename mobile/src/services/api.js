@@ -41,3 +41,17 @@ export async function cadastrarServidor(dados) {
     );
     return respostaServidor.json();
 }
+
+export async function loginUsuario(dados){
+    const respostaLogin = await fetch(
+        `${API_URL}/login`,
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dados)
+        }
+    );
+    return respostaLogin.json();
+}

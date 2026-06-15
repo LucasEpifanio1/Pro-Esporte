@@ -7,6 +7,7 @@ import BotaoCriarConta from '../../components/BotaoCriarConta';
 import CampoTexto from '../../components/CampoTexto';
 import BotaoAlternadorAuth from '../../components/BotaoAlternadorAuth';
 import { cadastrarCidadao } from '../../services/api';
+import { loginUsuario } from '../../services/api';
 
 export default function TelaCidadao({navigation}) {
     const [modo, setModo] = useState('entrar');
@@ -17,8 +18,15 @@ export default function TelaCidadao({navigation}) {
     async function handleSubmit(){
         if (modo === 'entrar'){
             console.log('Login');
-            console.log(email);
-            console.log(senha);
+            try{
+                const respostaLogin = await loginUsuario({
+                    email,
+                    senha
+                });
+                console.log(respostaLogin);
+            } catch(erro){
+                console.log(erro);
+            }
         }
         if (modo === 'cadastrar'){
             console.log('Cadastro');
