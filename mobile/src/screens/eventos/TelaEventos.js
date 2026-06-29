@@ -1,5 +1,4 @@
 import {
-  View,
   Text,
   FlatList,
   ActivityIndicator
@@ -14,14 +13,27 @@ import {
   useEffect
 } from 'react';
 
-import CardEvento from '../../components/evento/CardEvento';
-import Rodape from '../../components/Rodape';
+import CardEvento
+from '../../components/evento/CardEvento';
+
+import FiltrosEvento
+from '../../components/evento/FiltrosEvento';
+
+import TabsEventos
+from '../../components/evento/TabsEventos';
+
+import Rodape
+from '../../components/Rodape';
 
 import {
   listarEventos
 } from '../../services/eventoService';
 
-import globalStyles from '../../styles/global';
+import globalStyles
+from '../../styles/global';
+
+import styles
+from '../../styles/TelaEventosStyles';
 
 export default function TelaEventos({
   navigation
@@ -35,20 +47,35 @@ export default function TelaEventos({
   const [erro, setErro] =
     useState(null);
 
+  const [modalidade,
+    setModalidade] =
+      useState('');
+
+  const [local,
+    setLocal] =
+      useState('');
+
+  const [data,
+    setData] =
+      useState('');
+
+  const [abaAtiva,
+    setAbaAtiva] =
+      useState('Todos');
+
   useEffect(() => {
     carregarEventos();
   }, []);
 
   async function carregarEventos() {
     try {
-      console.log('Entrou em carregarEventos');
       const dados =
         await listarEventos();
-      console.log('Dados dos eventos:', dados);
+
       setEventos(dados);
     }
     catch (erro) {
-      console.log('ERRO COMPLETO:', erro);
+      console.log(erro);
 
       setErro(
         'Erro ao carregar eventos.'
@@ -85,6 +112,24 @@ export default function TelaEventos({
     <SafeAreaView
       style={globalStyles.container}
     >
+      <Text style={styles.titulo}>
+        Eventos
+      </Text>
+
+      <FiltrosEvento
+        modalidade={modalidade}
+        setModalidade={setModalidade}
+        local={local}
+        setLocal={setLocal}
+        data={data}
+        setData={setData}
+      />
+
+      <TabsEventos
+        abaAtiva={abaAtiva}
+        setAbaAtiva={setAbaAtiva}
+      />
+
       <FlatList
         data={eventos}
         keyExtractor={(item) =>
@@ -101,6 +146,9 @@ export default function TelaEventos({
             }
           />
         )}
+        showsVerticalScrollIndicator={
+          false
+        }
       />
 
       <Rodape
