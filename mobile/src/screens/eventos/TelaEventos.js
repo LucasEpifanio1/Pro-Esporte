@@ -93,6 +93,12 @@ export default function TelaEventos({
         renderItem={({ item }) => (
           <CardEvento
             evento={item}
+            onDetalhes={(evento) =>
+              navigation.navigate(
+                'TelaDetalhesEvento',
+                { evento }
+              )
+            }
           />
         )}
       />

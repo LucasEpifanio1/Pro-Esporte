@@ -2,44 +2,64 @@ import {
   StyleSheet
 } from 'react-native';
 
-import colors from './StyleColors';
+import colors
+from './StyleColors';
 
 export default StyleSheet.create({
   card: {
-    backgroundColor: '#fff',
+    backgroundColor: '#000',
 
-    margin: 15,
+    marginHorizontal: 20,
+    marginBottom: 20,
 
-    padding: 20,
+    padding: 15,
 
-    borderRadius: 20,
+    borderRadius: 25
+  },
 
-    elevation: 5
+  imagem: {
+    width: '100%',
+    height: 130,
+
+    borderRadius: 15,
+
+    marginBottom: 15
   },
 
   titulo: {
-    fontSize: 20,
+    color: colors.primary,
+
+    fontSize: 22,
+
     fontWeight: 'bold',
-    marginBottom: 10
+
+    marginBottom: 15
   },
 
-  descricao: {
-    marginTop: 10,
-    marginBottom: 15
+  informacao: {
+    color: '#fff',
+
+    fontSize: 15,
+
+    marginBottom: 8
   },
 
   botao: {
     backgroundColor:
       colors.primary,
 
-    padding: 12,
+    marginTop: 15,
 
-    borderRadius: 12,
+    padding: 14,
+
+    borderRadius: 10,
 
     alignItems: 'center'
   },
 
   textoBotao: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+
+    color: '#000'
   }
 });
