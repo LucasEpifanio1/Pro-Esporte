@@ -12,6 +12,9 @@ import TelaServidorPublico from '../screens/auth/TelaServidorPublico';
 import TelaInicialCidadao from '../screens/telaInicial/TelaInicialCidadao';
 import TelaInicialCriadorEventos from '../screens/telaInicial/TelaInicialCriadorEventos';
 
+//Outras Telas
+import TelaEventos from '../screens/eventos/TelaEventos';
+
 //Telas do rodapé
 import Rodape from '../components/Rodape';
 import TelaPerfil from '../screens/perfil/TelaPerfil'
@@ -36,7 +39,7 @@ export default function AppNavigator({
                         ? (
                             usuario.tipo === 'cidadao'
                             ? 'TelaInicialCidadao'
-                            : 'TelaInicialCriadorEvento'
+                            : 'TelaInicialCriadorEventos'
                         )
                         : 'TelaBoasVindas'
                 }
@@ -74,6 +77,13 @@ export default function AppNavigator({
                 <Stack.Screen
                     name="TelaPerfil"
                     component={TelaPerfil}
+                    options={{
+                        headerShown: false
+                    }}
+                />
+                <Stack.Screen
+                    name="TelaEventos"
+                    component={TelaEventos}
                     options={{
                         headerShown: false
                     }}

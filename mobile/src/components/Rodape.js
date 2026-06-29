@@ -26,7 +26,14 @@ export default function Rodape({
       </TouchableOpacity>
 
       <TouchableOpacity
-        style={styles.botao}
+        style={[
+          styles.botao,
+          telaAtiva === 'eventos' &&
+            styles.botaoAtivo
+        ]}
+        onPress={() =>
+          navigation.navigate('TelaEventos')
+        }
       >
         <Text style={styles.texto}>
           Eventos

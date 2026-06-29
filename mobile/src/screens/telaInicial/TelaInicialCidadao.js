@@ -26,8 +26,7 @@ export default function TelaInicialCidadao({ navigation }) {
           descricao="Descubra o que está acontecendo na sua cidade"
           variant="eventos"
           onPress={() =>
-            // navigation.navigate('TelaEventos')
-            console.log('Tela de Eventos')
+            navigation.navigate('TelaEventos')
           }
         />
       </View>
