@@ -5,7 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import CardHome from '../../components/CardHome';
 import Rodape from '../../components/Rodape';
 
-import styles, { AMARELO, PRETO } from '../../styles/TelaInicialCidadaoStyles';
+import styles, { AMARELO, PRETO } from '../../styles/TelaInicialBaseStyles';
 
 export default function TelaInicialCidadao({ navigation }) {
   return (

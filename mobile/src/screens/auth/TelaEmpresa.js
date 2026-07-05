@@ -8,6 +8,7 @@ import CampoTexto from '../../components/CampoTexto';
 import BotaoAlternadorAuth from '../../components/BotaoAlternadorAuth';
 import { cadastrarEmpresa } from '../../services/api';
 import { loginUsuario } from '../../services/api';
+import{ TelaInicialCriadorEventos} from '../../screens/telaInicial/TelaInicialCriadorEventos';
 
 export default function TelaEmpresa({navigation}) {
     const [modo, setModo] = useState('entrar');

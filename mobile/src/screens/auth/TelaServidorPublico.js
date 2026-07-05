@@ -8,6 +8,8 @@ import CampoTexto from '../../components/CampoTexto';
 import BotaoAlternadorAuth from '../../components/BotaoAlternadorAuth';
 import { cadastrarServidor } from '../../services/api';
 import { loginUsuario } from '../../services/api';
+import {salvarUsuario, obterUsuario} from '../../storage/authStorage';
+import{ TelaInicialCriadorEventos} from '../../screens/telaInicial/TelaInicialCriadorEventos';
 
 export default function TelaServidorPublico({navigation}) {
     const [modo, setModo] = useState('entrar');
@@ -25,7 +27,13 @@ export default function TelaServidorPublico({navigation}) {
                     email,
                     senha
                 });
-                console.log(respostaLoginServidor);
+                await salvarUsuario({
+                    logado: true,
+                    ... respostaLoginServidor
+                });
+                const sessao = await obterUsuario();
+                console.log('Sessão salva:', sessao);
+                navigation.replace('TelaInicialCriadorEventos');
             } catch(erro){
                 console.log(erro);
             }

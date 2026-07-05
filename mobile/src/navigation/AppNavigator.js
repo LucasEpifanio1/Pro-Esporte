@@ -20,13 +20,7 @@ import TelaDetalhesEvento from '../screens/eventos/TelaDetalhesEvento';
 import Rodape from '../components/Rodape';
 import TelaPerfil from '../screens/perfil/TelaPerfil'
 
-/*
-                <Stack.Screen
-                    name="TelaInicialCriadorEventos"
-                    component={TelaInicialCriadorEventos}
-                    options={{headerShown: false}}
-                />
-*/
+
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigator({
@@ -73,6 +67,11 @@ export default function AppNavigator({
                 <Stack.Screen
                     name="TelaInicialCidadao"
                     component={TelaInicialCidadao}
+                    options={{headerShown: false}}
+                />
+                <Stack.Screen
+                    name="TelaInicialCriadorEventos"
+                    component={TelaInicialCriadorEventos}
                     options={{headerShown: false}}
                 />
                 <Stack.Screen
