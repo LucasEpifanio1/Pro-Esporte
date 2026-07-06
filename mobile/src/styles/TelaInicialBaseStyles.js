@@ -29,14 +29,14 @@ export default StyleSheet.create({
     zIndex: 1
   },
 
-  cardEventos: {
+  cardSuperior: {
     position: 'absolute',
     top: 80,
     left: 24,
     zIndex: 2
   },
 
-  cardTreinos: {
+  cardInferior: {
     position: 'absolute',
     bottom: 110,
     right: 24,

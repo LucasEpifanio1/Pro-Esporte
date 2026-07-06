@@ -1,57 +1,93 @@
-import React from 'react';
-import {
-    View,
-    Text,
-    TouchableOpacity
-} from 'react-native';
+import { Alert, ScrollView } from 'react-native';
+import { useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-import {
-    SafeAreaView
-} from 'react-native-safe-area-context';
-
+import FormEvento from '../../components/evento/FormEvento';
 import Rodape from '../../components/Rodape';
 
+import { criarEvento } from '../../services/eventoService';
+import { obterUsuario } from '../../storage/authStorage';
+
 import globalStyles from '../../styles/global';
-import styles from '../../styles/TelaCriarEventosStyles';
 
 export default function TelaCriarEventos({
     navigation
 }) {
+    const [loading, setLoading] = useState(false);
+
+    async function criar(dadosFormulario) {
+
+        try {
+            setLoading(true);
+
+            const usuario = await obterUsuario();
+
+            const dadosEvento = {
+                ...dadosFormulario
+            };
+
+            if (usuario.tipo === 'empresa') {
+                dadosEvento.FK_Empresa =
+                    usuario.identificador;
+            }
+
+            if (
+                usuario.tipo ===
+                'servidor_publico'
+            ) {
+                dadosEvento.FK_Servidor =
+                    usuario.identificador;
+            }
+
+            await criarEvento(dadosEvento);
+
+            Alert.alert(
+                'Sucesso',
+                'Evento criado com sucesso!'
+            );
+
+            navigation.replace(
+                'TelaEventos'
+            );
+
+        }
+        catch (erro) {
+
+            console.log(erro);
+
+            Alert.alert(
+                'Erro',
+                'Não foi possível criar o evento.'
+            );
+        }
+        finally {
+            setLoading(false);
+        }
+
+    }
+
     return (
+
         <SafeAreaView
             style={globalStyles.container}
         >
-            <View style={styles.header}>
 
-                <TouchableOpacity
-                    onPress={() =>
-                        navigation.goBack()
-                    }
-                >
-                    <Text style={styles.voltar}>
-                        ← Voltar
-                    </Text>
-                </TouchableOpacity>
+            <ScrollView>
 
-                <Text style={globalStyles.title}>
-                    Criar Novo Evento
-                </Text>
+                <FormEvento
+                    onSubmit={criar}
+                    loading={loading}
+                />
 
-            </View>
-
-            <View style={styles.content}>
-
-                <Text style={styles.placeholder}>
-                    Formulário de criação de eventos será implementado aqui.
-                </Text>
-
-            </View>
+            </ScrollView>
 
             <Rodape
                 navigation={navigation}
-                telaAtiva=""
+                telaAtiva="criar"
             />
 
         </SafeAreaView>
+
     );
+
 }

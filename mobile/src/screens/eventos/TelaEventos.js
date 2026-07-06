@@ -67,10 +67,18 @@ export default function TelaEventos({
     setAbaAtiva] =
       useState('Todos');
 
+  const [tipoUsuario, setTipoUsuario] = useState(null);
+
   useEffect(() => {
     carregarEventos();
+    carregarUsuario();
   }, []);
 
+  async function carregarUsuario() {
+    const usuario = await obterUsuario();
+
+    setTipoUsuario(usuario?.tipo);
+  }
   async function carregarEventos() {
     try {
       const dados =
@@ -188,6 +196,7 @@ export default function TelaEventos({
       <Rodape
         navigation={navigation}
         telaAtiva="eventos"
+        tipoUsuario={tipoUsuario}
       />
     </SafeAreaView>
   );

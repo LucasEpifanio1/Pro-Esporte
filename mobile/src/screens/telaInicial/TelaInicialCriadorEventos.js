@@ -46,6 +46,7 @@ export default function TelaInicialCriadorEventos({ navigation }) {
       <Rodape
         navigation={navigation}
         telaAtiva="inicio"
+        tipoUsuario="criador_eventos"
       />
     </SafeAreaView>
   );

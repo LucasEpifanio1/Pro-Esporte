@@ -4,12 +4,17 @@ import {
   Text
 } from 'react-native';
 
+
 import styles from '../styles/RodapeStyles';
+
 
 export default function Rodape({
   navigation,
-  telaAtiva
+  telaAtiva,
+  tipoUsuario
 }) {
+
+  console.log('Rodape - tipoUsuario:', tipoUsuario);
   return (
     <View style={styles.container}>
 
@@ -42,9 +47,20 @@ export default function Rodape({
 
       <TouchableOpacity
         style={styles.botao}
+        onPress={() => {
+            if (tipoUsuario === 'cidadao') {
+                navigation.navigate('TelaTreinos');
+            } else {
+                navigation.navigate('TelaCriarEventos');
+            }
+        }}
       >
         <Text style={styles.texto}>
-          Treinos
+          {
+            tipoUsuario === 'cidadao'
+                ? 'Treinos'
+                : 'Criar'
+          }
         </Text>
       </TouchableOpacity>
 

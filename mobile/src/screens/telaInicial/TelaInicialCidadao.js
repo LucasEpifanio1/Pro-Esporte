@@ -20,7 +20,7 @@ export default function TelaInicialCidadao({ navigation }) {
 
       <View style={styles.linhaDiagonal} />
 
-      <View style={styles.cardEventos}>
+      <View style={styles.cardSuperior}>
         <CardHome
           titulo="Eventos"
           descricao="Descubra o que está acontecendo na sua cidade"
@@ -31,7 +31,7 @@ export default function TelaInicialCidadao({ navigation }) {
         />
       </View>
 
-      <View style={styles.cardTreinos}>
+      <View style={styles.cardInferior}>
         <CardHome
           titulo="Treinos"
           descricao="Responda o questionário sobre seus treinos"
@@ -46,6 +46,7 @@ export default function TelaInicialCidadao({ navigation }) {
       <Rodape
         navigation={navigation}
         telaAtiva="inicio"
+        tipoUsuario="cidadao"
       />
     </SafeAreaView>
   );
