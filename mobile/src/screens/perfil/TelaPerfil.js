@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 
 import {
   obterUsuario,
-  removerUsuario
+  logoutLocal
 } from '../../storage/authStorage';
 
 import { formatarTipoConta } from '../../utils/formatters';
@@ -29,10 +29,10 @@ export default function TelaPerfil({ navigation }) {
     carregar();
   }, []);
 
-  async function sair() {
-    await removerUsuario();
+  const sair = async () => {
+    await logoutLocal();
     navigation.replace('TelaBoasVindas');
-  }
+  };
 
   return (
     <SafeAreaView

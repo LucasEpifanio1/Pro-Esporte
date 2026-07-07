@@ -18,7 +18,8 @@ import Styles from '../../styles/global';
 import {gerarTreino} from '../../services/treinoService';
 import{
   salvarQuestionario,
-  salvarTreino
+  salvarTreino,
+  salvarTreinoNoServidor
 } from '../../database/treinoRepository'
 
 
@@ -52,10 +53,16 @@ export default function TelaQuestionarioTreino({ navigation }) {
     } else {
         try {
           const fichaTreino = await gerarTreino(newRespostas);
+          console.log('Ficha de treino gerada:', fichaTreino);
 
           await salvarQuestionario(newRespostas);
-
           await salvarTreino(fichaTreino);
+          try{
+            await salvarTreinoNoServidor(fichaTreino);
+          } catch (erro) {
+            console.warn('Treino salvo localmente, mas não sincronizado:', erro);
+          }
+          console.log('Treino salvo no banco de dados SQLite');
 
           navigation.replace('TelaDashboardTreino');
 

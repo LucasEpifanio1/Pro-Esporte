@@ -167,6 +167,28 @@ class TreinoController {
             return res.status(500).json({ error: error.message });
         }
     }
+
+    async show(req, res) {
+        const { id_cidadao } = req.params;
+        
+        try {
+            const rotina = await RotinaTreino.findOne({
+                where: { ID_Cidadao: id_cidadao },
+                include: [{
+                    model: Seleciona,
+                    as: 'exercicios',
+                    required: false
+                }]
+            });
+            if (!rotina) {
+                return res.status(404).json({ error: 'Rotina não encontrada' });
+            }
+            return res.status(200).json(rotina);
+        } catch (error) {
+            console.error('ERRO AO BUSCAR ROTINA:', error);
+            return res.status(500).json({ error: error.message });
+        }
+    }
 }
 
 module.exports = new TreinoController();

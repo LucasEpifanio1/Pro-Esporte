@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { limparDadosLocaisDaConta } from '../database/treinoRepository';
 
 export async function salvarUsuario(usuario) {
     try {
@@ -28,11 +29,12 @@ export async function obterUsuario() {
     }
 }
 
-export async function removerUsuario() {
+export async function logoutLocal() {
     try {
         await AsyncStorage.removeItem(
             'usuario'
         );
+        await limparDadosLocaisDaConta();
     } catch (erro) {
         console.log(erro);
     }

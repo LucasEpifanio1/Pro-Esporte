@@ -52,6 +52,14 @@ export async function obterQuestionario() {
 
 export async function salvarTreino(fichaTreino) {
 
+    console.log('ANTES');
+
+    const antes = await db.getAllAsync(
+        'SELECT * FROM rotina_treino'
+    );
+
+    console.log(antes);
+
     await db.runAsync('DELETE FROM rotina_treino');
 
     await db.runAsync(
@@ -65,6 +73,12 @@ export async function salvarTreino(fichaTreino) {
             0
         ]
     );
+
+    console.log('DEPOIS');
+    const depois = await db.getAllAsync(
+        'SELECT * FROM rotina_treino'
+    );
+    console.log(depois);
 
 }
 
@@ -88,4 +102,9 @@ export async function apagarTreino() {
         'DELETE FROM rotina_treino'
     );
 
+}
+
+export async function limparDadosLocaisDaConta() {
+  await db.runAsync('DELETE FROM questionario');
+  await db.runAsync('DELETE FROM rotina_treino');
 }

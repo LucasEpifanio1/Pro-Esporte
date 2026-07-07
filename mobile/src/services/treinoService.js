@@ -73,3 +73,32 @@ export async function gerarTreino(respostas) {
     return await response.json();
 
 }
+
+export async function salvarTreinoNoServidor(fichaTreino) {
+  const usuario = await obterUsuario();
+
+  const response = await fetch(
+    `${API_URL}/treino/salvar/${usuario.identificador}`,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fichaTreino })
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error('Erro ao salvar treino no servidor.');
+  }
+
+  return response.json();
+}
+
+export async function buscarRotinaDoServidor(idUsuario) {
+  const response = await fetch(`${API_URL}/treino/${idUsuario}`);
+
+  if (!response.ok) {
+    return null;
+  }
+
+  return response.json();
+}
