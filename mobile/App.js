@@ -4,7 +4,7 @@ import AppNavigator from './src/navigation/AppNavigator';
 
 import { obterUsuario } from './src/storage/authStorage';
 
-import { inicializarBanco } from './src/database/database';
+import { criarTabelas } from './src/database/schema';
 
 export default function App() {
 
@@ -12,6 +12,12 @@ export default function App() {
 
   useEffect(() => {
 
+    async function inicializarBanco() {
+      
+      await criarTabelas();
+      console.log('Tabelas criadas com sucesso!');
+    }
+    
     inicializarBanco();
 
     async function carregarSessao() {

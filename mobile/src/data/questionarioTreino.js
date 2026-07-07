@@ -1,4 +1,4 @@
-export default [
+export const questions = [
     {
     id: "peso",
     title: "Qual seu peso em kg?",
