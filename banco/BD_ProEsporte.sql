@@ -223,6 +223,7 @@ CREATE TABLE IF NOT EXISTS Seleciona (
     ON DELETE CASCADE ON UPDATE CASCADE
 ) /*ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci*/;
 
+ALTER TABLE Seleciona ADD COLUMN dia VARCHAR(50) NULL;
 -- ============================================================
 -- TABELA: Registro_Treino
 -- Armazena o histórico de performance dos treinos

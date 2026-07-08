@@ -3,6 +3,7 @@ const Seleciona = require('../models/seleciona');
 const sequelize = require('../database/index');
 const { generateRandomId5, generateRandomId6 } = require('../config/idGenerator')
 const TreinoService = require('../services/treinoService');
+const Exercicio = require('../models/exercicio');
 
 // Mapa manual para garantir que o texto do front vire o ID correto do banco
 const MAPA_EQUIPAMENTOS = {
@@ -54,26 +55,16 @@ class TreinoController {
     }
 
     async salvar(req, res) {
-        // --- ÁREA DE DEBUG (OLHE O TERMINAL APÓS CLICAR) ---
-        console.log('--- INÍCIO DO SALVAMENTO ---');
-        console.log('Parâmetros URL:', req.params);
-        // O segredo está aqui: vamos ver o JSON real formatado
-        console.log('Conteúdo do Body:', JSON.stringify(req.body, null, 2)); 
-        // ----------------------------------------------------
-
         const { id_cidadao } = req.params;
-        
+
         // TENTATIVA DE RESGATE DOS DADOS
-        // 1. Tenta pegar dentro da chave 'fichaTreino'
         let dadosDaFicha = req.body.fichaTreino;
 
-        // 2. Se não achou, verifica se o body JÁ É a ficha (caso o front tenha mandado direto)
         if (!dadosDaFicha && req.body.objetivo) {
             console.log("Aviso: O front-end mandou os dados soltos (sem a chave fichaTreino). Usando req.body direto.");
             dadosDaFicha = req.body;
         }
 
-        // Validação final
         if (!id_cidadao || !dadosDaFicha) {
             console.error("ERRO: ID ou Ficha faltando mesmo após tentativa de resgate.");
             return res.status(400).json({ error: 'Dados incompletos. Verifique o console do servidor.' });
@@ -82,15 +73,7 @@ class TreinoController {
         const transaction = await sequelize.transaction();
 
         try {
-            let novoIdRotina;
-            let idExistente;
-            do {
-                novoIdRotina = generateRandomId5();
-                idExistente = await RotinaTreino.findByPk(novoIdRotina);
-            } while (idExistente);
-
-            // 2. Salvar Equipamentos
-            // Nota: use dadosDaFicha.equipamentos em vez de fichaTreino.equipamentos
+            // 1. Salvar Equipamentos (igual antes)
             if (dadosDaFicha.equipamentos && dadosDaFicha.equipamentos.length > 0) {
                 const equipamentosIds = dadosDaFicha.equipamentos
                     .map(nome => MAPA_EQUIPAMENTOS[nome])
@@ -106,19 +89,49 @@ class TreinoController {
                 }
             }
 
-            // 3. Salvar a Rotina
-            const novaRotina = await RotinaTreino.create({
-                id_rotina_treino: novoIdRotina,
-                ID_Cidadao: id_cidadao,
+            // 2. O SERVIDOR É A FONTE ÚNICA DA VERDADE:
+            // verifica se o cidadão já tem uma rotina salva
+            let rotina = await RotinaTreino.findOne({
+                where: { ID_Cidadao: id_cidadao },
+                transaction
+            });
+
+            const dadosRotina = {
                 descricao: dadosDaFicha.descricao || `${dadosDaFicha.objetivo} - ${dadosDaFicha.divisao}`,
                 nivel: MAPA_NIVEIS[dadosDaFicha.perfilIdentificado] || 1,
                 perfil_identificado: dadosDaFicha.perfilIdentificado,
                 objetivo: dadosDaFicha.objetivo,
                 divisao: dadosDaFicha.divisao,
                 instrucoes_gerais: dadosDaFicha.instrucoesGerais || "Sem instruções."
-            }, { transaction });
+            };
 
-            // 4. Salvar Exercícios
+            if (rotina) {
+                // Já existe rotina: apaga os exercícios antigos e atualiza os dados da rotina existente
+                console.log(`Rotina ${rotina.id_rotina_treino} já existia para o cidadão ${id_cidadao}. Substituindo.`);
+
+                await Seleciona.destroy({
+                    where: { id_rotina_treino: rotina.id_rotina_treino },
+                    transaction
+                });
+
+                await rotina.update(dadosRotina, { transaction });
+            } else {
+                // Não existe: gera um ID novo e cria a rotina
+                let novoIdRotina;
+                let idExistente;
+                do {
+                    novoIdRotina = generateRandomId5();
+                    idExistente = await RotinaTreino.findByPk(novoIdRotina);
+                } while (idExistente);
+
+                rotina = await RotinaTreino.create({
+                    id_rotina_treino: novoIdRotina,
+                    ID_Cidadao: id_cidadao,
+                    ...dadosRotina
+                }, { transaction });
+            }
+
+            // 3. Salvar Exercícios da rotina (nova ou atualizada)
             const exerciciosParaSalvar = [];
             let contadorOrdem = 1;
 
@@ -126,20 +139,19 @@ class TreinoController {
                 for (const dia of dadosDaFicha.dias) {
                     if (dia.exercicios) {
                         for (const ex of dia.exercicios) {
-                            
-                            // O SEGREDO: Gerar um ID NOVO para CADA exercício dentro do loop
+
                             let idUnicoParaEstaLinha;
                             let idJaExiste;
                             do {
                                 idUnicoParaEstaLinha = generateRandomId6();
-                                // IMPORTANTE: Verificar no model CERTO (Seleciona)
                                 idJaExiste = await Seleciona.findByPk(idUnicoParaEstaLinha);
                             } while (idJaExiste);
 
                             exerciciosParaSalvar.push({
-                                id_seleciona: idUnicoParaEstaLinha, // ID único para esta linha específica
-                                id_rotina_treino: novaRotina.id_rotina_treino,
+                                id_seleciona: idUnicoParaEstaLinha,
+                                id_rotina_treino: rotina.id_rotina_treino,
                                 id_exercicio: ex.id_exercicio,
+                                dia: dia.nome,
                                 series: String(ex.series || "3"),
                                 repeticoes_ou_tempo: String(ex.repeticoes || ex.tempo || "Falha"),
                                 ordem_execucao: contadorOrdem++
@@ -154,11 +166,11 @@ class TreinoController {
             }
 
             await transaction.commit();
-            console.log(`SUCESSO! Rotina ${novoIdRotina} criada.`);
+            console.log(`SUCESSO! Rotina ${rotina.id_rotina_treino} salva.`);
 
             return res.status(201).json({
                 message: 'Treino salvo com sucesso!',
-                id_rotina: novaRotina.id_rotina_treino
+                id_rotina: rotina.id_rotina_treino
             });
 
         } catch (error) {
@@ -168,22 +180,59 @@ class TreinoController {
         }
     }
 
+    // função adicionada pra nova rota, mas não está funcionando, retorna "error": "Seleciona is not associated to RotinaTreino!" pelo postman
     async show(req, res) {
         const { id_cidadao } = req.params;
-        
+
         try {
             const rotina = await RotinaTreino.findOne({
                 where: { ID_Cidadao: id_cidadao },
                 include: [{
                     model: Seleciona,
                     as: 'exercicios',
-                    required: false
+                    required: false,
+                    include: [{ model: Exercicio, as: 'exercicio' }],
+                    order: [['ordem_execucao', 'ASC']]
                 }]
             });
+
             if (!rotina) {
                 return res.status(404).json({ error: 'Rotina não encontrada' });
             }
-            return res.status(200).json(rotina);
+
+            const params = TreinoService.obterParametrosPorObjetivo(rotina.objetivo);
+
+            // Reagrupa a lista plana de Seleciona em dias[].exercicios[],
+            // no mesmo formato que o app espera (TelaRotinaTreino.js)
+            const diasMap = new Map();
+
+            for (const item of rotina.exercicios) {
+                const nomeDia = item.dia || 'Dia Único';
+
+                if (!diasMap.has(nomeDia)) {
+                    diasMap.set(nomeDia, { nome: nomeDia, exercicios: [] });
+                }
+
+                diasMap.get(nomeDia).exercicios.push({
+                    id_exercicio: item.id_exercicio,
+                    nome: item.exercicio?.nome || 'Exercício',
+                    descricao: item.exercicio?.descricao || '',
+                    series: item.series,
+                    reps: item.repeticoes_ou_tempo,
+                    descanso: params.descanso
+                });
+            }
+
+            const fichaTreino = {
+                perfilIdentificado: rotina.perfil_identificado,
+                objetivo: rotina.objetivo,
+                divisao: rotina.divisao,
+                descricao: rotina.descricao,
+                instrucoesGerais: rotina.instrucoes_gerais,
+                dias: Array.from(diasMap.values())
+            };
+
+            return res.status(200).json(fichaTreino);
         } catch (error) {
             console.error('ERRO AO BUSCAR ROTINA:', error);
             return res.status(500).json({ error: error.message });

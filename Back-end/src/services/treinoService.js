@@ -51,6 +51,15 @@ class TreinoService {
         };
     }
 
+    static obterParametrosPorObjetivo(objetivo) {
+        let params = { series: '3', reps: '8-12', descanso: '60-90s' };
+        if (objetivo === 'Força') params = { series: '5', reps: '3-5', descanso: '120-180s' };
+        if (objetivo === 'Resistência') params = { series: '3', reps: '15-20', descanso: '30-45s' };
+        if (objetivo === 'Habilidades') params = { series: '4', reps: '5-10s (Isometria)', descanso: '60s' };
+        if (objetivo === 'Sair do sedentarismo') params = { series: '3', reps: '2-10', descanso: '60s' };
+        return params;
+    }
+    
     static async gerarTreino(dados) {
         const { respostas, objetivo, diasDisponiveis, equipamentos } = dados;
         const classificacao = this.classificarNivel(respostas);
@@ -98,11 +107,7 @@ class TreinoService {
         };
 
         // 3. Configurar Parâmetros
-        let params = { series: '3', reps: '8-12', descanso: '60-90s' };
-        if (objetivo === 'Força') params = { series: '5', reps: '3-5', descanso: '120-180s' };
-        if (objetivo === 'Resistência') params = { series: '3', reps: '15-20', descanso: '30-45s' };
-        if (objetivo === 'Habilidades') params = { series: '4', reps: '5-10s (Isometria)', descanso: '60s' };
-        if (objetivo == 'Sair do sedentarismo') params = {series: '3', reps: '2-10', descanso: '60s'}
+        const params = this.obterParametrosPorObjetivo(objetivo);
 
         // 4. Montar Ficha de Treino
         const ficha = {

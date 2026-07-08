@@ -29,5 +29,7 @@ empresa.associate(connection.models);
 servidorPublico.associate(connection.models);
 evento.associate(connection.models);
 Participa.associate(connection.models);
+RotinaTreino.associate(connection.models);
+Seleciona.associate(connection.models);
 
 module.exports = connection;

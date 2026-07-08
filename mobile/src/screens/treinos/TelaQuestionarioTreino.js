@@ -15,11 +15,13 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { questions } from '../../data/questionarioTreino';
 import colors from '../../styles/StyleColors';
 import Styles from '../../styles/global';
-import {gerarTreino} from '../../services/treinoService';
+import {
+  gerarTreino,
+  salvarTreinoNoServidor
+} from '../../services/treinoService';
 import{
   salvarQuestionario,
-  salvarTreino,
-  salvarTreinoNoServidor
+  salvarTreino
 } from '../../database/treinoRepository'
 
 

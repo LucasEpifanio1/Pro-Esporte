@@ -19,6 +19,7 @@ class Seleciona extends Model {
           allowNull: false,
           references: { model: 'Exercicio', key: 'id_exercicio' }
         },
+        dia: DataTypes.STRING(50),
         series: DataTypes.STRING(50),
         repeticoes_ou_tempo: DataTypes.STRING(50),
         ordem_execucao: DataTypes.INTEGER
@@ -30,6 +31,10 @@ class Seleciona extends Model {
       }
     );
   }
+  static associate(models) {
+     this.belongsTo(models.RotinaTreino, { foreignKey: 'id_rotina_treino' });
+     this.belongsTo(models.Exercicio, { foreignKey: 'id_exercicio', as: 'exercicio' });
+   }
 }
 
 module.exports = Seleciona;

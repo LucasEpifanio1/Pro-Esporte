@@ -34,6 +34,7 @@ routes.get("/participacoes/:id_cidadao", participacaoController.index);
 // Treinos (Módulo Street Workout)
 routes.post("/treino/gerar", treinoController.gerar);
 routes.post("/treino/salvar/:id_cidadao", treinoController.salvar);
+//rota adicionada hoje 07/07/2026
 routes.get("/treino/:id_cidadao", treinoController.show);
 
 module.exports = routes;

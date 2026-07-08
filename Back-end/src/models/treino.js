@@ -32,6 +32,8 @@ class RotinaTreino extends Model {
   static associate(models) {
     // Se precisar associar no futuro:
     // this.belongsTo(models.Cidadao, { foreignKey: 'ID_Cidadao', as: 'cidadao' });
+    this.hasMany(models.Seleciona, { foreignKey: 'id_rotina_treino', as: 'exercicios' });
+
   }
 }
 
