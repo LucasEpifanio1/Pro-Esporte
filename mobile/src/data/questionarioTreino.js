@@ -33,28 +33,28 @@ export const questions = [
     id: "flexaoInclinada",
     title: "Qual o máximo de flexões inclinadas você consegue fazer?",
     type: "options",
-    image: "./img/exercicios/flexao_inclinada.gif", // Exemplo de como adicionar imagem/gif
+    image: require("../assets/gifs/flexao_inclinada.gif"),
     options: ["Não consigo fazer", "1-5", "5-10", "10-20", "+20"]
   },
   {
     id: "flexaoPadrao",
     title: "Qual o máximo de flexões padrão você consegue fazer?",
     type: "options",
-    image: "./img/exercicios/flexaoPadrao.gif",
+    image: require("../assets/gifs/flexaoPadrao.gif"),
     options: ["Não consigo fazer", "1-5", "5-10", "10-20", "+20"]
   },
   {
     id: "barraAustraliana",
     title: "Quantas Barras australianas você consegue fazer?",
     type: "options",
-    image: "./img/exercicios/barraAustraliana.gif",
+    image: require("../assets/gifs/barraAustraliana.gif"),
     options: ["Não consigo fazer", "1-5", "5-10", "10-20", "+20"]
   },
   {
     id: "barraFixa",
     title: "Quantas Barras fixas você consegue fazer?",
     type: "options",
-    image: "./img/exercicios/barraFixa.gif",
+    image: require("../assets/gifs/barraFixa.gif"),
     options: ["Não consigo fazer", "1-5", "5-10", "10-20", "+20"]
   },
   {
@@ -73,14 +73,14 @@ export const questions = [
     id: "prancha",
     title: "Quantos segundos de prancha você consegue fazer?",
     type: "options",
-    image: "./img/exercicios/prancha.gif",
+    image: require("../assets/gifs/prancha.gif"),
     options: ["Não consigo fazer", "10-20", "21-30", "31-60", "+60"]
   },
   {
     id: "abdominalSupra",
     title: "Quantos abdominais você consegue fazer?",
     type: "options",
-    image: "./img/exercicios/abdominalSupra.gif",
+    image: require("../assets/gifs/abdominalSupra.gif"),
     options: ["Não consigo fazer", "1-5", "5-10", "10-20", "+20"]
   },
   {

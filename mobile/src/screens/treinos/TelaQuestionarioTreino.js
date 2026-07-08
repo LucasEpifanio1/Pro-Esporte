@@ -5,11 +5,11 @@ import {
   TouchableOpacity,
   ScrollView,
   TextInput,
-  Image,
   StyleSheet,
   Dimensions,
   Alert
 } from 'react-native';
+import { Image } from 'expo-image';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { questions } from '../../data/questionarioTreino';
@@ -215,9 +215,9 @@ export default function TelaQuestionarioTreino({ navigation }) {
       <ScrollView contentContainerStyle={styles.scrollContent}>
         {question.image && (
           <Image
-            source={{ uri: question.image }}
+            source={question.image}
             style={styles.questionImage}
-            resizeMode="contain"
+            contentFit="contain"
           />
         )}
 
