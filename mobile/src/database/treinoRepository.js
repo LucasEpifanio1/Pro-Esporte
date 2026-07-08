@@ -96,6 +96,16 @@ export async function obterTreino() {
 
 }
 
+export async function existeTreino() {
+
+    const resultado = await db.getFirstAsync(
+        'SELECT * FROM rotina_treino LIMIT 1'
+    );
+
+    return resultado !== null;
+
+}
+
 export async function apagarTreino() {
 
     await db.runAsync(

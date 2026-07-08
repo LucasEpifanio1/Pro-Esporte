@@ -4,27 +4,12 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import CardHome from '../../components/CardHome';
 import Rodape from '../../components/Rodape';
-import { existeQuestionario } from '../../database/treinoRepository';
 
 import styles, { AMARELO, PRETO } from '../../styles/TelaInicialBaseStyles';
 
 
 
 export default function TelaInicialCidadao({ navigation }) {
-  async function abrirTreinos() {
-
-    const respondeu = await existeQuestionario();
-
-    if (respondeu) {
-
-        navigation.navigate('TelaDashboardTreino');
-
-    } else {
-
-        navigation.navigate('TelaQuestionarioTreino');
-
-    }
-  }
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
@@ -54,7 +39,9 @@ export default function TelaInicialCidadao({ navigation }) {
           titulo="Treinos"
           descricao="Responda o questionário sobre seus treinos"
           variant="treinos"
-          onPress={abrirTreinos}
+          onPress={() =>
+            navigation.navigate('TelaTreinos')
+          }
         />
       </View>
 

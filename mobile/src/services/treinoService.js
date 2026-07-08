@@ -1,4 +1,5 @@
 import { API_URL } from './api';
+import { obterUsuario } from '../storage/authStorage';
 
 function formatarOpcao(valor, prancha = false) {
 

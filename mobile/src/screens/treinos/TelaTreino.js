@@ -1,19 +1,19 @@
 import { useEffect } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 
-import { existeQuestionario } from '../../database/treinoRepository';
+import { existeTreino } from '../../database/treinoRepository';
 
 export default function TelaTreinos({ navigation }) {
 
     useEffect(() => {
-        verificarQuestionario();
+        verificarTreino();
     }, []);
 
-    async function verificarQuestionario() {
+    async function verificarTreino() {
 
-        const respondeu = await existeQuestionario();
+        const possuiTreino = await existeTreino();
 
-        if (respondeu) {
+        if (possuiTreino) {
             navigation.replace('TelaDashboardTreino');
         } else {
             navigation.replace('TelaQuestionarioTreino');

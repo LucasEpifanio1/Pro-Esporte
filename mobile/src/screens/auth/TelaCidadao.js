@@ -10,7 +10,8 @@ import { cadastrarCidadao } from '../../services/api';
 import { loginUsuario } from '../../services/api';
 import {salvarUsuario, obterUsuario} from '../../storage/authStorage';
 import {TelaInicialCidadao} from '../../screens/telaInicial/TelaInicialCidadao';
-
+import { buscarRotinaDoServidor } from '../../services/treinoService';
+import { salvarTreino } from '../../database/treinoRepository';
 
 export default function TelaCidadao({navigation}) {
     const [modo, setModo] = useState('entrar');
@@ -30,6 +31,24 @@ export default function TelaCidadao({navigation}) {
                     logado: true,
                     ... respostaLogin
                 });
+                // Servidor é a fonte única da verdade: sincroniza o treino
+                // salvo no MySQL para o SQLite local do aparelho.
+                if (respostaLogin.tipo === 'cidadao') {
+                    try {
+                        const treinoDoServidor = await buscarRotinaDoServidor(
+                            respostaLogin.identificador
+                        );
+
+                        if (treinoDoServidor) {
+                            await salvarTreino(treinoDoServidor);
+                        }
+                    } catch (erroSync) {
+                        console.warn(
+                            'Não foi possível sincronizar o treino do servidor:',
+                            erroSync
+                        );
+                    }
+                }
 
                 const sessao = await obterUsuario();
                 console.log('Sessão salva:', sessao);
